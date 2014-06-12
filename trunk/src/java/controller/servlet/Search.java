@@ -6,17 +6,21 @@
 package controller.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.service.GiangVienHocSinhDAOService;
+import model.entities.GiangVienHocSinh;
 
 /**
  *
  * @author Admin
  */
 public class Search extends HttpServlet {
+
+    GiangVienHocSinhDAOService GVHS_SERVICE;
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -59,8 +63,12 @@ public class Search extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String keyWord = request.getParameter("keyWord");
-
+        String tenGVHS = request.getParameter("keyWord");
+        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByTen(tenGVHS);
+        request.setAttribute("gvhs", gvhs);
+        request.setAttribute(util.Constants.PAGE, "search-cb");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
     }
 
     private void searchNC(HttpServletRequest request, HttpServletResponse response)
@@ -71,8 +79,17 @@ public class Search extends HttpServlet {
         String loaiTT = request.getParameter("loaiTT");
         String soTrang = request.getParameter("soTrang");
         String nguoiThucHien = request.getParameter("nguoiThucHien");
-
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(tenTT);
+        switch (loaiTT) {
+            case "Bài giảng":
+                break;
+            case "Slide":
+                break;
+            case "Tất cả":
+                break;
+        }
     }
+
     /**
      * Returns a short description of the servlet.
      *
