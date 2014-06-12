@@ -24,6 +24,15 @@ import model.entities.GiangVienHocSinh;
  */
 public class BaiGiangDAO implements BaiGiangDAOService {
 
+    private static BaiGiangDAO baigiangDAO;
+
+    public static BaiGiangDAO getInstance() {
+        if (baigiangDAO == null) {
+            baigiangDAO = new BaiGiangDAO();
+        }
+        return baigiangDAO;
+    }
+
     @Override
     public List<BaiGiang> getAllBaiGiang() {
         List<BaiGiang> listBaiGiang = new ArrayList<BaiGiang>();

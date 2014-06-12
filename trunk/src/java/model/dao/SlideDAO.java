@@ -20,6 +20,15 @@ import model.entities.TuLieu;
  * @author HAI VU
  */
 public class SlideDAO implements SlideDAOService {
+    
+    private static SlideDAO slideDAO;
+
+    public static SlideDAO getInstance() {
+        if (slideDAO == null) {
+            slideDAO = new SlideDAO();
+        }
+        return slideDAO;
+    }
 
     @Override
     public List<Slide> getAllSlide() {
