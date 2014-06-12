@@ -185,23 +185,17 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
     }
 
     @Override
-    public boolean removeGiangVienHocSinh(GiangVienHocSinh gvhs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean xoaGiangVienHocSinh(int maGVHS) {
+        boolean isCheck = false;
+        String sql = "delete from tbl_giangvien_hocsinh where maGVHS =?";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setInt(1, maGVHS);
+            return sm.executeUpdate() == 1;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return isCheck;
     }
-
-    @Override
-    public boolean restoreGiangVienHocSinh(GiangVienHocSinh gvhs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean xoaGiangVienHocSinh(GiangVienHocSinh gvhs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public GiangVienHocSinh getGiangVienHocSinhByMaGVHS(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
