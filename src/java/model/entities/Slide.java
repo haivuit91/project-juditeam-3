@@ -18,13 +18,13 @@ public class Slide {
     private int nam;
     private GiangVienHocSinh maGVHS;
     private TaiLieu maTL;
-    private boolean trangthai;
+    private int trangthai;
     
     public Slide() {
         
     }
 
-    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh maGVHS, TaiLieu maTL, boolean trangthai) {
+    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh maGVHS, TaiLieu maTL, int trangthai) {
         this.maSlide = maSlide;
         this.tenSilde = tenSilde;
         this.noidung = noidung;
@@ -82,11 +82,11 @@ public class Slide {
         this.maTL = maTL;
     }
 
-    public boolean isTrangthai() {
+    public int isTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(boolean trangthai) {
+    public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
     
