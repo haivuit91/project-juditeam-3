@@ -16,6 +16,10 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>controller.servlet.Search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SlideManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.SlideManagement</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/Page</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SlideManagement</servlet-name>
+        <url-pattern>/slidemanage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
