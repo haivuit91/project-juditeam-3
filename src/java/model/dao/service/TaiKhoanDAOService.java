@@ -99,5 +99,5 @@ public interface TaiKhoanDAOService {
      * @param maTK
      * @return TaiKhoan
      */
-    public boolean removeTaiKhoan(int maTK);
+    public boolean xoaTaiKhoan(int maTK);
 }
