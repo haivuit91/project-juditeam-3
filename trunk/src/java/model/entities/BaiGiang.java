@@ -17,12 +17,12 @@ public class BaiGiang {
     private String noidung;
     private int nam;
     private GiangVienHocSinh maGVHS;
-    private boolean trangthai;
+    private int trangthai;
     
     public BaiGiang(){
         
     }    
-    public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh maGVHS, boolean trangthai) {
+    public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh maGVHS, int trangthai) {
         this.maBG = maBG;
         this.tenBG = tenBG;
         this.noidung = noidung;
@@ -71,11 +71,11 @@ public class BaiGiang {
         this.maGVHS = maGVHS;
     }
 
-    public boolean isTrangthai() {
+    public int isTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(boolean trangthai) {
+    public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
     
