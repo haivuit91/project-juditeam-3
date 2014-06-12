@@ -82,7 +82,7 @@ public class TuLieu {
         this.nam = nam;
     }
 
-    public int isTrangthai() {
+    public int getTrangthai() {
         return trangthai;
     }
 

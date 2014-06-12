@@ -104,8 +104,9 @@ public class TuLieuDAO implements TuLieuDAOService {
         List<TuLieu> listTuLieu = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_tulieu where tenTL = " + tenTL + "& noidung  like '%" + noidung + "%' ";
+            sql = "select * from tbl_tulieu where tenTL = ? and noidung  like '%" + noidung + "%' ";
             PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setString(1, tenTL);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 TuLieu tulieu = new TuLieu();
@@ -135,7 +136,7 @@ public class TuLieuDAO implements TuLieuDAOService {
             pstmt.setString(3, tulieu.getLoaiTL());
             pstmt.setString(4, tulieu.getNguonTL());
             pstmt.setInt(5, tulieu.getNam());
-            pstmt.setInt(4, tulieu.getMaTL());
+            pstmt.setInt(6, tulieu.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -155,7 +156,7 @@ public class TuLieuDAO implements TuLieuDAOService {
             pstmt.setString(3, tulieu.getLoaiTL());
             pstmt.setString(4, tulieu.getNguonTL());
             pstmt.setInt(5, tulieu.getNam());
-            pstmt.setInt(4, tulieu.getMaTL());
+            pstmt.setInt(6, tulieu.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
