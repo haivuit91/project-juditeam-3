@@ -16,18 +16,18 @@ public class BaiGiang {
     private String tenBG;
     private String noidung;
     private int nam;
-    private GiangVienHocSinh maGVHS;
+    private GiangVienHocSinh giangVienHocSinh;
     private int trangthai;
     
     public BaiGiang(){
         
     }    
-    public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh maGVHS, int trangthai) {
+    public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh giangVienHocSinh, int trangthai) {
         this.maBG = maBG;
         this.tenBG = tenBG;
         this.noidung = noidung;
         this.nam = nam;
-        this.maGVHS = maGVHS;
+        this.giangVienHocSinh = giangVienHocSinh;
         this.trangthai = trangthai;
     }
 
@@ -63,14 +63,13 @@ public class BaiGiang {
         this.nam = nam;
     }
 
-    public GiangVienHocSinh getMaGVHS() {
-        return maGVHS;
+    public GiangVienHocSinh getGiangVienHocSinh() {
+        return giangVienHocSinh;
     }
 
-    public void setMaGVHS(GiangVienHocSinh maGVHS) {
-        this.maGVHS = maGVHS;
+    public void setGiangVienHocSinh(GiangVienHocSinh giangVienHocSinh) {
+        this.giangVienHocSinh = giangVienHocSinh;
     }
-
     public int isTrangthai() {
         return trangthai;
     }
