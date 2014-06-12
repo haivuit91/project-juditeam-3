@@ -22,7 +22,7 @@ public class Slide {
     private TuLieu maTL;
     private int trangthai;
     
-    List<TuLieu> tulieuList = null;
+    private List<TuLieu> tulieuList = null;
     
     public Slide() {
         
@@ -92,6 +92,14 @@ public class Slide {
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
+    }
+
+    public List<TuLieu> getTulieuList() {
+        return tulieuList;
+    }
+
+    public void setTulieuList(List<TuLieu> tulieuList) {
+        this.tulieuList = tulieuList;
     }
     
 }
