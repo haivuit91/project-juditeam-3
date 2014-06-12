@@ -30,13 +30,13 @@
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Tên thông tin</label>
                                 <div class="col-lg-5">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="">
+                                    <input type="text" name="keyWord" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
 
-                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                    <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-primary" />
                                 </div>
                             </div>
                         </fieldset>
