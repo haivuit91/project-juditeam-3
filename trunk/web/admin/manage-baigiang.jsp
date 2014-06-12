@@ -16,12 +16,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project1/umanage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/project3/bgmanage?page=add" class="btn btn-primary btn-sm" >
                     Tạo mới bài giảng
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project1/umanage?do=search" method="post">
+                        <form action="/project3/umanage?page=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -67,12 +67,12 @@
                     <div class="col-md-2" style="text-transform: inherit;padding:5px">Vui vẻ</div>
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=edit&id=${tkList.getMaTK()}" class="btn btn-primary btn-sm" >
+                            <a href="/project3/bgmanage?page=edit&id=${tkList.getMaTK()}" class="btn btn-primary btn-sm" >
                                 <span class="glyphicon glyphicon-wrench"></span>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=del&id=${tkList.getMaTK()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tkList.getTenTK()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="/project3/bgmanage?page=del&id=${tkList.getMaTK()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tkList.getTenTK()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
                     </div>
                 </div>                               
