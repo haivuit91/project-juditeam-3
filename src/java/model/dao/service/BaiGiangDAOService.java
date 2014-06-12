@@ -77,5 +77,5 @@ public interface BaiGiangDAOService {
      * @param maTK
      * @return BaiGiang
      */
-    public boolean xoaBaiGiang(int maTK);
+    public boolean xoaBaiGiang(int maBG);
 }
