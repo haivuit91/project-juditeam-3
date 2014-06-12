@@ -61,6 +61,7 @@ CREATE TABLE `tbl_dcct` (
   `noidung` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `tieuchuan` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `nam` int(11) NOT NULL,
+  `maGVHS` int(11) NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
   PRIMARY KEY (`maDC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -198,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-12 13:08:18
+-- Dump completed on 2014-06-12 16:41:57
