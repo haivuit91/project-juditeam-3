@@ -166,8 +166,22 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
     @Override
     public boolean chinhsuaGiangVienHocSinh(GiangVienHocSinh gvhs) {
         boolean isCheck = false;
-//        String sql = "update tbl_giangvien_hocsinh set "
-        return true;
+        String sql = "update tbl_giangvien_hocsinh set tenGVHS = ?, diachi = ?, dienthoai = ?, ngaysinh = ?, donvi = ?, trinhdo = ?, trangthai = ?";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, gvhs.getTenGVHS());
+            pstmt.setString(2, gvhs.getDiachi());
+            pstmt.setString(3, gvhs.getDienthoai());
+            pstmt.setDate(4, (Date) gvhs.getNgaysinh());
+            pstmt.setString(5, gvhs.getDonvi());
+            pstmt.setInt(6, gvhs.getTrinhdo());
+            pstmt.setInt(7, gvhs.getTrangthai());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return isCheck;
     }
 
     @Override
@@ -182,6 +196,11 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
 
     @Override
     public boolean xoaGiangVienHocSinh(GiangVienHocSinh gvhs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public GiangVienHocSinh getGiangVienHocSinhByMaGVHS(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
