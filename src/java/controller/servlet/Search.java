@@ -77,15 +77,15 @@ public class Search extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String tenTT = request.getParameter("tenTT");
         String loaiTT = request.getParameter("loaiTT");
-        String soTrang = request.getParameter("soTrang");
+        int nam = Integer.parseInt(request.getParameter("nam"));
         String nguoiThucHien = request.getParameter("nguoiThucHien");
         List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(tenTT);
         switch (loaiTT) {
-            case "Bài giảng":
+            case "baiGiang":
                 break;
-            case "Slide":
+            case "slide":
                 break;
-            case "Tất cả":
+            case "all":
                 break;
         }
     }
