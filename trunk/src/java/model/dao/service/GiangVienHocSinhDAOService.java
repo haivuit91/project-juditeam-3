@@ -35,7 +35,7 @@ public interface GiangVienHocSinhDAOService {
      * @param tenGVHS
      * @return GiangVienHocSinh
      */
-    public GiangVienHocSinh getGiangVienHocSinhByTen(String tenGVHS);
+    public GiangVienHocSinh getGiangVienHocSinhByTen(String key);
 
     /**
      * find GiangVienDeCuong
