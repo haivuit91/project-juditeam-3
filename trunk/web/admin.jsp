@@ -20,8 +20,31 @@
     <body>
         <div class="container">
             <div class="row">
-                <%@include file="admin/nav_admin.jsp" %>    
-                <%@include file="admin/manage.jsp" %>
+                
+                <c:if test="${page == null}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="admin/manage.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage-gvhs'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/manage-gv-hs.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage-bg'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/manage-baigiang.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage-dcct'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/manage-decuongchitiet.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage-sl'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/manage-slide.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage-tl'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/manage-tulieu.jsp" %>
+                </c:if>
             </div>
         </div>
 
