@@ -69,26 +69,26 @@ public interface BaiGiangDAOService {
      * @param baigiang
      * @return BaiGiang
      */
-    public int chinhsuaBaiGiang(BaiGiang baigiang);
+    public boolean chinhsuaBaiGiang(BaiGiang baigiang);
 
     /**
      * remove BaiGiang
      * @param baigiang
      * @return BaiGiang
      */
-    public int removeBaiGiang(BaiGiang baigiang);
+    public boolean removeBaiGiang(BaiGiang baigiang);
 
     /**
      * restore BaiGiang
      * @param baigiang
      * @return BaiGiang
      */
-    public int restoreBaiGiang(BaiGiang baigiang);
+    public boolean restoreBaiGiang(BaiGiang baigiang);
 
     /**
      * delete BaiGiang by maTK
      * @param maTK
      * @return BaiGiang
      */
-    public int xoaBaiGiang(int maTK);
+    public boolean xoaBaiGiang(int maTK);
 }
