@@ -6,6 +6,8 @@
 
 package model.entities;
 
+import java.util.List;
+
 /**
  *
  * @author HAI VU
@@ -19,6 +21,8 @@ public class Slide {
     private GiangVienHocSinh maGVHS;
     private TuLieu maTL;
     private int trangthai;
+    
+    List<TuLieu> tulieuList = null;
     
     public Slide() {
         
