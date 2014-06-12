@@ -18,23 +18,24 @@ public class Slide {
     private String tenSilde;
     private String noidung;
     private int nam;
-    private GiangVienHocSinh maGVHS;
-    private TuLieu maTL;
+    private GiangVienHocSinh giangvienhocsinh;
+    private TuLieu tulieu;
     private int trangthai;
     
+    private  List<GiangVienHocSinh> gvhsList = null;
     private List<TuLieu> tulieuList = null;
     
     public Slide() {
         
     }
 
-    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh maGVHS, TuLieu maTL, int trangthai) {
+    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh giangvienhocsinh, TuLieu maTL, int trangthai) {
         this.maSlide = maSlide;
         this.tenSilde = tenSilde;
         this.noidung = noidung;
         this.nam = nam;
-        this.maGVHS = maGVHS;
-        this.maTL = maTL;
+        this.giangvienhocsinh = giangvienhocsinh;
+        this.tulieu = tulieu;
         this.trangthai = trangthai;
     }
 
@@ -70,28 +71,20 @@ public class Slide {
         this.nam = nam;
     }
 
-    public GiangVienHocSinh getMaGVHS() {
-        return maGVHS;
+    public GiangVienHocSinh getGiangvienhocsinh() {
+        return giangvienhocsinh;
     }
 
-    public void setMaGVHS(GiangVienHocSinh maGVHS) {
-        this.maGVHS = maGVHS;
+    public void setGiangvienhocsinh(GiangVienHocSinh giangvienhocsinh) {
+        this.giangvienhocsinh = giangvienhocsinh;
     }
 
-    public TuLieu getMaTL() {
-        return maTL;
+    public TuLieu getTulieu() {
+        return tulieu;
     }
 
-    public void setMaTL(TuLieu maTL) {
-        this.maTL = maTL;
-    }
-
-    public int isTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
+    public void setTulieu(TuLieu tulieu) {
+        this.tulieu = tulieu;
     }
 
     public List<TuLieu> getTulieuList() {
@@ -100,6 +93,22 @@ public class Slide {
 
     public void setTulieuList(List<TuLieu> tulieuList) {
         this.tulieuList = tulieuList;
+    }
+
+    public List<GiangVienHocSinh> getGvhsList() {
+        return gvhsList;
+    }
+
+    public void setGvhsList(List<GiangVienHocSinh> gvhsList) {
+        this.gvhsList = gvhsList;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
     
 }

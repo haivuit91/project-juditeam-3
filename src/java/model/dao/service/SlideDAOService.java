@@ -6,6 +6,7 @@
 package model.dao.service;
 
 import java.util.List;
+import model.entities.GiangVienHocSinh;
 import model.entities.Slide;
 
 /**
@@ -41,34 +42,12 @@ public interface SlideDAOService {
      * find Slide by tenSlide
      *
      * @param tenSlide
+     * @param noidung
+     * @param nam
+     * @param gvhs
      * @return Slide by tenSlide
      */
-    public List<Slide> timkiemSlideByTenSlide(String tenSlide);
-
-    /**
-     * find Slide by noidung
-     *
-     * @param noidung
-     * @return Slide by noidung
-     */
-    public List<Slide> timkiemSlideByNoiDung(String noidung);
-
-    /**
-     * find Slide by nam
-     *
-     * @param nam
-     * @return Slide by nam
-     */
-    public List<Slide> timkiemSlideByNam(int nam);
-
-    /**
-     * find Slide
-     *
-     * @param tukhoa
-     * @param dieukien
-     * @return Slide
-     */
-    public List<Slide> timkiemSlide(String tukhoa, String dieukien);
+    public List<Slide> timkiemSlide(int nam, String noidung, GiangVienHocSinh gvhs);
 
     /**
      * create Slide
@@ -85,22 +64,6 @@ public interface SlideDAOService {
      * @return Slide
      */
     public boolean chinhsuaSlide(Slide slide);
-
-    /**
-     * remove Slide
-     *
-     * @param slide
-     * @return Slide
-     */
-    public boolean removeSlide(Slide slide);
-
-    /**
-     * restore Slide
-     *
-     * @param slide
-     * @return Slide
-     */
-    public boolean restoreSlide(Slide slide);
 
     /**
      * delete Slide by maSlide
