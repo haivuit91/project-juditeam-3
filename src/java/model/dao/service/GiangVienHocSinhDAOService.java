@@ -27,7 +27,7 @@ public interface GiangVienHocSinhDAOService {
      * @param maGVHS
      * @return GiangVienHocSinh
      */
-    public List<GiangVienHocSinh> getGiangVienHocSinhByMa(int maGVHS);
+    public GiangVienHocSinh getGiangVienHocSinhByMa(int maGVHS);
 
     /**
      * Get GiangVienHocSinh
@@ -35,7 +35,7 @@ public interface GiangVienHocSinhDAOService {
      * @param tenGVHS
      * @return GiangVienHocSinh
      */
-    public List<GiangVienHocSinh> getGiangVienHocSinhByTen(int tenGVHS);
+    public GiangVienHocSinh getGiangVienHocSinhByTen(int tenGVHS);
 
     /**
      * find GiangVienDeCuong
