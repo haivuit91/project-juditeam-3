@@ -99,14 +99,14 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     }
 
     @Override
-    public List<BaiGiang> timkiemBaiGiangByTenBG(String key) {
+    public List<BaiGiang> timkiemBaiGiangByTenBG(String key, int nam) {
         String sql = "";
         List<BaiGiang> listBaiGiang = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
             switch (key) {
                 case "tenBG":
-                    sql = "select * from tbl_baigiang where tenBG like '%" + key + "%' ";
+                    sql = "select * from tbl_baigiang where nam = " + nam + "& tenBG like '%" + key + "%' ";
                     break;
             }
             PreparedStatement sm = conn.prepareStatement(sql);
