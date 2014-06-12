@@ -6,6 +6,8 @@
 
 package model.entities;
 
+import java.util.List;
+
 /**
  *
  * @author HAI VU
@@ -18,6 +20,8 @@ public class BaiGiang {
     private int nam;
     private GiangVienHocSinh giangVienHocSinh;
     private int trangthai;
+    
+    private List<GiangVienHocSinh> slideList = null;
     
     public BaiGiang(){
         
@@ -76,6 +80,14 @@ public class BaiGiang {
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
+    }
+
+    public List<GiangVienHocSinh> getSlideList() {
+        return slideList;
+    }
+
+    public void setSlideList(List<GiangVienHocSinh> slideList) {
+        this.slideList = slideList;
     }
     
 }

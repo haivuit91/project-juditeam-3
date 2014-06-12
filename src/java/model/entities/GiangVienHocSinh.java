@@ -7,6 +7,7 @@
 package model.entities;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -22,6 +23,9 @@ public class GiangVienHocSinh {
     private String donvi;
     private int trinhdo;
     private int trangthai;
+    
+    private List<BaiGiang> baigiangList = null;
+    private List<Slide> slideList = null;
     
     public GiangVienHocSinh() {
         
@@ -100,6 +104,22 @@ public class GiangVienHocSinh {
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
+    }
+
+    public List<BaiGiang> getBaigiangList() {
+        return baigiangList;
+    }
+
+    public void setBaigiangList(List<BaiGiang> baigiangList) {
+        this.baigiangList = baigiangList;
+    }
+
+    public List<Slide> getSlideList() {
+        return slideList;
+    }
+
+    public void setSlideList(List<Slide> slideList) {
+        this.slideList = slideList;
     }
     
 }
