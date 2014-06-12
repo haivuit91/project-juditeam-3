@@ -10,7 +10,7 @@ package model.entities;
  *
  * @author HAI VU
  */
-public class TaiLieu {
+public class TuLieu {
     
     private int maTL;
     private String tenTL;
@@ -20,11 +20,11 @@ public class TaiLieu {
     private int nam;
     private int trangthai;
     
-    public TaiLieu() {
+    public TuLieu() {
         
     }
 
-    public TaiLieu(int maTL, String tenTL, String noidung, String loaiTL, String nguonTL, int nam, int trangthai) {
+    public TuLieu(int maTL, String tenTL, String noidung, String loaiTL, String nguonTL, int nam, int trangthai) {
         this.maTL = maTL;
         this.tenTL = tenTL;
         this.noidung = noidung;
