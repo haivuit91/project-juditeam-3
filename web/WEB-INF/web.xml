@@ -20,6 +20,14 @@
         <servlet-name>SlideManagement</servlet-name>
         <servlet-class>controller.servlet.admin.SlideManagement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GVHSManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.GVHSManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BGManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.BGManagement</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/Page</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>SlideManagement</servlet-name>
         <url-pattern>/slidemanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GVHSManagement</servlet-name>
+        <url-pattern>/GVHSManage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BGManagement</servlet-name>
+        <url-pattern>/bgmanage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
