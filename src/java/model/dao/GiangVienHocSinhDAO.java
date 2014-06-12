@@ -85,13 +85,13 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
     }
 
     @Override
-    public GiangVienHocSinh getGiangVienHocSinhByTen(int tenGVHS) {
+    public GiangVienHocSinh getGiangVienHocSinhByTen(String tenGVHS) {
         GiangVienHocSinh gVienHS = new GiangVienHocSinh();
         try {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "select * from tbl_giangvien_hocsinh where tenGVHS = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, tenGVHS);
+            pstmt.setString(1, tenGVHS);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {                
                 GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
