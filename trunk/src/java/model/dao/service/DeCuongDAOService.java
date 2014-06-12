@@ -60,7 +60,7 @@ public interface DeCuongDAOService {
      * @param nam
      * @return DeCuong
      */
-    public List<DeCuong> timkiemDeCuongByNam(String nam);
+    public List<DeCuong> timkiemDeCuongByNam(int nam);
 
     /**
      * create DeCuong

@@ -59,7 +59,7 @@ public interface SlideDAOService {
      * @param nam
      * @return Slide by nam
      */
-    public List<Slide> timkiemSlideByNam(String nam);
+    public List<Slide> timkiemSlideByNam(int nam);
 
     /**
      * find Slide
