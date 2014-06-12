@@ -19,7 +19,7 @@ public interface BaiGiangDAOService {
      *
      * @return BaiGiang
      */
-    public List<BaiGiang> getAllBaiGiang(int trangthai);
+    public List<BaiGiang> getAllBaiGiang();
 
     /**
      * Get BaiGiangList by maBG
