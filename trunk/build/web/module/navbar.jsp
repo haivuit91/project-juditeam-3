@@ -33,7 +33,7 @@
                             <li class="active"><a href="/project3/home.jsp">Trang chủ</a></li>
                             <li><a href="/project3/Page?p=about">Giới Thiệu</a></li>
                             <li><a href="/project3/Page?p=login">Đăng Nhập</a></li>
-                            <li><a href="/project3/Page?p=seacher-cb">Tìm Kiếm</a></li>
+                            <li><a href="/project3/Page?p=search-cb">Tìm Kiếm</a></li>
                             <li><a href="/project3/Page?p=contact">Liên Hệ</a></li>
 
                         </ul>
