@@ -76,7 +76,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
                 giangvienhocsinh.setNgaysinh(rs.getDate("ngaysinh"));
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
-                giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
+                giangvienhocsinh.setTrangthai(rs.getInt("trangthai"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
