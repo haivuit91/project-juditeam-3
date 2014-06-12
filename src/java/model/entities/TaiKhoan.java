@@ -19,13 +19,13 @@ public class TaiKhoan {
     private String email;
     private String dienthoai;
     private int quyen;
-    private boolean trangthai;
+    private int trangthai;
     
     public TaiKhoan() {
         
     }
 
-    public TaiKhoan(int maTK, String tenTK, String matkhau, String hoten, String email, String dienthoai, int quyen, boolean trangthai) {
+    public TaiKhoan(int maTK, String tenTK, String matkhau, String hoten, String email, String dienthoai, int quyen, int trangthai) {
         this.maTK = maTK;
         this.tenTK = tenTK;
         this.matkhau = matkhau;
@@ -92,11 +92,11 @@ public class TaiKhoan {
         this.quyen = quyen;
     }
 
-    public boolean isTrangthai() {
+    public int isTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(boolean trangthai) {
+    public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
     
