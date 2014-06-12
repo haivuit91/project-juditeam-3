@@ -43,4 +43,6 @@ public class Constants {
     public static final String PASSWORD_EMAIL = "congtrinh";
     
     public static final String CURRENT_USER = "currentUser";
+    
+    public static final String GVHS_LIST = "gvhsList";
 }
