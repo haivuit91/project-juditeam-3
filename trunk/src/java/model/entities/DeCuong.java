@@ -25,7 +25,7 @@ public class DeCuong {
     private GiangVienHocSinh giangvienhocsinh;
     private int trangthai;
 
-    List<DeCuong> listDeCuong = null;
+    List<GiangVienHocSinh> listGVHS = null;
 
     public DeCuong() {
 
@@ -121,12 +121,12 @@ public class DeCuong {
         this.giangvienhocsinh = giangvienhocsinh;
     }
 
-    public List<DeCuong> getListDeCuong() {
-        return listDeCuong;
+    public List<GiangVienHocSinh> getListGVHS() {
+        return listGVHS;
     }
 
-    public void setListDeCuong(List<DeCuong> listDeCuong) {
-        this.listDeCuong = listDeCuong;
+    public void setListGVHS(List<GiangVienHocSinh> listGVHS) {
+        this.listGVHS = listGVHS;
     }
 
     public void setNam(int nam) {
