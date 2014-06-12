@@ -18,13 +18,13 @@ public class TaiLieu {
     private String loaiTL;
     private String nguonTL;
     private int nam;
-    private boolean trangthai;
+    private int trangthai;
     
     public TaiLieu() {
         
     }
 
-    public TaiLieu(int maTL, String tenTL, String noidung, String loaiTL, String nguonTL, int nam, boolean trangthai) {
+    public TaiLieu(int maTL, String tenTL, String noidung, String loaiTL, String nguonTL, int nam, int trangthai) {
         this.maTL = maTL;
         this.tenTL = tenTL;
         this.noidung = noidung;
@@ -82,11 +82,11 @@ public class TaiLieu {
         this.nam = nam;
     }
 
-    public boolean isTrangthai() {
+    public int isTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(boolean trangthai) {
+    public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
     
