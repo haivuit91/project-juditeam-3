@@ -122,7 +122,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 listPost.add(baigiang);
             }
         } catch (Exception ex) {
-            System.out.println(ex.toString());
+            ex.printStackTrace();
         }
         return listPost;
     }
