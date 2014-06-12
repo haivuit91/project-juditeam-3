@@ -25,11 +25,11 @@ import model.entities.GiangVienHocSinh;
 public class BaiGiangDAO implements BaiGiangDAOService {
 
     @Override
-    public List<BaiGiang> getAllBaiGiang(int trangthai) {
+    public List<BaiGiang> getAllBaiGiang() {
         List<BaiGiang> listBaiGiang = new ArrayList<BaiGiang>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_baigiang where trangthai = ?";
+            String sql = "select * from tbl_baigiang";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
