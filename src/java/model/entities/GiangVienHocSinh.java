@@ -21,13 +21,13 @@ public class GiangVienHocSinh {
     private Date ngaysinh;
     private String donvi;
     private int trinhdo;
-    private boolean trangthai;
+    private int trangthai;
     
     public GiangVienHocSinh() {
         
     }
 
-    public GiangVienHocSinh(int maGVHS, String tenGVHS, String diachi, String dienthoai, Date ngaysinh, String donvi, int trinhdo) {
+    public GiangVienHocSinh(int maGVHS, String tenGVHS, String diachi, String dienthoai, Date ngaysinh, String donvi, int trinhdo, int trangthai) {
         this.maGVHS = maGVHS;
         this.tenGVHS = tenGVHS;
         this.diachi = diachi;
@@ -35,6 +35,7 @@ public class GiangVienHocSinh {
         this.ngaysinh = ngaysinh;
         this.donvi = donvi;
         this.trinhdo = trinhdo;
+        this.trangthai = trangthai;
     }
 
     public int getMaGVHS() {
@@ -93,11 +94,11 @@ public class GiangVienHocSinh {
         this.trinhdo = trinhdo;
     }
 
-    public boolean isTrangthai() {
+    public int isTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(boolean trangthai) {
+    public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
     
