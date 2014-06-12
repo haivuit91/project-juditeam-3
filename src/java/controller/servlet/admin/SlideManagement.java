@@ -99,7 +99,7 @@ public class SlideManagement extends HttpServlet {
         int maSlide = Integer.parseInt(request.getParameter("id"));
         Slide sl = SLIDE_SERVICE.getSlideByMa(maSlide);
         request.setAttribute("slide", sl);
-        request.setAttribute(util.Constants.PAGE, "addSlide");
+        request.setAttribute(util.Constants.PAGE, "editSlide");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
@@ -129,7 +129,7 @@ public class SlideManagement extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute("msgResult", "Có lỗi xảy ra, sửa slide thất bại!");
-            request.setAttribute(util.Constants.PAGE, "addSlide");
+            request.setAttribute(util.Constants.PAGE, "editSlide");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }

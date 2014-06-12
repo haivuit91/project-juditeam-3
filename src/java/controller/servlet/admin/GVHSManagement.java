@@ -89,7 +89,7 @@ public class GVHSManagement extends HttpServlet {
         int maGVHS = Integer.parseInt(request.getParameter("id"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         request.setAttribute("gvhs", gvhs);
-        request.setAttribute(util.Constants.PAGE, "addGVHS");
+        request.setAttribute(util.Constants.PAGE, "editGVHS");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
