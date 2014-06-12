@@ -34,7 +34,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="/project3/home.jsp">Trang chủ</a></li>
-                        <li><a href="/project1/authen?do=logout"><span class="glyphicon glyphicon-th-large"  >Đăng xuất</span></a></li>
+                        <li><a href="/project3/authen?do=logout"><span class="glyphicon glyphicon-th-large"  >Đăng xuất</span></a></li>
                     </ul>
                 </div>
             </div><!-- /.container -->
