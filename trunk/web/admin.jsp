@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 
-                <c:if test="${page == null}">
+                <c:if test="${page == null || page == 'manage'}">
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="admin/manage.jsp" %>
                 </c:if>
