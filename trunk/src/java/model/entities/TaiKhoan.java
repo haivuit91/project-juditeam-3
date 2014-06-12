@@ -92,7 +92,7 @@ public class TaiKhoan {
         this.quyen = quyen;
     }
 
-    public int isTrangthai() {
+    public int getTrangthai() {
         return trangthai;
     }
 
