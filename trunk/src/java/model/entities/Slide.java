@@ -17,14 +17,14 @@ public class Slide {
     private String noidung;
     private int nam;
     private GiangVienHocSinh maGVHS;
-    private TaiLieu maTL;
+    private TuLieu maTL;
     private int trangthai;
     
     public Slide() {
         
     }
 
-    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh maGVHS, TaiLieu maTL, int trangthai) {
+    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh maGVHS, TuLieu maTL, int trangthai) {
         this.maSlide = maSlide;
         this.tenSilde = tenSilde;
         this.noidung = noidung;
@@ -74,11 +74,11 @@ public class Slide {
         this.maGVHS = maGVHS;
     }
 
-    public TaiLieu getMaTL() {
+    public TuLieu getMaTL() {
         return maTL;
     }
 
-    public void setMaTL(TaiLieu maTL) {
+    public void setMaTL(TuLieu maTL) {
         this.maTL = maTL;
     }
 
