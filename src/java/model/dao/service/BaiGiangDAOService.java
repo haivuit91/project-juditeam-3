@@ -19,7 +19,7 @@ public interface BaiGiangDAOService {
      *
      * @return BaiGiang
      */
-    public List<BaiGiang> getAllBaiGiang(boolean trangthai);
+    public List<BaiGiang> getAllBaiGiang(int trangthai);
 
     /**
      * Get BaiGiangList by maBG
@@ -62,33 +62,33 @@ public interface BaiGiangDAOService {
      * @param baigiang
      * @return BaiGiang
      */
-    public boolean themBaiGiang(BaiGiang baigiang);
+    public int themBaiGiang(BaiGiang baigiang);
 
     /**
      * update BaiGiang
      * @param baigiang
      * @return BaiGiang
      */
-    public boolean chinhsuaBaiGiang(BaiGiang baigiang);
+    public int chinhsuaBaiGiang(BaiGiang baigiang);
 
     /**
      * remove BaiGiang
      * @param baigiang
      * @return BaiGiang
      */
-    public boolean removeBaiGiang(BaiGiang baigiang);
+    public int removeBaiGiang(BaiGiang baigiang);
 
     /**
      * restore BaiGiang
      * @param baigiang
      * @return BaiGiang
      */
-    public boolean restoreBaiGiang(BaiGiang baigiang);
+    public int restoreBaiGiang(BaiGiang baigiang);
 
     /**
      * delete BaiGiang by maTK
      * @param maTK
      * @return BaiGiang
      */
-    public boolean xoaBaiGiang(int maTK);
+    public int xoaBaiGiang(int maTK);
 }
