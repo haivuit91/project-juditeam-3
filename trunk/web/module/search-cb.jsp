@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="/project3/search?do=search-cb" method="post">
                         <fieldset>
                             <legend>Tìm kiếm cơ bản</legend>
                             <div class="form-group">
@@ -35,7 +35,6 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-
                                     <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-primary" />
                                 </div>
                             </div>
@@ -43,8 +42,8 @@
                     </form>
                 </div>
                 <div class="panel-body">
-                    <c:forEach items="${gvhs}">
-                        
+                    <c:forEach items="${gvhsList}" var="gvhs">
+                        Họ tên: ${gvhs.getTenGVHS()}
                     </c:forEach>
                 </div>
 
