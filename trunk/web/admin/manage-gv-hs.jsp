@@ -56,7 +56,6 @@
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">trình độ</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
             </div>
-            <c:forEach items="${tkList}" var="tkList">
                 <div class="panel panel-title">
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">1</div>
                     <div class="col-md-2" style="text-transform: inherit;padding:5px" >Nguyễn Ngọc Duy</div>
@@ -78,7 +77,6 @@
                         </div>
                     </div>
                 </div>                               
-            </c:forEach>                             
         </div>
 </body>
 </html>

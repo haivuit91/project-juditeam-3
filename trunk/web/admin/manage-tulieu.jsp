@@ -17,7 +17,7 @@
             <!-- Default panel contents -->
             <div class="panel-heading">
                 <a href="/project1/umanage?do=add" class="btn btn-primary btn-sm" >
-                    Tạo mới tài khoản
+                    Tạo mới tư liệu
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
@@ -47,15 +47,14 @@
 
             <div class="panel panel-default">
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên GVHS</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">địa chỉ</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Điện thoại</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">đơn vị</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Trạng thái</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">trình độ</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên TL</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nội dung</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Loại TL</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nguồn TL</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Năm</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">T-Thái</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
             </div>
-            <c:forEach items="${tkList}" var="tkList">
                 <div class="panel panel-title">
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">1</div>
                     <div class="col-md-2" style="text-transform: inherit;padding:5px" >Nguyễn Ngọc Duy</div>
@@ -77,7 +76,6 @@
                         </div>
                     </div>
                 </div>                               
-            </c:forEach>                             
         </div>
     </body>
 </html>

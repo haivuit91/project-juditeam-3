@@ -92,7 +92,7 @@
                                 CHỨC NĂNG ĐANG XÂY DỰNG
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
+                                <a href="#"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                 CHỨC NĂNG ĐANG XÂY DỰNG
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
+                                <a href="#"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                                 CHỨC NĂNG ĐANG XÂY DỰNG
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
+                                <a href="#"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                                 CHỨC NĂNG ĐANG XÂY DỰNG
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
+                                <a href="#"><img class="img-thumbnail" src="./images/admin/12.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
