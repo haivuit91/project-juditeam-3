@@ -53,6 +53,7 @@ DROP TABLE IF EXISTS `tbl_dcct`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_dcct` (
   `maDC` int(11) NOT NULL AUTO_INCREMENT,
+  `tenDC` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `dvhoctrinh` int(11) NOT NULL,
   `thoigian` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `dieukien` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
@@ -197,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-12 10:33:57
+-- Dump completed on 2014-06-12 13:08:18
