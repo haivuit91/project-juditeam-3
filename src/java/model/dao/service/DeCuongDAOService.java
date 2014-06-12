@@ -7,6 +7,7 @@ package model.dao.service;
 
 import java.util.List;
 import model.entities.DeCuong;
+import model.entities.GiangVienHocSinh;
 
 /**
  *
@@ -35,7 +36,7 @@ public interface DeCuongDAOService {
      * @param tenDC
      * @return DeCuong by tenDC
      */
-    public List<DeCuong> timkiemDeCuongByTenDC(String tenDC);
+    public List<DeCuong> timkiemDeCuongByTenDC(String key, int nam);
 
     /**
      * find DeCuong
@@ -44,7 +45,7 @@ public interface DeCuongDAOService {
      * @param dieukien
      * @return DeCuong
      */
-    public List<DeCuong> timkiemDeCuong(String tukhoa, String dieukien);
+    public List<DeCuong> timkiemDeCuong(String noidung, int nam, GiangVienHocSinh gvhs);
 
     /**
      * find DeCuong
@@ -77,22 +78,6 @@ public interface DeCuongDAOService {
      * @return DeCuong
      */
     public boolean chinhsuaDeCuong(DeCuong decuong);
-
-    /**
-     * remove DeCuong
-     *
-     * @param decuong
-     * @return DeCuong
-     */
-    public boolean removeDeCuong(DeCuong decuong);
-
-    /**
-     * restore DeCuong
-     *
-     * @param decuong
-     * @return DeCuong
-     */
-    public boolean restoreDeCuong(DeCuong decuong);
 
     /**
      * delete DeCuong by maDC
