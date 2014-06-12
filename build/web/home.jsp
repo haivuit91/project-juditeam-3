@@ -35,11 +35,11 @@
                 <%@include file="module/content-left.jsp" %>
                 <!--------------------------------CONTENT RIGHT-------------------------------->
 
-                <c:if test="${page == 'seacher-cb'}">
-                    <%@include file="module/seacher-cb.jsp" %>
+                <c:if test="${page == 'search-cb'}">
+                    <%@include file="module/search-cb.jsp" %>
                 </c:if>
-                <c:if test="${page == 'seacher-nc'}">
-                    <%@include file="module/seacher-nc.jsp" %>
+                <c:if test="${page == 'search-nc'}">
+                    <%@include file="module/search-nc.jsp" %>
                 </c:if>
                 <c:if test="${page == 'login'}">
                     <%@include file="module/login.jsp" %>
