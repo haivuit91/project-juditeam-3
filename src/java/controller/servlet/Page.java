@@ -35,28 +35,28 @@ public class Page extends HttpServlet {
             case "search-cb":
                 request.setAttribute(util.Constants.PAGE, "search-cb");
                 request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
 
             case "search-nc":
                 request.setAttribute(util.Constants.PAGE, "search-nc");
                 request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "login":
                 request.setAttribute(util.Constants.PAGE, "login");
                 request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "contact":
                 request.setAttribute(util.Constants.PAGE, "contact");
                 request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "about":
                 request.setAttribute(util.Constants.PAGE, "about");
                 request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
 
         }
