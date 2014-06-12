@@ -36,38 +36,15 @@ public interface TaiKhoanDAOService {
      * @return TaiKhoan
      */
     public TaiKhoan getTaiKhoanByTenTK(String tenTK);
-
+    
     /**
-     * find TaiKhoan by maTK
-     *
-     * @param maTK
-     * @return TaiKhoan
-     */
-    public List<TaiKhoan> timkiemTaiKhoanByMaTK(int maTK);
-
-    /**
-     * find TaiKhoan by tenTK
+     * CheckLogin
      *
      * @param tenTK
+     * @param matkhau
      * @return TaiKhoan
      */
-    public List<TaiKhoan> timkiemTaiKhoanByTenTK(int tenTK);
-
-    /**
-     * find TaiKhoan by hoten
-     *
-     * @param hoten
-     * @return TaiKhoan
-     */
-    public List<TaiKhoan> timkiemTaiKhoan(String hoten);
-
-    /**
-     * create TaiKhoan
-     *
-     * @param taikhoan
-     * @return TaiKhoan
-     */
-    public boolean themTaiKhoan(TaiKhoan taikhoan);
+    public boolean kiemTraDangNhap(String tenTK, String matkhau);
 
     /**
      * update TaiKhoan
@@ -76,22 +53,6 @@ public interface TaiKhoanDAOService {
      * @return TaiKhoan
      */
     public boolean chinhsuaTaiKhoan(TaiKhoan taikhoan);
-
-    /**
-     * remove TaiKhoan
-     *
-     * @param taikhoan
-     * @return TaiKhoan
-     */
-    public boolean removeTaiKhoan(TaiKhoan taikhoan);
-
-    /**
-     * restore TaiKhoan
-     *
-     * @param taikhoan
-     * @return TaiKhoan
-     */
-    public boolean restoreTaiKhoan(TaiKhoan taikhoan);
 
     /**
      * delete TaiKhoan
