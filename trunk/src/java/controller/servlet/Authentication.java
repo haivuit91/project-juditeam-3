@@ -68,7 +68,7 @@ public class Authentication extends HttpServlet {
             case "logout":
                 HttpSession session = request.getSession();
                 session.invalidate();
-                response.sendRedirect(util.Constants.URL_ADMIN);
+                response.sendRedirect(util.Constants.URL_HOME);
                 break;
         }
     }
