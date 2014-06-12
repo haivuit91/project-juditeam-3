@@ -33,6 +33,10 @@
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="/admin/manage-baigiang.jsp" %>
                 </c:if>
+                <c:if test="${page == 'addbg'}">
+                    <%@include file="admin/nav_admin.jsp" %>
+                    <%@include file="admin/add-baigiang.jsp" %>
+                </c:if>
                 <c:if test="${page == 'manage-dcct'}">
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="/admin/manage-decuongchitiet.jsp" %>
