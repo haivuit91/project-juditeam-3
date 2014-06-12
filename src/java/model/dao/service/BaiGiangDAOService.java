@@ -62,7 +62,7 @@ public interface BaiGiangDAOService {
      * @param baigiang
      * @return BaiGiang
      */
-    public int themBaiGiang(BaiGiang baigiang);
+    public boolean themBaiGiang(BaiGiang baigiang);
 
     /**
      * update BaiGiang
