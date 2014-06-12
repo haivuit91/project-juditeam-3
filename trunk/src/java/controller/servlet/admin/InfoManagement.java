@@ -7,7 +7,6 @@
 package controller.servlet.admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -62,6 +61,8 @@ public class InfoManagement extends HttpServlet {
         String tacGia = request.getParameter("tacGia");
         String noiDung = request.getParameter("noiDung");
         String ngayThangNam = request.getParameter("ngayThangNam");
+        String[] date = ngayThangNam.split("/");
+        java.sql.Date ngayThang = util.Support.convertToDate(date[0], date[1], date[2]);
         
     }
     /**
