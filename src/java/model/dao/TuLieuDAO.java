@@ -99,12 +99,12 @@ public class TuLieuDAO implements TuLieuDAOService {
     }
 
     @Override
-    public List<TuLieu> timkiemTuLieu(String tukhoa, String dieukien) {
+    public List<TuLieu> timkiemTuLieu(String tenTL, String noidung) {
         String sql = "";
         List<TuLieu> listTuLieu = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_tulieu where " + dieukien + " like '%" + tukhoa + "%' ";
+            sql = "select * from tbl_tulieu where tenTL = " + tenTL + "& noidung  like '%" + noidung + "%' ";
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
