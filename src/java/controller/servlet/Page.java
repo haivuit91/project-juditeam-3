@@ -58,6 +58,31 @@ public class Page extends HttpServlet {
                 request.removeAttribute(util.Constants.MSG_RESULT);
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
+            case "manage-gvhs":
+                request.setAttribute(util.Constants.PAGE, "manage-gvhs");
+                request.removeAttribute(util.Constants.MSG_RESULT);
+                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                break;
+            case "manage-bg":
+                request.setAttribute(util.Constants.PAGE, "manage-bg");
+                request.removeAttribute(util.Constants.MSG_RESULT);
+                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                break;
+            case "manage-dcct":
+                request.setAttribute(util.Constants.PAGE, "manage-dcct");
+                request.removeAttribute(util.Constants.MSG_RESULT);
+                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                break;
+            case "manage-sl":
+                request.setAttribute(util.Constants.PAGE, "manage-sl");
+                request.removeAttribute(util.Constants.MSG_RESULT);
+                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                break;
+            case "manage-tl":
+                request.setAttribute(util.Constants.PAGE, "manage-tl");
+                request.removeAttribute(util.Constants.MSG_RESULT);
+                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                break;
 
         }
 

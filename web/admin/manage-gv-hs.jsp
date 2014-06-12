@@ -47,37 +47,38 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã TK</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên TK</div>
-                <div class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Họ Tên</div>
-                <div class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Email</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Điện Thoại</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Lựa chọn</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên GVHS</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">địa chỉ</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Điện thoại</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">đơn vị</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Trạng thái</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">trình độ</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
             </div>
             <c:forEach items="${tkList}" var="tkList">
                 <div class="panel panel-title">
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${tkList.getMaTK()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px" >${tkList.getTenTK()}</div>
-                    <div class="col-md-3" style="text-transform: inherit;padding:5px">${tkList.getHoTen()}</div>
-                    <div class="col-md-3" style="text-transform: inherit;padding:5px">${tkList.getEmail()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${tkList.getSDT()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">1</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px" >Nguyễn Ngọc Duy</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">Quảng Nam</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">0906427601</div>
                     <div class="col-md-2" style="text-transform: inherit;padding:5px">
-                        <!-- Công mi sửa chổ này nghe-->
-
-                        <!--Edit-->
+                        <p>Trường THPT Nguyễn Huệ</p>
+                    </div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">Vui vẻ</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">Đại học</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">
                         <div class="col-md-6">
                             <a href="/project1/umanage?do=edit&id=${tkList.getMaTK()}" class="btn btn-primary btn-sm" >
                                 <span class="glyphicon glyphicon-wrench"></span>
                             </a>
                         </div>
-                        <!--Delete-->
                         <div class="col-md-6">
                             <a href="/project1/umanage?do=del&id=${tkList.getMaTK()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tkList.getTenTK()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
                     </div>
                 </div>                               
             </c:forEach>                             
-
         </div>
-    </body>
+</body>
 </html>
