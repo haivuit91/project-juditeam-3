@@ -37,23 +37,10 @@ public interface BaiGiangDAOService {
     public BaiGiang getBaiGiangByTenBG(String tenBG);
 
     /**
-     * find BaiGiang by tenBG
-     * @param tenBG
-     * @return BaiGiang by tenBG
-     */
-    public List<BaiGiang> timkiemBaiGiangByTenBG(String key, int nam);
-    
-    /**
-     * find BaiGiang by nam
-     * @param nam
-     * @return BaiGiang by nam
-     */
-    public List<BaiGiang> timkiemBaiGiangByNam(int nam);
-
-    /**
      * find BaiGiang
-     * @param tukhoa
-     * @param dieukien
+     * @param noidung
+     * @param nam
+     * @param gvhs
      * @return BaiGiang
      */
     public List<BaiGiang> timkiemBaiGiang(String noidung, int nam, GiangVienHocSinh gvhs);

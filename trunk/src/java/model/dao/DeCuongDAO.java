@@ -94,8 +94,9 @@ public class DeCuongDAO implements DeCuongDAOService {
         List<DeCuong> listDeCuong = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_dcct where nam = " + nam + "and tenDC like '%" + key + "%' ";
+            sql = "select * from tbl_dcct where nam = ? and tenDC like '%" + key + "%' ";
             PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setInt(1, nam);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 DeCuong decuong = new DeCuong();
@@ -125,8 +126,10 @@ public class DeCuongDAO implements DeCuongDAOService {
         List<DeCuong> listDeCuong = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_dcct where noidung = ? and nam = ? and noidung like '%" + noidung + "%' ";
+            sql = "select * from tbl_dcct where nam = ? and maGVHS = ? and noidung like '%" + noidung + "%' ";
             PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setInt(1, nam);
+            sm.setInt(2, gvhs.getMaGVHS());
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 DeCuong decuong = new DeCuong();

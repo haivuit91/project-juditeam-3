@@ -111,7 +111,7 @@ public class SlideDAO implements SlideDAOService {
             sql = "select * from tbl_slide where nam = ? and maGVHS = ? and noidung  like '%" + noidung + "%' ";
             PreparedStatement sm = conn.prepareStatement(sql);
             sm.setInt(1, nam);
-            sm.setString(2, noidung);
+            sm.setInt(2, gvhs.getMaGVHS());
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 Slide slide = new Slide();
