@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.GiangVienHocSinhDAO;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.entities.GiangVienHocSinh;
 
@@ -20,7 +21,7 @@ import model.entities.GiangVienHocSinh;
  */
 public class Search extends HttpServlet {
 
-    GiangVienHocSinhDAOService GVHS_SERVICE;
+    GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -64,8 +65,8 @@ public class Search extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String tenGVHS = request.getParameter("keyWord");
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByTen(tenGVHS);
-        request.setAttribute("gvhs", gvhs);
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(tenGVHS);
+        request.setAttribute("gvhsList", gvhsList);
         request.setAttribute(util.Constants.PAGE, "search-cb");
         request.removeAttribute(util.Constants.MSG_RESULT);
         request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
