@@ -10,6 +10,6 @@ package model.dao.service;
  *
  * @author HAI VU
  */
-public class TaiKhoanDAOService {
+public interface TaiKhoanDAOService {
     
 }

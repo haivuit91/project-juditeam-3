@@ -13,6 +13,7 @@ package model.entities;
 public class DeCuong {
     
     private int maDC;
+    private String tenDC;
     private int dvhoctrinh;
     private String thoigian;
     private String dieukien;
@@ -26,8 +27,9 @@ public class DeCuong {
         
     }
 
-    public DeCuong(int maDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, boolean trangthai) {
+    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, boolean trangthai) {
         this.maDC = maDC;
+        this.tenDC = tenDC;
         this.dvhoctrinh = dvhoctrinh;
         this.thoigian = thoigian;
         this.dieukien = dieukien;
@@ -44,6 +46,14 @@ public class DeCuong {
 
     public void setMaDC(int maDC) {
         this.maDC = maDC;
+    }
+
+    public String getTenDC() {
+        return tenDC;
+    }
+
+    public void setTenDC(String tenDC) {
+        this.tenDC = tenDC;
     }
 
     public int getDvhoctrinh() {
