@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.entities;
+
+import java.util.List;
 
 /**
  *
  * @author HAI VU
  */
 public class DeCuong {
-    
+
     private int maDC;
     private String tenDC;
     private int dvhoctrinh;
@@ -21,13 +22,16 @@ public class DeCuong {
     private String noidung;
     private String tieuchuan;
     private int nam;
+    private GiangVienHocSinh giangvienhocsinh;
     private int trangthai;
-    
+
+    List<DeCuong> listDeCuong = null;
+
     public DeCuong() {
-        
+
     }
 
-    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, int trangthai) {
+    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, GiangVienHocSinh giangvienhocsinh, int trangthai) {
         this.maDC = maDC;
         this.tenDC = tenDC;
         this.dvhoctrinh = dvhoctrinh;
@@ -37,6 +41,7 @@ public class DeCuong {
         this.noidung = noidung;
         this.tieuchuan = tieuchuan;
         this.nam = nam;
+        this.giangvienhocsinh = giangvienhocsinh;
         this.trangthai = trangthai;
     }
 
@@ -108,6 +113,22 @@ public class DeCuong {
         return nam;
     }
 
+    public GiangVienHocSinh getGiangvienhocsinh() {
+        return giangvienhocsinh;
+    }
+
+    public void setGiangvienhocsinh(GiangVienHocSinh giangvienhocsinh) {
+        this.giangvienhocsinh = giangvienhocsinh;
+    }
+
+    public List<DeCuong> getListDeCuong() {
+        return listDeCuong;
+    }
+
+    public void setListDeCuong(List<DeCuong> listDeCuong) {
+        this.listDeCuong = listDeCuong;
+    }
+
     public void setNam(int nam) {
         this.nam = nam;
     }
@@ -119,5 +140,5 @@ public class DeCuong {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-    
+
 }
