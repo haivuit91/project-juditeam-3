@@ -19,7 +19,7 @@
                     TRA CỨU THÔNG TIN
                 </div>
                 <div class="col-sm-2 col-sm-offset-10">
-                    <a href="http://localhost:8080/project3/Page?p=seacher-nc"class="label label-default">Tìm kiếm nâng cao</a>
+                    <a href="/project3/Page?p=search-nc"class="label label-default">Tìm kiếm nâng cao</a>
 
                 </div>
 

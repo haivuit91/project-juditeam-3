@@ -19,7 +19,7 @@
                     TRA CỨU THÔNG TIN
                 </div>
                 <div class="col-sm-2 col-sm-offset-10">
-                    <a href="http://localhost:8080/project3/Page?p=seacher-cb"class="label label-warning">Tìm kiếm cơ bản</a>
+                    <a href="/project3/Page?p=search-cb"class="label label-warning">Tìm kiếm cơ bản</a>
                 </div>
 
                 <div class="panel-body">
@@ -30,68 +30,40 @@
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Tên thông tin</label>
                                 <div class="col-lg-5">
-                                    <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
+                                    <input type="text" name="tenTT" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Loại thông tin</label>
                                 <div class="col-lg-5">
-                                    <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select name="loaiTT" class="form-control" id="select">
+                                        <option value="all">Tất cả</option>
+                                        <option value="slide">Slide</option>
+                                        <option value="baiGiang">Bài giảng</option>
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="select" class="col-lg-2 control-label">Số trang</label>
-                                <div class="col-lg-5">
-                                    <select class="form-control" id="select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="select" class="col-lg-2 control-label">Tên thông tin</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="">
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Người thực hiện</label>
                                 <div class="col-lg-5">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="">
+                                    <input type="text" name="nguoiThucHien" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Ngày tháng năm</label>
                                 <div class="col-lg-5">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="">
+                                    <input type="text" name="nam" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                             </div>
 
 
 
                             <div class="form-group">
-                                <div class="col-lg-10 col-lg-offset-2">
-                                    <button class="btn btn-default" type="reset">Nhập lại</button>
-                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                <div class="col-lg-10 col-lg-offset-2">                                    
+                                    <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-primary">
+                                    <input value="Nhập lại" class="btn btn-default" type="reset">
                                 </div>
                             </div>
                         </fieldset>
