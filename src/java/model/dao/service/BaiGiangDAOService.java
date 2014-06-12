@@ -47,7 +47,7 @@ public interface BaiGiangDAOService {
      * @param nam
      * @return BaiGiang by nam
      */
-    public List<BaiGiang> timkiemBaiGiangByNam(String nam);
+    public List<BaiGiang> timkiemBaiGiangByNam(int nam);
 
     /**
      * find BaiGiang
