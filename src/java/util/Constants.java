@@ -26,9 +26,6 @@ public class Constants {
     /**
      * url Index page
      */
-    public static final String URL_SEACHER = "home.jsp";
-    public static final String URL_INDEX = "home.jsp";
-
     public static final String URL_HOME = "home.jsp";
     /**
      * Admin's Email receive
