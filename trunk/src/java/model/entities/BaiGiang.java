@@ -21,7 +21,7 @@ public class BaiGiang {
     private GiangVienHocSinh giangVienHocSinh;
     private int trangthai;
     
-    private List<GiangVienHocSinh> slideList = null;
+    private List<GiangVienHocSinh> gvhsList = null;
     
     public BaiGiang(){
         
@@ -82,12 +82,14 @@ public class BaiGiang {
         this.trangthai = trangthai;
     }
 
-    public List<GiangVienHocSinh> getSlideList() {
-        return slideList;
+    public List<GiangVienHocSinh> getGvhsList() {
+        return gvhsList;
     }
 
-    public void setSlideList(List<GiangVienHocSinh> slideList) {
-        this.slideList = slideList;
+    public void setGvhsList(List<GiangVienHocSinh> gvhsList) {
+        this.gvhsList = gvhsList;
     }
+
+   
     
 }
