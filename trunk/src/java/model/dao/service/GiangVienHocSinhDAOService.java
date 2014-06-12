@@ -35,7 +35,7 @@ public interface GiangVienHocSinhDAOService {
      * @param tenGVHS
      * @return GiangVienHocSinh
      */
-    public GiangVienHocSinh getGiangVienHocSinhByTen(String key);
+    public GiangVienHocSinh getGiangVienHocSinhByTen(String tenGVHS);
 
     /**
      * find GiangVienDeCuong
@@ -52,7 +52,7 @@ public interface GiangVienHocSinhDAOService {
      * @param tenGVHS
      * @return GiangVienDeCuong
      */
-    public List<GiangVienHocSinh> timkiemGiangVienHocSinhByTen(String tenGVHS);
+    public List<GiangVienHocSinh> timkiemGiangVienHocSinhByTen(String key);
 
     /**
      * create GiangVienHocSinh
@@ -93,4 +93,12 @@ public interface GiangVienHocSinhDAOService {
      * @return GiangVienHocSinh
      */
     public boolean xoaGiangVienHocSinh(GiangVienHocSinh gvhs);
+    
+    /**
+     * Get GiangVienHocSinh
+     *
+     * @param tenGVHS
+     * @return GiangVienHocSinh
+     */
+    public GiangVienHocSinh getGiangVienHocSinhByMaGVHS(String key);
 }
