@@ -45,4 +45,6 @@ public class Constants {
     public static final String CURRENT_USER = "currentUser";
     
     public static final String GVHS_LIST = "gvhsList";
+    
+    public static final String TL_LIST = "tulieuList";
 }
