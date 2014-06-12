@@ -59,20 +59,6 @@ public interface TuLieuDAOService {
     public boolean chinhsuaTuLieu(TuLieu tulieu);
 
     /**
-     * remove TuLieu
-     * @param tulieu
-     * @return TuLieu
-     */
-    public boolean removeTuLieu(TuLieu tulieu);
-
-    /**
-     * restore TuLieu
-     * @param tulieu
-     * @return TuLieu
-     */
-    public boolean restoreTuLieu(TuLieu tulieu);
-
-    /**
      * delete TuLieu by maTL
      * @param maTL
      * @return TuLieu
