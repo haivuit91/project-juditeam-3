@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,11 +21,12 @@ import model.entities.GiangVienHocSinh;
  *
  * @author Khoa
  */
-public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
+public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
+
     public static GiangVienHocSinhDAO giangvienhocsinhDAO;
-    
-    public static GiangVienHocSinhDAO getInstance(){
-        if(giangvienhocsinhDAO == null){
+
+    public static GiangVienHocSinhDAO getInstance() {
+        if (giangvienhocsinhDAO == null) {
             giangvienhocsinhDAO = new GiangVienHocSinhDAO();
         }
         return giangvienhocsinhDAO;
@@ -39,7 +40,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
             String sql = "select * from tbl_giangvien_hocsinh";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
                 giangvienhocsinh.setMaGVHS(rs.getInt("maGVHS"));
                 giangvienhocsinh.setTenGVHS(rs.getString("tenGVHS"));
@@ -49,7 +50,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
                 giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
-                
+
                 listGVHS.add(giangvienhocsinh);
             }
         } catch (Exception ex) {
@@ -67,7 +68,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, maGVHS);
             ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
                 giangvienhocsinh.setMaGVHS(rs.getInt("maGVHS"));
                 giangvienhocsinh.setTenGVHS(rs.getString("tenGVHS"));
@@ -93,7 +94,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, tenGVHS);
             ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
                 giangvienhocsinh.setMaGVHS(rs.getInt("maGVHS"));
                 giangvienhocsinh.setTenGVHS(rs.getString("tenGVHS"));
@@ -116,18 +117,57 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
     }
 
     @Override
-    public List<GiangVienHocSinh> timkiemGiangVienHocSinhByTen(String tenGVHS) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<GiangVienHocSinh> timkiemGiangVienHocSinhByTen(String key) {
+        String sql;
+        List<GiangVienHocSinh> listGVHS = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            sql = "select * from tbl_giangvien_hocsinh where tenGVHS like '%" + key + "%' ";
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                GiangVienHocSinh giangVienHocSinh = new GiangVienHocSinh();
+                giangVienHocSinh.setTenGVHS(rs.getString("tenGVHS"));
+                giangVienHocSinh.setDiachi(rs.getString("diachi"));
+                giangVienHocSinh.setDienthoai(rs.getString("dienthoai"));
+                giangVienHocSinh.setNgaysinh(rs.getDate("ngaysinh"));
+                giangVienHocSinh.setDonvi(rs.getString("donvi"));
+                giangVienHocSinh.setTrinhdo(rs.getInt("trinhdo"));
+                giangVienHocSinh.setTrangthai(rs.getInt("trangthai"));
+                listGVHS.add(giangVienHocSinh);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listGVHS;
     }
 
     @Override
     public boolean themGiangVienHocSinh(GiangVienHocSinh gvhs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean isCheck = false;
+        String sql = "insert into tbl_giangvien_hocsinh (tenGVHS, diachi, dienthoai, ngaysinh, donvi, trinhdo, trangthai) values(?,?,?,?,?,?,?)";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, gvhs.getTenGVHS());
+            pstmt.setString(2, gvhs.getDiachi());
+            pstmt.setString(3, gvhs.getDienthoai());
+            pstmt.setDate(4, (Date) gvhs.getNgaysinh());
+            pstmt.setString(5, gvhs.getDonvi());
+            pstmt.setInt(6, gvhs.getTrinhdo());
+            pstmt.setInt(7, gvhs.getTrangthai());
+            return pstmt.executeUpdate() == 1;
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return isCheck;
     }
 
     @Override
     public boolean chinhsuaGiangVienHocSinh(GiangVienHocSinh gvhs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean isCheck = false;
+//        String sql = "update tbl_giangvien_hocsinh set "
+        return true;
     }
 
     @Override
@@ -144,6 +184,5 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService{
     public boolean xoaGiangVienHocSinh(GiangVienHocSinh gvhs) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }
