@@ -41,7 +41,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(gvienhsinh);
                 baigiang.setTrangthai(rs.getInt("trangthai"));
-                
+
                 listBaiGiang.add(baigiang);
             }
         } catch (Exception ex) {
@@ -188,6 +188,36 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             ex.printStackTrace();
         }
         return isCheck;
+    }
+
+    @Override
+    public List<BaiGiang> timkiemBaiGiangByMaGVHS(String key) {
+        String sql = "";
+        List<BaiGiang> listBaiGiang = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            switch (key) {
+                case "maGVHS":
+                    sql = "select * from tbl_baigiang where maGVHS like '%" + key + "%' ";
+                    break;
+            }
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                BaiGiang baigiang = new BaiGiang();
+                baigiang.setTenBG(rs.getString("tenBG"));
+                baigiang.setNoidung(rs.getString("noidung"));
+                baigiang.setNam(rs.getInt("nam"));
+                GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                baigiang.setGiangVienHocSinh(giangvienhocsinh);
+                baigiang.setTrangthai(rs.getInt("trangthai"));
+                listBaiGiang.add(baigiang);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listBaiGiang;
+
     }
 
 }
