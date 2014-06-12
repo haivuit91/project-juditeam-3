@@ -71,19 +71,6 @@ public interface BaiGiangDAOService {
      */
     public boolean chinhsuaBaiGiang(BaiGiang baigiang);
 
-    /**
-     * remove BaiGiang
-     * @param baigiang
-     * @return BaiGiang
-     */
-    public boolean removeBaiGiang(BaiGiang baigiang);
-
-    /**
-     * restore BaiGiang
-     * @param baigiang
-     * @return BaiGiang
-     */
-    public boolean restoreBaiGiang(BaiGiang baigiang);
 
     /**
      * delete BaiGiang by maTK
