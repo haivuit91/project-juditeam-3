@@ -20,6 +20,15 @@ import model.entities.GiangVienHocSinh;
  */
 public class DeCuongDAO implements DeCuongDAOService {
 
+    private static DeCuongDAO decuongDAO;
+
+    public static DeCuongDAO getInstance() {
+        if (decuongDAO == null) {
+            decuongDAO = new DeCuongDAO();
+        }
+        return decuongDAO;
+    }
+
     @Override
     public List<DeCuong> getAllDeCuong() {
         List<DeCuong> listDC = new ArrayList<DeCuong>();
@@ -179,7 +188,7 @@ public class DeCuongDAO implements DeCuongDAOService {
 
     @Override
     public boolean themDeCuong(DeCuong decuong) {
-         boolean isCheck = false;
+        boolean isCheck = false;
         String sql = "insert into tbl_dcct (tenDC, dvhoctrinh, thoigian, dieukien, muctieu, noidung, tieuchuan, nam, maGVHS, trangthai) values(?,?,?,?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
@@ -203,7 +212,7 @@ public class DeCuongDAO implements DeCuongDAOService {
 
     @Override
     public boolean chinhsuaDeCuong(DeCuong decuong) {
-         boolean isCheck = false;
+        boolean isCheck = false;
         String sql = "update tbl_dcct set tenDC=?, dvhoctring = ?, thoigian = ?, dieukien = ?, muctieu = ?, noidung=?, tieuchuan = ?, nam=?, maGVHS=?,trangthai=?";
         try {
             Connection conn = ConnectionFactory.getConnection();
