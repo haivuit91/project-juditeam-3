@@ -28,6 +28,14 @@
         <servlet-name>BGManagement</servlet-name>
         <servlet-class>controller.servlet.admin.BGManagement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TuLieuManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.TuLieuManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DCCTManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.DCCTManagement</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/Page</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>BGManagement</servlet-name>
         <url-pattern>/bgmanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TuLieuManagement</servlet-name>
+        <url-pattern>/TuLieuManagement</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DCCTManagement</servlet-name>
+        <url-pattern>/DCCTManagement</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
