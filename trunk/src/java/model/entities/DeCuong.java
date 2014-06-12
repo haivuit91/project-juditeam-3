@@ -21,13 +21,13 @@ public class DeCuong {
     private String noidung;
     private String tieuchuan;
     private int nam;
-    private boolean trangthai;
+    private int trangthai;
     
     public DeCuong() {
         
     }
 
-    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, boolean trangthai) {
+    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, int trangthai) {
         this.maDC = maDC;
         this.tenDC = tenDC;
         this.dvhoctrinh = dvhoctrinh;
@@ -112,11 +112,11 @@ public class DeCuong {
         this.nam = nam;
     }
 
-    public boolean isTrangthai() {
+    public int isTrangthai() {
         return trangthai;
     }
 
-    public void setTrangthai(boolean trangthai) {
+    public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
     
