@@ -32,14 +32,14 @@ public class Page extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String page = request.getParameter("p");
         switch (page) {
-            case "seacher-cb":
-                request.setAttribute(util.Constants.PAGE, "seacher-cb");
+            case "search-cb":
+                request.setAttribute(util.Constants.PAGE, "search-cb");
                 request.removeAttribute(util.Constants.MSG_RESULT);
                 request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
                 break;
 
-            case "seacher-nc":
-                request.setAttribute(util.Constants.PAGE, "seacher-nc");
+            case "search-nc":
+                request.setAttribute(util.Constants.PAGE, "search-nc");
                 request.removeAttribute(util.Constants.MSG_RESULT);
                 request.getRequestDispatcher(util.Constants.URL_INDEX).forward(request, response);
                 break;

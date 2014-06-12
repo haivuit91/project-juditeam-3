@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package util;
 
 /**
@@ -11,8 +10,8 @@ package util;
  * @author Welcomes
  */
 public class Constants {
-    
-        /**
+
+    /**
      * name attribute page!
      */
     public static final String PAGE = "page";
@@ -27,9 +26,21 @@ public class Constants {
     /**
      * url Index page
      */
-     public static final String URL_SEACHER = "home.jsp";
+    public static final String URL_SEACHER = "home.jsp";
     public static final String URL_INDEX = "home.jsp";
 
     public static final String URL_HOME = "home.jsp";
-    
+    /**
+     * Admin's Email receive
+     */
+    public static final String TO_EMAIL = "cong.09s@gmail.com";
+
+    /**
+     * Admin's Email sent
+     */
+    public static final String FROM_EMAIL = "king.vandalism@gmail.com";
+    /**
+     * Password of Admin's Email
+     */
+    public static final String PASSWORD_EMAIL = "congtrinh";
 }
