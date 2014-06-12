@@ -37,20 +37,6 @@ public interface TuLieuDAOService {
     public TuLieu getTuLieuByTenTL(String tenTL);
 
     /**
-     * find TuLieu by tenTL
-     * @param tenTL
-     * @return TuLieu by tenTL
-     */
-    public List<TuLieu> timkiemTuLieuByTenBG(String tenTL);
-    
-    /**
-     * find TuLieu by nam
-     * @param nam
-     * @return TuLieu by nam
-     */
-    public List<TuLieu> timkiemTuLieuByNam(int nam);
-
-    /**
      * find TuLieu
      * @param tukhoa
      * @param dieukien
