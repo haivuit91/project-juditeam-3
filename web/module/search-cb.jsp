@@ -43,7 +43,9 @@
                     </form>
                 </div>
                 <div class="panel-body">
-                    Ket qua tim kiem
+                    <c:forEach items="${gvhs}">
+                        
+                    </c:forEach>
                 </div>
 
             </div>
