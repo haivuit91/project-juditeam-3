@@ -101,7 +101,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     @Override
     public List<BaiGiang> timkiemBaiGiangByTenBG(String key) {
         String sql = "";
-        List<BaiGiang> listPost = new ArrayList<>();
+        List<BaiGiang> listBaiGiang = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
             switch (key) {
@@ -119,12 +119,12 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(giangvienhocsinh);
                 baigiang.setTrangthai(rs.getInt("trangthai"));
-                listPost.add(baigiang);
+                listBaiGiang.add(baigiang);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return listPost;
+        return listBaiGiang;
     }
 
     @Override
