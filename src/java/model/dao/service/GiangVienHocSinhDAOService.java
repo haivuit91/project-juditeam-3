@@ -71,34 +71,10 @@ public interface GiangVienHocSinhDAOService {
     public boolean chinhsuaGiangVienHocSinh(GiangVienHocSinh gvhs);
 
     /**
-     * remove GiangVienHocSinh
-     *
-     * @param gvhs
-     * @return GiangVienHocSinh
-     */
-    public boolean removeGiangVienHocSinh(GiangVienHocSinh gvhs);
-
-    /**
-     * restore GiangVienHocSinh
-     *
-     * @param gvhs
-     * @return GiangVienHocSinh
-     */
-    public boolean restoreGiangVienHocSinh(GiangVienHocSinh gvhs);
-
-    /**
      * delete GiangVienHocSinh
      *
      * @param gvhs
      * @return GiangVienHocSinh
      */
-    public boolean xoaGiangVienHocSinh(GiangVienHocSinh gvhs);
-    
-    /**
-     * Get GiangVienHocSinh
-     *
-     * @param tenGVHS
-     * @return GiangVienHocSinh
-     */
-    public GiangVienHocSinh getGiangVienHocSinhByMaGVHS(String key);
+    public boolean xoaGiangVienHocSinh(int maGVHS);
 }
