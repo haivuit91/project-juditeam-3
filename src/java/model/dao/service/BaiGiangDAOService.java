@@ -78,4 +78,11 @@ public interface BaiGiangDAOService {
      * @return BaiGiang
      */
     public boolean xoaBaiGiang(int maBG);
+    
+    /**
+     * find BaiGiang by tenBG
+     * @param tenBG
+     * @return BaiGiang by tenBG
+     */
+    public List<BaiGiang> timkiemBaiGiangByMaGVHS(String key);
 }
