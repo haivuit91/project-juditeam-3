@@ -18,7 +18,10 @@ public class BaiGiang {
     private int nam;
     private GiangVienHocSinh maGVHS;
     private boolean trangthai;
-
+    
+    public BaiGiang(){
+        
+    }    
     public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh maGVHS, boolean trangthai) {
         this.maBG = maBG;
         this.tenBG = tenBG;
