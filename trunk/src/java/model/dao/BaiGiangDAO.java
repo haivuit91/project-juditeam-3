@@ -133,8 +133,28 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     }
 
     @Override
-    public List<BaiGiang> timkiemBaiGiang(String tukhoa, String dieukien) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<BaiGiang> timkiemBaiGiang(String noidung, int nam, GiangVienHocSinh gvhs) {
+        String sql = "";
+        List<BaiGiang> listBaiGiang = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            sql = "select * from tbl_baigiang where nam = ? and maGVHS = ? and noidung like '%" + noidung + "%' ";
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                BaiGiang baigiang = new BaiGiang();
+                baigiang.setTenBG(rs.getString("tenBG"));
+                baigiang.setNoidung(rs.getString("noidung"));
+                baigiang.setNam(rs.getInt("nam"));
+                GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                baigiang.setGiangVienHocSinh(giangvienhocsinh);
+                baigiang.setTrangthai(rs.getInt("trangthai"));
+                listBaiGiang.add(baigiang);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listBaiGiang;
     }
 
     @Override
