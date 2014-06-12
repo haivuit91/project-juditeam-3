@@ -131,7 +131,7 @@ public class GVHSManagement extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "manage-gvhs");
-            request.setAttribute("msgResult", "Bạn đã xóa GVHS thành công");
+            request.setAttribute("msgResult", "Có lỗi xảy ra, xóa GVHS thất bại");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }

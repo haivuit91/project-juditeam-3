@@ -64,7 +64,7 @@ public class SlideManagement extends HttpServlet {
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
-    private void addUser(HttpServletRequest request, HttpServletResponse response)
+    private void addSlide(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String tenSlide = request.getParameter("tenSlide");
         String noiDung = request.getParameter("noiDung");
@@ -103,7 +103,7 @@ public class SlideManagement extends HttpServlet {
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
-    private void editUser(HttpServletRequest request, HttpServletResponse response)
+    private void editSlide(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int maSlide = Integer.parseInt(request.getParameter("id"));
         String tenSlide = request.getParameter("tenSlide");
@@ -145,7 +145,7 @@ public class SlideManagement extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "manage-slide");
-            request.setAttribute("msgResult", "Bạn đã sửa Slide thành công");
+            request.setAttribute("msgResult", "Có lỗi xảy ra, sửa Slide thất bại");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
