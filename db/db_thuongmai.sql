@@ -150,7 +150,7 @@ CREATE TABLE `tbl_taikhoan` (
   `quyen` int(11) NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
   PRIMARY KEY (`maTK`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,6 +159,7 @@ CREATE TABLE `tbl_taikhoan` (
 
 LOCK TABLES `tbl_taikhoan` WRITE;
 /*!40000 ALTER TABLE `tbl_taikhoan` DISABLE KEYS */;
+INSERT INTO `tbl_taikhoan` VALUES (1,'haivv','haivv','Vũ Văn Hải','haivv.itedu@gmail.com','0123456789',1,1);
 /*!40000 ALTER TABLE `tbl_taikhoan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-12 16:41:57
+-- Dump completed on 2014-06-12 21:11:50
