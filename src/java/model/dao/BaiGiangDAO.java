@@ -176,18 +176,18 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     }
 
     @Override
-    public boolean removeBaiGiang(BaiGiang baigiang) {
-        return false;
-    }
-
-    @Override
-    public boolean restoreBaiGiang(BaiGiang baigiang) {
-        return false;
-    }
-
-    @Override
-    public boolean xoaBaiGiang(int maTK) {
-        return false;
+    public boolean xoaBaiGiang(int maBG) {
+        boolean isCheck = false;
+        String sql = "delete from tbl_baigiang where maBG =?";
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setInt(1, maBG);
+            return sm.executeUpdate() == 1;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return isCheck;
     }
 
 }
