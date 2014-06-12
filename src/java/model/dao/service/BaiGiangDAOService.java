@@ -7,6 +7,7 @@ package model.dao.service;
 
 import java.util.List;
 import model.entities.BaiGiang;
+import model.entities.GiangVienHocSinh;
 
 /**
  *
@@ -55,7 +56,7 @@ public interface BaiGiangDAOService {
      * @param dieukien
      * @return BaiGiang
      */
-    public List<BaiGiang> timkiemBaiGiang(String tukhoa, String dieukien);
+    public List<BaiGiang> timkiemBaiGiang(String noidung, int nam, GiangVienHocSinh gvhs);
 
     /**
      * create BaiGiang
