@@ -12,12 +12,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.dao.TaiKhoanDAO;
+import model.dao.service.TaiKhoanDAOService;
+import model.entities.TaiKhoan;
 
 /**
  *
  * @author Admin
  */
 public class Authentication extends HttpServlet {
+    
+    TaiKhoanDAOService TK_SERVICE = TaiKhoanDAO.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,7 +63,14 @@ public class Authentication extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("do");
+        switch (action) {
+            case "logout":
+                HttpSession session = request.getSession();
+                session.invalidate();
+                response.sendRedirect(util.Constants.URL_ADMIN);
+                break;
+        }
     }
 
     /**
@@ -71,7 +84,21 @@ public class Authentication extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String tenTK = request.getParameter("tenTK");
+        String matkhau = request.getParameter("matkhau");
+        if (TK_SERVICE.kiemTraDangNhap(tenTK, matkhau)) {
+            TaiKhoan tk = TK_SERVICE.getTaiKhoanByTenTK(tenTK);
+            HttpSession session = request.getSession();
+            session.setAttribute(util.Constants.CURRENT_USER, tk);
+            session.setMaxInactiveInterval(30 * 60);
+            request.setAttribute(util.Constants.PAGE, "manage");
+            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+        } else {
+            request.setAttribute(util.Constants.PAGE, "login");
+            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+        }
     }
 
     /**
