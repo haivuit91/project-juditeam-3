@@ -31,6 +31,10 @@ public class GiangVienHocSinh {
         
     }
 
+    public int getTrangthai() {
+        return trangthai;
+    }
+
     public GiangVienHocSinh(int maGVHS, String tenGVHS, String diachi, String dienthoai, Date ngaysinh, String donvi, int trinhdo, int trangthai) {
         this.maGVHS = maGVHS;
         this.tenGVHS = tenGVHS;
@@ -98,9 +102,7 @@ public class GiangVienHocSinh {
         this.trinhdo = trinhdo;
     }
 
-    public int isTrangthai() {
-        return trangthai;
-    }
+ 
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
