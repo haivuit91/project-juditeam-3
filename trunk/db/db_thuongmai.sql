@@ -28,7 +28,7 @@ CREATE TABLE `tbl_baigiang` (
   `maBG` int(11) NOT NULL AUTO_INCREMENT,
   `tenBG` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `noidung` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `nam` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `nam` int(11) NOT NULL,
   `maGVHS` int(11) NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
   PRIMARY KEY (`maBG`)
@@ -53,13 +53,13 @@ DROP TABLE IF EXISTS `tbl_dcct`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_dcct` (
   `maDC` int(11) NOT NULL AUTO_INCREMENT,
-  `donvihoctrinh` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `dvhoctrinh` int(11) NOT NULL,
   `thoigian` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `dieukien` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `muctieu` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `noidung` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `tieuchuan` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `nam` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `nam` int(11) NOT NULL,
   `trangthai` tinyint(1) NOT NULL,
   PRIMARY KEY (`maDC`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -114,7 +114,7 @@ CREATE TABLE `tbl_side` (
   `maSlide` int(11) NOT NULL AUTO_INCREMENT,
   `tenSlide` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `noidung` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `nam` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `nam` int(11) NOT NULL,
   `maGVHS` int(11) NOT NULL,
   `maTL` int(11) DEFAULT NULL,
   `trangthai` tinyint(1) NOT NULL,
@@ -171,10 +171,10 @@ CREATE TABLE `tbl_tulieu` (
   `maTL` int(11) NOT NULL AUTO_INCREMENT,
   `tenTL` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `noidung` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `loaitailieu` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `loaiTL` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `nguonTL` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `nam` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `trangtha` tinyint(1) NOT NULL,
+  `nam` int(11) NOT NULL,
+  `trangthai` tinyint(1) NOT NULL,
   PRIMARY KEY (`maTL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -197,4 +197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-12 10:07:36
+-- Dump completed on 2014-06-12 10:33:57
