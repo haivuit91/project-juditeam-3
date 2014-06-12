@@ -21,26 +21,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
 
                 </div>
                 <div class="col-md-12">
                     <ul class="nav navbar-nav">
-                        <li><a  class="active" href="/project1/umanage?p=manage">ADMINISTRATOR</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/project1/umanage?p=manage-user">Quản lý tài khoản</a></li>
-                                <li class="divider"></li>
-                                <li><a href="/project1/dpmanage?p=manage-diaphuong">Quản lý địa phương</a></li>
-                                 <li class="divider"></li>
-                                 <li><a href="/project1/vbmanage?p=manage-document">Quản lý văn bản</a></li>
-                            </ul>
-                        </li>
+                        <li><a  class="active" href="/project3/admin.jsp">ADMINISTRATOR</a></li>
                         <li><a href="/project1/Page?p=about">Thống kê</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="/project1/home.jsp">Trang chủ</a></li>
+                        <li class="active"><a href="/project3/home.jsp">Trang chủ</a></li>
                         <li><a href="/project1/authen?do=logout"><span class="glyphicon glyphicon-th-large"  >Đăng xuất</span></a></li>
                     </ul>
                 </div>
