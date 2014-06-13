@@ -132,7 +132,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 GiangVienHocSinh giangVienHocSinh = new GiangVienHocSinh();
-                giangVienHocSinh.setTenGVHS(rs.getString("maGVHS"));
+                giangVienHocSinh.setMaGVHS(rs.getInt("maGVHS"));
                 giangVienHocSinh.setTenGVHS(rs.getString("tenGVHS"));
                 giangVienHocSinh.setDiachi(rs.getString("diachi"));
                 giangVienHocSinh.setDienthoai(rs.getString("dienthoai"));
