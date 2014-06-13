@@ -53,31 +53,36 @@
                 </c:if>
                 <c:if test="${gvhsList.size() > 0}">
                     <div class="panel-body" style="background:#004050;color:wheat">
-                        <div class="col-md-1">Mã</div>
-                        <div class="col-md-9">Nhãn đề</div>
-                        <div class="col-md-1"><span class="glyphicon glyphicon-floppy-disk"></span></div>
-                        <div class="col-md-1"><span class="glyphicon glyphicon-ok"></span></div>
+                        <div class="col-md-1">MÃ</div>
+                        <div class="col-md-2">TÊN GVHS</div>
+                        <div class="col-md-3">TÊN ĐỀ CƯƠNG CHI TIẾT</div>
+                        <div class="col-md-3">TÊN SLIDE</div>
+                        <div class="col-md-3">TÊN BÀI GIẢNG</div>
+
                     </div>
                     <c:forEach items="${gvhsList}" var="gvhs">
                         <div class="panel-body" style="background:#dadadd">
                             <div class="col-md-1">${gvhs.getMaGVHS()}</div>
-                            <div class="col-md-9">Tên GVHS: ${gvhs.getTenGVHS()}<br>
+                            <div class="col-md-2"> ${gvhs.getTenGVHS()}<br>
+                            </div>
+                            <div class="col-md-3">
                                 <c:if test="${gvhs.getDecuongList().size() > 0}">
-                                    DS Đề cương: <br>
                                     <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                        - ${dc.getTenDC()}<br>
+                                        ${dc.getTenDC()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                     </c:forEach>
                                 </c:if>
+                            </div>
+                            <div class="col-md-3">
                                 <c:if test="${gvhs.getSlideList().size() > 0}">
-                                    DS Slide: 
                                     <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                        - <a href="#">${sl.getTenSilde()}</a><br>
+                                        ${sl.getTenSilde()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                     </c:forEach>
                                 </c:if>
+                            </div>
+                            <div class="col-md-3">
                                 <c:if test="${gvhs.getBaigiangList().size() > 0}">
-                                    DS Bài giảng: 
                                     <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
-                                       - ${bg.getTenBG()}<br>
+                                        ${bg.getTenBG()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                     </c:forEach>
                                 </c:if>
                             </div>
