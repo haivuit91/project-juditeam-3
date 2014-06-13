@@ -190,7 +190,6 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             pstmt.setInt(7, gvhs.getTrangthai());
             pstmt.setInt(8, gvhs.getMaGVHS());
             pstmt.executeUpdate();
-
             isCheck = true;
         } catch (Exception ex) {
             ex.printStackTrace();

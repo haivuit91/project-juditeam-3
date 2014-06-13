@@ -34,22 +34,26 @@ public class BGManagement extends HttpServlet {
         String page = request.getParameter("page");
         if (page != null) {
             switch (page) {
-                case "manage-baigiang":
+                case "manage-bg":
                     List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
                     List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
                     request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
                     request.setAttribute("bgList", bgList);
-                    request.setAttribute(util.Constants.PAGE, "manage-baigiang");
+                    request.setAttribute(util.Constants.PAGE, "manage-bg");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
                 case "add":
                     request.setAttribute(util.Constants.PAGE, "addbg");
+                    List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    request.setAttribute(util.Constants.GVHS_LIST, gvhsList);
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
                 case "edit":
-                    int maBG = Integer.parseInt(request.getParameter("id"));
+                    List<GiangVienHocSinh> gvhsListGVHS = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    request.setAttribute(util.Constants.GVHS_LIST, gvhsListGVHS);
+                    int maBG = Integer.parseInt(request.getParameter("maBG"));
                     BaiGiang bg = BG_SERVICE.getBaiGiangByMa(maBG);
                     request.setAttribute(util.Constants.PAGE, "addbg");
                     request.setAttribute("bg", bg);
@@ -78,6 +82,9 @@ public class BGManagement extends HttpServlet {
             case "Xóa":
                 delete(request, response);
                 break;
+            case "Tìm kiếm":
+                search(request, response);
+                break;
         }
     }
 
@@ -85,7 +92,7 @@ public class BGManagement extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String tenBG = request.getParameter("tenVB");
+        String tenBG = request.getParameter("tenBG");
         String noiDung = request.getParameter("noiDung");
         int nam = Integer.parseInt(request.getParameter("nam"));
         String tenGVHS = request.getParameter("gVienHS");
@@ -95,22 +102,21 @@ public class BGManagement extends HttpServlet {
 
         BaiGiang bg = new BaiGiang(1, tenBG, noiDung, nam, gvhs, trangThai);
         if (BG_SERVICE.themBaiGiang(bg)) {
-            List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
-            request.setAttribute("slList", bgList);
-            request.setAttribute(util.Constants.PAGE, "manage-baigiang");
+//            List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
+//            request.setAttribute("bgList", bgList);
+//            request.setAttribute(util.Constants.PAGE, "manage-baigiang");
             request.setAttribute("msgResult", "Bạn đã thêm Bài giảng thành công");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+//            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute("msgResult", "Có lỗi xảy ra, thêm bài giảng thất bại!");
-            request.setAttribute(util.Constants.PAGE, "addbg");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+//            request.setAttribute(util.Constants.PAGE, "addbg");
+//            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
         List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
         List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
         request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
         request.setAttribute("bgList", bgList);
-        request.setAttribute(util.Constants.PAGE, "manage-baigiang");
-        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.setAttribute(util.Constants.PAGE, "manage-bg");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
@@ -120,18 +126,21 @@ public class BGManagement extends HttpServlet {
         String tenBG = request.getParameter("tenBG");
         String noiDung = request.getParameter("noiDung");
         int nam = Integer.parseInt(request.getParameter("nam"));
-        String GVHS = request.getParameter("gvhs");
+//        String GVHS = request.getParameter("gvhs");
+//
+//        String[] arrGVHS = GVHS.split("-");
+//        int maGVHS = Integer.parseInt(arrGVHS[0]);
+//        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+        String tenGVHS = request.getParameter("gVienHS");
 
-        String[] arrGVHS = GVHS.split("-");
-        int maGVHS = Integer.parseInt(arrGVHS[0]);
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByTen(tenGVHS);
         int trangThai = 1;
 
         BaiGiang bg = new BaiGiang(maBG, tenBG, noiDung, nam, gvhs, trangThai);
         if (BG_SERVICE.chinhsuaBaiGiang(bg)) {
             List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
             request.setAttribute("bgList", bgList);
-            request.setAttribute(util.Constants.PAGE, "manage-baigiang");
+            request.setAttribute(util.Constants.PAGE, "manage-bg");
             request.setAttribute("msgResult", "Bạn đã sửa bài giảng thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
@@ -140,23 +149,34 @@ public class BGManagement extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
-    
+
     private void delete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int maBG = Integer.parseInt(request.getParameter("id"));
+        int maBG = Integer.parseInt(request.getParameter("maBG"));
         if (BG_SERVICE.xoaBaiGiang(maBG)) {
             List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
+            List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
+            request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
             request.setAttribute("bgList", bgList);
-            request.setAttribute(util.Constants.PAGE, "manage-baigiang");
-            request.setAttribute("msgResult", "Bạn đã sửa baig giảng thành công");
+            request.setAttribute(util.Constants.PAGE, "manage-bg");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
-            request.setAttribute(util.Constants.PAGE, "manage-baigiang");
+            request.setAttribute(util.Constants.PAGE, "manage-bg");
             request.setAttribute("msgResult", "Bạn đã sửa bài giảng thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
-    
+
+    private void search(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tenBG = request.getParameter("tenBG");
+        List<BaiGiang> bgList = BG_SERVICE.timBaiGiangByTen(tenBG);
+        request.setAttribute(util.Constants.BG_LIST, bgList);
+        request.setAttribute(util.Constants.PAGE, "manage-bg");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";
