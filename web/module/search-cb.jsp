@@ -41,13 +41,66 @@
                         </fieldset>
                     </form>
                 </div>
+
                 <div class="panel-body">
                     <c:forEach items="${gvhsList}" var="gvhs">
                         Họ tên: ${gvhs.getTenGVHS()}
                     </c:forEach>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center">
+                    KẾT QUẢ TÌM KIẾM
+                </div>
+                <div class="panel-body"style="background:#004050;color:wheat;text-transform: uppercase">
+                    <div class="col-md-1">mã</div>
+                    <div class="col-md-9">Nhãn đề</div>
+                    <div class="col-md-1"><span class="glyphicon glyphicon-floppy-disk"></span></div>
+                    <div class="col-md-1"><span class="glyphicon glyphicon-ok"></span></div>
+                </div>
+                <div class="panel-body"style="background:#dadadd">
+                    <div class="col-md-1">1</div>
+                    <div class="col-md-8">Nguyễn Ngọc Duy</div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-1">
+                        <a href="#" class="label label-default"><span class="glyphicon glyphicon-ok"></span>&nbsp;Chi tiết</a>
+                    </div>
+                </div>
+
+                <div class="panel-body"style="background:#f7f6f4">
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 lert alert-success "style="font-weight:bold;padding: 5px">Họ tên</div>
+                    <div class="col-md-10 lert alert-success"style="font-weight: initial;padding: 5px">
+                        Họ tên
+                    </div>
+
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                    <div class="col-md-10 alert-warning"style="font-weight: initial;padding: 5px" >
+                        Khoa cơ bản
+                    </div>
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                    <div class="col-md-10 alert-success "style="font-weight: initial;padding: 5px">
+                        15/06/1990
+                    </div>
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                    <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                        45 Dũng Sĩ Thanh Khê- Đà Nẵng
+                    </div>
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                    <div class="col-md-10 alert-success "style="font-weight: initial;padding: 5px">
+                        Nội con mẹ nó dung
+                    </div>
+                    <!---------------------------------------------------->
+                </div>
 
             </div>
+
         </div>
         <script src="../js/bootstrap.js" type="text/javascript"></script>
         <script src="../js/bootstrap.min.js" type="text/javascript"></script>
