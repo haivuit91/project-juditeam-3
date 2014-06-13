@@ -61,7 +61,7 @@
                                     <div class="col-sm-9" >
                                         <select class="form-control" name="gVienHS">
                                             <c:forEach items="${gvhsList}" var="gvhsList">
-                                                <option value="${gvhsList.getTenGVHS()}">${gvhsList.getTenGVHS()}</option>
+                                                <option value="${gvhsList.getMaGVHS()}">${gvhsList.getTenGVHS()}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
