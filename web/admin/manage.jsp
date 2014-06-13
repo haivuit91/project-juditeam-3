@@ -38,7 +38,7 @@
                                 QUẢN LÝ BÀI GIẢNG
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-bg"><img class="img-thumbnail" src="./images/admin/baigiang.png" alt="" width="40%"/></a>
+                                <a href="/project3/bgmanage?p=manage-bg"><img class="img-thumbnail" src="./images/admin/baigiang.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                            QUẢN LÝ SLIDE
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-sl"><img class="img-thumbnail" src="./images/admin/slide.png" alt="" width="40%"/></a>
+                                <a href="/project3/slidemanage?p=manage-sl"><img class="img-thumbnail" src="./images/admin/slide.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                                 QUẢN LÝ TƯ LIỆU
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-tl"><img class="img-thumbnail" src="./images/admin/tailieu.png" alt="" width="40%"/></a>
+                                <a href="/project3/tlmamage?p=manage-tl"><img class="img-thumbnail" src="./images/admin/tailieu.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                                  QUẢN LÝ ĐỀ CƯƠNG CHI TIẾT
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-dcct"><img class="img-thumbnail" src="./images/admin/decuong.png" alt="" width="40%"/></a>
+                                <a href="/project3/dcctmamage?p=manage-dcct"><img class="img-thumbnail" src="./images/admin/decuong.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>

@@ -23,8 +23,11 @@
                 <c:if test="${msgResult != null}">
                     <p>${msgResult}</p>
                 </c:if>
-
-                <c:if test="${page == null || page == 'manage'}">
+                <c:if test="${page == null}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="module/login.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage'}">
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="admin/manage.jsp" %>
                 </c:if>
