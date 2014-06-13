@@ -18,8 +18,8 @@ public class Slide {
     private String tenSilde;
     private String noidung;
     private int nam;
-    private GiangVienHocSinh giangvienhocsinh;
-    private TuLieu tulieu;
+    private GiangVienHocSinh giangVienHocSinh;
+    private TuLieu tuLieu;
     private int trangthai;
     
     private  List<GiangVienHocSinh> gvhsList = null;
@@ -29,13 +29,13 @@ public class Slide {
         
     }
 
-    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh giangvienhocsinh, TuLieu tulieu, int trangthai) {
+    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh giangVienHocSinh, TuLieu tuLieu, int trangthai) {
         this.maSlide = maSlide;
         this.tenSilde = tenSilde;
         this.noidung = noidung;
         this.nam = nam;
-        this.giangvienhocsinh = giangvienhocsinh;
-        this.tulieu = tulieu;
+        this.giangVienHocSinh = giangVienHocSinh;
+        this.tuLieu = tuLieu;
         this.trangthai = trangthai;
     }
 
@@ -71,20 +71,20 @@ public class Slide {
         this.nam = nam;
     }
 
-    public GiangVienHocSinh getGiangvienhocsinh() {
-        return giangvienhocsinh;
+    public GiangVienHocSinh getGiangVienHocSinh() {
+        return giangVienHocSinh;
     }
 
-    public void setGiangvienhocsinh(GiangVienHocSinh giangvienhocsinh) {
-        this.giangvienhocsinh = giangvienhocsinh;
+    public void setGiangVienHocSinh(GiangVienHocSinh giangVienHocSinh) {
+        this.giangVienHocSinh = giangVienHocSinh;
     }
 
-    public TuLieu getTulieu() {
-        return tulieu;
+    public TuLieu getTuLieu() {
+        return tuLieu;
     }
 
-    public void setTulieu(TuLieu tulieu) {
-        this.tulieu = tulieu;
+    public void setTuLieu(TuLieu tuLieu) {
+        this.tuLieu = tuLieu;
     }
 
     public int getTrangthai() {
