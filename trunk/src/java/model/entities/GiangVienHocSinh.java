@@ -28,21 +28,7 @@ public class GiangVienHocSinh {
     private List<Slide> slideList = null;
     private List<DeCuong> decuongList = null;
 
-    public List<DeCuong> getDecuongList() {
-        return decuongList;
-    }
-
-    public void setDecuongList(List<DeCuong> decuongList) {
-        this.decuongList = decuongList;
-    }
-    
-    
     public GiangVienHocSinh() {
-        
-    }
-
-    public int getTrangthai() {
-        return trangthai;
     }
 
     public GiangVienHocSinh(int maGVHS, String tenGVHS, String diachi, String dienthoai, Date ngaysinh, String donvi, int trinhdo, int trangthai) {
@@ -112,7 +98,9 @@ public class GiangVienHocSinh {
         this.trinhdo = trinhdo;
     }
 
- 
+    public int getTrangthai() {
+        return trangthai;
+    }
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
@@ -133,5 +121,14 @@ public class GiangVienHocSinh {
     public void setSlideList(List<Slide> slideList) {
         this.slideList = slideList;
     }
+
+    public List<DeCuong> getDecuongList() {
+        return decuongList;
+    }
+
+    public void setDecuongList(List<DeCuong> decuongList) {
+        this.decuongList = decuongList;
+    }
+
     
 }
