@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project1/umanage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/project3/GVHSManage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới tài khoản
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project1/umanage?do=search" method="post">
+                        <form action="/project3/GVHSManage?do=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -34,7 +35,7 @@
 
                                     </div><!-- /btn-group -->
 
-                                    <input type="text" name="userName" class="form-control" placeholder="Nhập tên tài khoản muốn tìm...">
+                                    <input type="text" name="tenGVHS" class="form-control" placeholder="Nhập tên muốn tìm...">
 
                                 </div><!-- /input-group -->
                             </div><!-- /input-group -->
@@ -49,34 +50,33 @@
             <div class="panel panel-default">
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
                 <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên GVHS</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">địa chỉ</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Địa chỉ</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Điện thoại</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">đơn vị</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Trạng thái</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">trình độ</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Ngày sinh</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Đơn vị</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Trình độ</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Lựa chọn</div>
             </div>
+            <c:forEach items="${gvhsList}" var="gvhs">
                 <div class="panel panel-title">
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">1</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px" >Nguyễn Ngọc Duy</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">Quảng Nam</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">0906427601</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">
-                        <p>Trường THPT Nguyễn Huệ</p>
-                    </div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">Vui vẻ</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">Đại học</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getMaGVHS()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTenGVHS()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDiachi()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getDienthoai()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getNgaysinh()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDonvi()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Học sinh'}</div>
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=edit&id=${tkList.getMaTK()}" class="btn btn-primary btn-sm" >
+                            <a href="/project3/GVHSManage?do=edit&id=${gvhs.getMaGVHS()}" class="btn btn-primary btn-sm" >
                                 <span class="glyphicon glyphicon-wrench"></span>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=del&id=${tkList.getMaTK()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tkList.getTenTK()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="/project3/GVHSManage?do=del&id=${gvhs.getMaGVHS()}" onclick="return confirm('Bạn thực sự muốn xóa: ${gvhs.getTenGVHS()} ?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
                     </div>
-                </div>                               
+                </div>  </c:forEach>                             
         </div>
-</body>
+    </body>
 </html>

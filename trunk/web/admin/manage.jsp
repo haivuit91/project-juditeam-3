@@ -25,7 +25,7 @@
                                 QUẢN LÝ GIẢNG VIÊN HỌC SINH
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/Page?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/user.png" alt="" width="40%"/></a>
+                                <a href="/project3/GVHSManage?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/user.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
