@@ -38,7 +38,7 @@
                                 QUẢN LÝ BÀI GIẢNG
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/bgmanage?p=manage-bg"><img class="img-thumbnail" src="./images/admin/baigiang.png" alt="" width="40%"/></a>
+                                <a href="/project3/bgmanage?page=manage-bg"><img class="img-thumbnail" src="./images/admin/baigiang.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                                  QUẢN LÝ ĐỀ CƯƠNG CHI TIẾT
                             </div>
                             <div class="panel-body">
-                                <a href="/project3/dcctmamage?p=manage-dcct"><img class="img-thumbnail" src="./images/admin/decuong.png" alt="" width="40%"/></a>
+                                <a href="/project3/dcctmamage?page=manage-dcct"><img class="img-thumbnail" src="./images/admin/decuong.png" alt="" width="40%"/></a>
                             </div>
                         </div>
                     </div>
