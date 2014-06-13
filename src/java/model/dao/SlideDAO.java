@@ -21,7 +21,7 @@ import model.entities.TuLieu;
  * @author HAI VU
  */
 public class SlideDAO implements SlideDAOService {
-    
+
     private static SlideDAO slideDAO;
 
     public static SlideDAO getInstance() {
@@ -46,7 +46,11 @@ public class SlideDAO implements SlideDAOService {
                 slide.setNoidung(rs.getString("noidung"));
                 slide.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTuLieu(tulieu);
+                slide.setTrangthai(rs.getInt("trangthai"));
+
                 slideList.add(slide);
             }
         } catch (Exception e) {
@@ -70,8 +74,11 @@ public class SlideDAO implements SlideDAOService {
                 slide.setNoidung(rs.getString("noidung"));
                 slide.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTuLieu(tulieu);
                 slide.setTrangthai(rs.getInt("trangthai"));
+
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -80,8 +87,8 @@ public class SlideDAO implements SlideDAOService {
     }
 
     @Override
-    public Slide getSlideByTenSlide(String tenSlide) {
-        Slide slide = new Slide();
+    public List<Slide> getSlideByTenSlide(String tenSlide) {
+        List<Slide> listSlide = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "select * from tbl_slide where tenSlide = ?";
@@ -89,18 +96,22 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setString(1, tenSlide);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
+                Slide slide = new Slide();
                 slide.setMaSlide(rs.getInt("maSlide"));
                 slide.setTenSilde(rs.getString("tenSlide"));
                 slide.setNoidung(rs.getString("noidung"));
                 slide.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTuLieu(tulieu);
                 slide.setTrangthai(rs.getInt("trangthai"));
+                listSlide.add(slide);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return slide;
+        return listSlide;
     }
 
     @Override
@@ -121,7 +132,9 @@ public class SlideDAO implements SlideDAOService {
                 slide.setNoidung(rs.getString("noidung"));
                 slide.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTuLieu(tulieu);
                 slide.setTrangthai(rs.getInt("trangthai"));
                 listSlide.add(slide);
             }
@@ -154,7 +167,7 @@ public class SlideDAO implements SlideDAOService {
     @Override
     public boolean chinhsuaSlide(Slide slide) {
         boolean isCheck = false;
-        String sql = "update tbl_slide set tenSlide=?,noidung=?,nam=?,maGVHS=?,maTL=?,trangthai=?";
+        String sql = "update tbl_slide set tenSlide=?,noidung=?,nam=?,maGVHS=?,maTL=?,trangthai=? where maSlide = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -164,6 +177,7 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setInt(4, slide.getGiangVienHocSinh().getMaGVHS());
             pstmt.setInt(5, slide.getTuLieu().getMaTL());
             pstmt.setInt(6, slide.getTrangthai());
+            pstmt.setInt(7, slide.getMaSlide());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -209,6 +223,31 @@ public class SlideDAO implements SlideDAOService {
             e.printStackTrace();
         }
         return slideList;
+    }
+
+    @Override
+    public List<Slide> timkiemAllSlide(String tukhoa) {
+        String sql = "";
+        List<Slide> listSlide = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            sql = "select * from tbl_slide where tenSlide like '" + "%" + tukhoa + "%" + "' or noidung like '" + "%" + tukhoa + "%" + "'";
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                Slide slide = new Slide();
+                slide.setMaSlide(rs.getInt("maSlide"));
+                slide.setTenSilde(rs.getString("tenSlide"));
+                slide.setNoidung(rs.getString("noidung"));
+                slide.setNam(rs.getInt("nam"));
+                TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTuLieu(tulieu);
+                listSlide.add(slide);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listSlide;
     }
 
 }

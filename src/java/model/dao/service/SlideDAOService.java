@@ -36,18 +36,19 @@ public interface SlideDAOService {
      * @param tenSlide
      * @return Slide by tenSlide
      */
-    public Slide getSlideByTenSlide(String tenSlide);
+    public List<Slide> getSlideByTenSlide(String tenSlide);
 
     /**
      * find Slide by tenSlide
      *
-     * @param tenSlide
      * @param noidung
      * @param nam
      * @param gvhs
      * @return Slide by tenSlide
      */
     public List<Slide> timkiemSlide(int nam, String noidung, GiangVienHocSinh gvhs);
+    
+    public List<Slide> timkiemAllSlide(String tukhoa);
 
     public List<Slide> getSlideListByMaGVHS(int maGVHS);
     

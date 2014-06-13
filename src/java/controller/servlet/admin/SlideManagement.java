@@ -31,7 +31,6 @@ public class SlideManagement extends HttpServlet {
     private final GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
     private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
 
-
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -95,11 +94,18 @@ public class SlideManagement extends HttpServlet {
             case "Thêm mới":
                 addSlide(request, response);
                 break;
+            case "Tìm kiếm":
+                search(request, response);
+                break;
         }
     }
 
     private void doAddnew(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<TuLieu> tl = TL_SERVICE.getAllTuLieu();
+        request.setAttribute("tl", tl);
+        List<GiangVienHocSinh> GV = GVHS_SERVICE.getAllGiangVienHocSinh();
+        request.setAttribute("GV", GV);
         request.setAttribute(util.Constants.PAGE, "manage-add-edit-sl");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
@@ -107,33 +113,26 @@ public class SlideManagement extends HttpServlet {
     private void addSlide(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String tenSlide = request.getParameter("tenSlide");
-        String noiDung = request.getParameter("noiDung");
+        String noiDung = request.getParameter("noidung");
         int nam = Integer.parseInt(request.getParameter("nam"));
-        String GVHS = request.getParameter("gvhs");
-        String tuLieu = request.getParameter("tulieu");
-
-        String[] arrGVHS = GVHS.split("-");
-        String[] arrTuLieu = tuLieu.split("-");
-        int maGVHS = Integer.parseInt(arrGVHS[0]);
-        int maTL = Integer.parseInt(arrTuLieu[0]);
+        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
+        int maTL = Integer.parseInt(request.getParameter("tulieu"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
         int trangThai = 1;
 
-        System.out.println(tenSlide + "-" + noiDung + "-" + nam + "-" + gvhs + "-" + tl + "-" + trangThai);
-
-//        Slide sl = new Slide(1, tenSlide, noiDung, nam, gvhs, tl, trangThai);
-//        if (SL_SERVICE.themSlide(sl)) {
-//            List<Slide> slList = SL_SERVICE.getAllSlide();
-//            request.setAttribute("slList", slList);
-//            request.setAttribute(util.Constants.PAGE, "manage-slide");
-//            request.setAttribute("msgResult", "Bạn đã thêm Slide thành công");
-//            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-//        } else {
-//            request.setAttribute("msgResult", "Có lỗi xảy ra, thêm slide thất bại!");
-//            request.setAttribute(util.Constants.PAGE, "manage-add-edit-sl");
-//            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-//        }
+        Slide sl = new Slide(1, tenSlide, noiDung, nam, gvhs, tl, trangThai);
+        if (SL_SERVICE.themSlide(sl)) {
+            List<Slide> slList = SL_SERVICE.getAllSlide();
+            request.setAttribute("slideList", slList);
+            request.setAttribute(util.Constants.PAGE, "manage-sl");
+            request.setAttribute("msgResult", "Bạn đã thêm Slide thành công");
+            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+        } else {
+            request.setAttribute("msgResult", "Có lỗi xảy ra, thêm slide thất bại!");
+            request.setAttribute(util.Constants.PAGE, "manage-add-edit-sl");
+            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+        }
     }
 
     private void doEdit(HttpServletRequest request, HttpServletResponse response)
@@ -141,6 +140,10 @@ public class SlideManagement extends HttpServlet {
         int maSlide = Integer.parseInt(request.getParameter("id"));
         Slide sl = SL_SERVICE.getSlideByMa(maSlide);
         request.setAttribute("sl", sl);
+        List<TuLieu> tl = TL_SERVICE.getAllTuLieu();
+        request.setAttribute("tl", tl);
+        List<GiangVienHocSinh> GV = GVHS_SERVICE.getAllGiangVienHocSinh();
+        request.setAttribute("GV", GV);
         request.setAttribute(util.Constants.PAGE, "manage-add-edit-sl");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
@@ -149,15 +152,10 @@ public class SlideManagement extends HttpServlet {
             throws ServletException, IOException {
         int maSlide = Integer.parseInt(request.getParameter("id"));
         String tenSlide = request.getParameter("tenSlide");
-        String noiDung = request.getParameter("noiDung");
+        String noiDung = request.getParameter("noidung");
         int nam = Integer.parseInt(request.getParameter("nam"));
-        String GVHS = request.getParameter("gvhs");
-        String tuLieu = request.getParameter("tuLieu");
-
-        String[] arrGVHS = GVHS.split("-");
-        String[] arrTuLieu = tuLieu.split("-");
-        int maGVHS = Integer.parseInt(arrGVHS[0]);
-        int maTL = Integer.parseInt(arrTuLieu[0]);
+        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
+        int maTL = Integer.parseInt(request.getParameter("tulieu"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
         int trangThai = 1;
@@ -165,8 +163,8 @@ public class SlideManagement extends HttpServlet {
         Slide sl = new Slide(maSlide, tenSlide, noiDung, nam, gvhs, tl, trangThai);
         if (SL_SERVICE.chinhsuaSlide(sl)) {
             List<Slide> slList = SL_SERVICE.getAllSlide();
-            request.setAttribute("slList", slList);
-            request.setAttribute(util.Constants.PAGE, "manage-slide");
+            request.setAttribute("slideList", slList);
+            request.setAttribute(util.Constants.PAGE, "manage-sl");
             request.setAttribute("msgResult", "Bạn đã sửa Slide thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
@@ -181,15 +179,24 @@ public class SlideManagement extends HttpServlet {
         int maSlide = Integer.parseInt(request.getParameter("id"));
         if (SL_SERVICE.xoaSlide(maSlide)) {
             List<Slide> slList = SL_SERVICE.getAllSlide();
-            request.setAttribute("slList", slList);
+            request.setAttribute("slideList", slList);
             request.setAttribute(util.Constants.PAGE, "manage-slide");
-            request.setAttribute("msgResult", "Bạn đã sửa Slide thành công");
+            request.setAttribute("msgResult", "Bạn đã xóa Slide thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "manage-slide");
-            request.setAttribute("msgResult", "Có lỗi xảy ra, sửa Slide thất bại");
+            request.setAttribute("msgResult", "Có lỗi xảy ra, xóa Slide thất bại");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<Slide> slideList = SL_SERVICE.timkiemAllSlide(tukhoa);
+        request.setAttribute(util.Constants.SL_LIST, slideList);
+        request.setAttribute(util.Constants.PAGE, "manage-sl");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     /**
