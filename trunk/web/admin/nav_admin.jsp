@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-12">
                     <ul class="nav navbar-nav">
-                        <li><a  class="active" href="/project3/admin.jsp">ADMINISTRATOR</a></li>
+                        <li><a  class="active" href="/project3/GVHSManage?p=manage">ADMINISTRATOR</a></li>
                         <li><a href="/project1/Page?p=about">Thống kê</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
