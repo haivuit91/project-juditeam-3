@@ -133,13 +133,18 @@ public class Search extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String noiDung = request.getParameter("tenTT");
+        String noiDung;
+        String nguoiThucHien;
+        int nam;
+        noiDung = request.getParameter("tenTT");
         String loaiTT = request.getParameter("loaiTT");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        String nguoiThucHien = request.getParameter("nguoiThucHien");
+        String strNam = request.getParameter("nam");
+        nguoiThucHien = request.getParameter("nguoiThucHien");
+        nam = Integer.parseInt(strNam);
         List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(nguoiThucHien);
         switch (loaiTT) {
             case "baiGiang":
+                request.setAttribute("type", "baiGiang");
                 request.setAttribute("gvhsList", gvhsList);
                 request.setAttribute("noiDung", noiDung);
                 request.setAttribute("nam", nam);
@@ -147,8 +152,28 @@ public class Search extends HttpServlet {
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "slide":
+                request.setAttribute("type", "slide");
+                request.setAttribute("gvhsList", gvhsList);
+                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("nam", nam);
+                request.setAttribute(util.Constants.PAGE, "search-nc");
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                break;
+            case "deCuong":
+                request.setAttribute("type", "deCuong");
+                request.setAttribute("gvhsList", gvhsList);
+                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("nam", nam);
+                request.setAttribute(util.Constants.PAGE, "search-nc");
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "all":
+                request.setAttribute("type", "all");
+                request.setAttribute("gvhsList", gvhsList);
+                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("nam", nam);
+                request.setAttribute(util.Constants.PAGE, "search-nc");
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
         }
     }
