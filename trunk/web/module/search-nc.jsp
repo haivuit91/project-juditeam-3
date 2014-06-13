@@ -56,11 +56,7 @@
                                 <div class="col-lg-5">
                                     <input type="text" name="nam" class="form-control" id="inputEmail" placeholder="">
                                 </div>
-                            </div>
-
-
-
-                            <div class="form-group">
+                            </div><div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">                                    
                                     <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-primary">
                                     <input value="Nhập lại" class="btn btn-default" type="reset">
