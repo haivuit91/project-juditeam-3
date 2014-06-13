@@ -48,62 +48,58 @@ public class Page extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String page = request.getParameter("p");
-        switch (page) {
-            case "search-cb":
-                request.setAttribute(util.Constants.PAGE, "search-cb");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
+        if (page != null) {
+            switch (page) {
+                case "search-cb":
+                    request.setAttribute(util.Constants.PAGE, "search-cb");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
 
-            case "search-nc":
-                request.setAttribute(util.Constants.PAGE, "search-nc");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "login":
-                request.setAttribute(util.Constants.PAGE, "login");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "contact":
-                request.setAttribute(util.Constants.PAGE, "contact");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "about":
-                request.setAttribute(util.Constants.PAGE, "about");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
-                break;
-            case "manage-bg":
-                List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
-                List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
-                request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
-                request.setAttribute("bgList", bgList);
-                request.setAttribute(util.Constants.PAGE, "manage-bg");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                break;
-            case "manage-dcct":
-                request.setAttribute(util.Constants.PAGE, "manage-dcct");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                break;
-            case "manage-sl":
-                List<Slide> slideList = SL_SERVICE.getAllSlide();
-                request.setAttribute(util.Constants.TL_LIST, slideList);
-                request.setAttribute(util.Constants.PAGE, "manage-sl");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                break;
-            case "manage-tl":
-                List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
-                request.setAttribute(util.Constants.TL_LIST, tulieuList);
-                request.setAttribute(util.Constants.PAGE, "manage-tl");
-                request.removeAttribute(util.Constants.MSG_RESULT);
-                request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                break;
+                case "search-nc":
+                    request.setAttribute(util.Constants.PAGE, "search-nc");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "login":
+                    request.setAttribute(util.Constants.PAGE, "login");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "contact":
+                    request.setAttribute(util.Constants.PAGE, "contact");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "about":
+                    request.setAttribute(util.Constants.PAGE, "about");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+                    break;
+                case "manage-bg":
+                    request.setAttribute(util.Constants.PAGE, "manage-bg");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
+                case "manage-dcct":
+                    request.setAttribute(util.Constants.PAGE, "manage-dcct");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
+                case "manage-sl":
+                    request.setAttribute(util.Constants.PAGE, "manage-sl");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
+                case "manage-tl":
+                    List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
+                    request.setAttribute(util.Constants.TL_LIST, tulieuList);
+                    request.setAttribute(util.Constants.PAGE, "manage-tl");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
 
+            }
         }
 
     }
