@@ -11,8 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.BaiGiangDAO;
+import model.dao.GiangVienHocSinhDAO;
 import model.dao.TuLieuDAO;
+import model.dao.service.BaiGiangDAOService;
+import model.dao.service.GiangVienHocSinhDAOService;
 import model.dao.service.TuLieuDAOService;
+import model.entities.BaiGiang;
+import model.entities.GiangVienHocSinh;
 import model.entities.TuLieu;
 
 /**
@@ -20,8 +26,10 @@ import model.entities.TuLieu;
  * @author Welcomes
  */
 public class Page extends HttpServlet {
-    
+
     private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
+    private final BaiGiangDAOService BG_SERVICE = BaiGiangDAO.getInstance();
+    private final GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,6 +72,10 @@ public class Page extends HttpServlet {
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "manage-bg":
+                List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
+                List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
+                request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
+                request.setAttribute("bgList", bgList);
                 request.setAttribute(util.Constants.PAGE, "manage-bg");
                 request.removeAttribute(util.Constants.MSG_RESULT);
                 request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);

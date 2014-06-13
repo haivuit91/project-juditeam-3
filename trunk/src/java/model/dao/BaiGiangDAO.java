@@ -135,18 +135,20 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     }
 
     @Override
-    public boolean themBaiGiang(BaiGiang baigiang) {
+    public boolean themBaiGiang(BaiGiang bg) {
         boolean isCheck = false;
         String sql = "insert into tbl_baigiang (tenBG, noidung, nam, maGVHS, trangthai) values(?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, baigiang.getTenBG());
-            pstmt.setString(2, baigiang.getNoidung());
-            pstmt.setInt(3, baigiang.getNam());
-            pstmt.setInt(4, baigiang.getGiangVienHocSinh().getMaGVHS());
-            pstmt.setInt(5, baigiang.isTrangthai());
-            return pstmt.executeUpdate() == 1;
+            pstmt.setString(1, bg.getTenBG());
+            pstmt.setString(2, bg.getNoidung());
+            pstmt.setInt(3, bg.getNam());
+            pstmt.setInt(4, bg.getGiangVienHocSinh().getMaGVHS());
+            pstmt.setInt(5, bg.isTrangthai());
+//            return pstmt.executeUpdate() == 1;
+            pstmt.executeUpdate();
+            isCheck = true;
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
@@ -165,7 +167,8 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             pstmt.setInt(3, baigiang.getNam());
             pstmt.setInt(4, baigiang.getGiangVienHocSinh().getMaGVHS());
             pstmt.setInt(5, baigiang.isTrangthai());
-            return pstmt.executeUpdate() == 1;
+            pstmt.executeUpdate();
+            return true;
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
@@ -180,7 +183,8 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareStatement(sql);
             sm.setInt(1, maBG);
-            return sm.executeUpdate() == 1;
+            sm.executeUpdate();
+            return true;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -209,6 +213,35 @@ public class BaiGiangDAO implements BaiGiangDAOService {
         }
         return listBaiGiang;
 
+    }
+
+    @Override
+    public List<BaiGiang> timBaiGiangByTen(String tenBG) {
+        List<BaiGiang> listBaiGiang = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            String sql = "select * from tbl_baigiang where tenBG like '" + "%" + tenBG + "%" + "' or noidung like '" + "%" + tenBG + "%" + "' or nam like '" + "%" + tenBG + "%" + "'";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                BaiGiang baigiang = new BaiGiang();
+                baigiang.setTenBG(rs.getString("tenBG"));
+                baigiang.setNoidung(rs.getString("noidung"));
+                baigiang.setNam(rs.getInt("nam"));
+                GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                baigiang.setGiangVienHocSinh(giangvienhocsinh);
+                baigiang.setTrangthai(rs.getInt("trangthai"));
+                listBaiGiang.add(baigiang);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listBaiGiang;
+    }
+
+    @Override
+    public List<BaiGiang> timkiemBaiGiangByMaGVHS(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -24,6 +24,7 @@ public interface BaiGiangDAOService {
 
     /**
      * Get BaiGiangList by maBG
+     *
      * @param maBG is name of user
      * @return BaiGiang by maBG
      */
@@ -31,6 +32,7 @@ public interface BaiGiangDAOService {
 
     /**
      * Get BaiGiangList by tenBG
+     *
      * @param tenBG
      * @return BaiGiang by tenBG
      */
@@ -38,6 +40,7 @@ public interface BaiGiangDAOService {
 
     /**
      * find BaiGiang
+     *
      * @param noidung
      * @param nam
      * @param gvhs
@@ -47,30 +50,44 @@ public interface BaiGiangDAOService {
 
     /**
      * create BaiGiang
+     *
      * @param baigiang
      * @return BaiGiang
      */
-    public boolean themBaiGiang(BaiGiang baigiang);
+    public boolean themBaiGiang(BaiGiang bg);
 
     /**
      * update BaiGiang
+     *
      * @param baigiang
      * @return BaiGiang
      */
     public boolean chinhsuaBaiGiang(BaiGiang baigiang);
 
-
     /**
      * delete BaiGiang by maTK
+     *
      * @param maTK
      * @return BaiGiang
      */
     public boolean xoaBaiGiang(int maBG);
-    
+
+    /**
+     * find BaiGiang by maGVHS
+     *
+     * @param tenBG
+     * @return BaiGiang by maGVHS
+     */
+    public List<BaiGiang> timkiemBaiGiangByMaGVHS(String key);
+
     /**
      * find BaiGiang by tenBG
+     *
+     * @param tenBG
      * @param maGVHS
      * @return BaiGiang by tenBG
      */
+    public List<BaiGiang> timBaiGiangByTen(String tenBG);
+    
     public List<BaiGiang> timkiemBaiGiangByMaGVHS(int maGVHS);
 }
