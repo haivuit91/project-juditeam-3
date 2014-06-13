@@ -11,12 +11,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.SlideDAO;
 import model.dao.BaiGiangDAO;
 import model.dao.GiangVienHocSinhDAO;
 import model.dao.TuLieuDAO;
+import model.dao.service.SlideDAOService;
 import model.dao.service.BaiGiangDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.dao.service.TuLieuDAOService;
+import model.entities.Slide;
 import model.entities.BaiGiang;
 import model.entities.GiangVienHocSinh;
 import model.entities.TuLieu;
@@ -28,6 +31,7 @@ import model.entities.TuLieu;
 public class Page extends HttpServlet {
 
     private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
+    private final SlideDAOService SL_SERVICE = SlideDAO.getInstance();
     private final BaiGiangDAOService BG_SERVICE = BaiGiangDAO.getInstance();
     private final GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
 
@@ -86,6 +90,8 @@ public class Page extends HttpServlet {
                 request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                 break;
             case "manage-sl":
+                List<Slide> slideList = SL_SERVICE.getAllSlide();
+                request.setAttribute(util.Constants.TL_LIST, slideList);
                 request.setAttribute(util.Constants.PAGE, "manage-sl");
                 request.removeAttribute(util.Constants.MSG_RESULT);
                 request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
