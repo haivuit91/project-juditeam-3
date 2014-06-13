@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller.servlet.admin;
 
 import java.io.IOException;
@@ -24,6 +23,7 @@ import model.entities.TuLieu;
 public class TuLieuManagement extends HttpServlet {
 
     private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,7 +52,34 @@ public class TuLieuManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("do");
+        if (action != null) {
+            switch (action) {
+                case "edit":
+                    doEdit(request, response);
+                    break;
+                case "add":
+                    doAddnew(request, response);
+                    break;
+                case "del":
+                    doDel(request, response);
+                    break;
+            }
+        }
+        String p = request.getParameter("p");
+        if (p != null) {
+            switch (p) {
+                case "manage-user":
+                    List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
+                    request.setAttribute(util.Constants.TL_LIST, tulieuList);
+                    request.setAttribute(util.Constants.PAGE, "manage-tl");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
+            }
+        }
     }
 
     /**
@@ -66,12 +93,25 @@ public class TuLieuManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String submit = request.getParameter("submit");
+        switch (submit) {
+            case "Sửa":
+                editTL(request, response);
+                break;
+            case "Thêm mới":
+                addTL(request, response);
+                break;
+            case "Tìm kiếm":
+                search(request, response);
+                break;
+        }
     }
-    
+
     private void doAddnew(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute(util.Constants.PAGE, "addTL");
+        request.setAttribute(util.Constants.PAGE, "manage-add-edit-tl");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
@@ -103,7 +143,7 @@ public class TuLieuManagement extends HttpServlet {
         int maTL = Integer.parseInt(request.getParameter("id"));
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
         request.setAttribute("tl", tl);
-        request.setAttribute(util.Constants.PAGE, "editTL");
+        request.setAttribute(util.Constants.PAGE, "manage-add-edit-tl");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
@@ -145,6 +185,15 @@ public class TuLieuManagement extends HttpServlet {
             request.setAttribute("msgResult", "Có lỗi xảy ra, xóa tư liệu thất bại");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<TuLieu> tulieuList = TL_SERVICE.timkiemTuLieu(tukhoa);
+        request.setAttribute(util.Constants.TL_LIST, tulieuList);
+        request.setAttribute(util.Constants.PAGE, "manage-tl");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     /**
