@@ -6,17 +6,22 @@
 package controller.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.TuLieuDAO;
+import model.dao.service.TuLieuDAOService;
+import model.entities.TuLieu;
 
 /**
  *
  * @author Welcomes
  */
 public class Page extends HttpServlet {
+    
+    private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -74,6 +79,8 @@ public class Page extends HttpServlet {
                 request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                 break;
             case "manage-tl":
+                List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
+                request.setAttribute(util.Constants.TL_LIST, tulieuList);
                 request.setAttribute(util.Constants.PAGE, "manage-tl");
                 request.removeAttribute(util.Constants.MSG_RESULT);
                 request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
