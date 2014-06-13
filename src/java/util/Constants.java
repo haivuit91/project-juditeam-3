@@ -49,4 +49,6 @@ public class Constants {
     public static final String BG_LIST = "bgList";
     
     public static final String TL_LIST = "tulieuList";
+    
+    public static final String SL_LIST = "slideList";
 }
