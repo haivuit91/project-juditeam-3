@@ -10,6 +10,7 @@
         <url-pattern>/bgmanage</url-pattern>
         <url-pattern>/slidemanage</url-pattern>
         <url-pattern>/tlmamage</url-pattern>
+        <url-pattern>/GVHSManage</url-pattern>
         <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
     <servlet>
