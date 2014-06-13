@@ -69,23 +69,57 @@
                         </fieldset>
                     </form>
                 </div>
-                <div class="panel-body">
-                    <c:if test="${gvhsList != null}">
-                        Kết quả:
-                        <c:forEach items="${gvhsList}" var="gvhs">
-                            Họ tên: ${gvhs.getTenGVHS()}<br>
-                            Bài giảng: 
-                            <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                <c:if test="${dc.getNoidung().contains(noiDung)}">
-                                    ${dc.getNoidung()}
-                                </c:if>
-                            </c:forEach><br>
-                        </c:forEach>
-                    </c:if>
+                <div class="panel-body" style="background:#004050;color:wheat">
+                    <div class="col-md-3">HỌ TÊN</div>
+                    <div class="col-md-9">NỘI DUNG</div>
+                </div> 
+                <c:if test="${gvhsList != null}">
+                      <c:forEach items="${gvhsList}" var="gvhs">
+                        <div class="panel-body">
+                            <div class="col-md-3">
+                                ${gvhs.getTenGVHS()} <br>
+                            </div>
+                            <div class="col-md-9">
+                                <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                        ${dc.getNoidung()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                    </c:if>
+                                </c:forEach><br>
 
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:if>
 
+                <div class="panel-body" style="background:#f7f6f4">
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
+                    <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
+                        Họ tên
+                    </div>
+
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                    <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
+                        Khoa cơ bản
+                    </div>
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                        15/06/1990
+                    </div>
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                    <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                        45 Dũng Sĩ Thanh Khê- Đà Nẵng
+                    </div>
+                    <!---------------------------------------------------->
+                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                        Nội dung cần hiển thị
+                    </div>
+                    <!---------------------------------------------------->
                 </div>
-
             </div>
         </div>
         <script src="../js/bootstrap.js" type="text/javascript"></script>
