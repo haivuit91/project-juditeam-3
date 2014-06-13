@@ -91,6 +91,8 @@ public class Page extends HttpServlet {
                     break;
                 case "manage-sl":
                     List<Slide> slideList = SL_SERVICE.getAllSlide();
+                    List<GiangVienHocSinh> gvhsListSL = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    request.setAttribute(util.Constants.GVHS_LIST, gvhsListSL);
                     request.setAttribute(util.Constants.SL_LIST, slideList);
                     request.setAttribute(util.Constants.PAGE, "manage-sl");
                     request.removeAttribute(util.Constants.MSG_RESULT);

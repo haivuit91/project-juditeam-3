@@ -141,8 +141,8 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setString(1, slide.getTenSilde());
             pstmt.setString(2, slide.getNoidung());
             pstmt.setInt(3, slide.getNam());
-            pstmt.setInt(4, slide.getGiangvienhocsinh().getMaGVHS());
-            pstmt.setInt(5, slide.getTulieu().getMaTL());
+            pstmt.setInt(4, slide.getGiangVienHocSinh().getMaGVHS());
+            pstmt.setInt(5, slide.getTuLieu().getMaTL());
             pstmt.setInt(6, slide.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
@@ -161,8 +161,8 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setString(1, slide.getTenSilde());
             pstmt.setString(2, slide.getNoidung());
             pstmt.setInt(3, slide.getNam());
-            pstmt.setInt(4, slide.getGiangvienhocsinh().getMaGVHS());
-            pstmt.setInt(5, slide.getTulieu().getMaTL());
+            pstmt.setInt(4, slide.getGiangVienHocSinh().getMaGVHS());
+            pstmt.setInt(5, slide.getTuLieu().getMaTL());
             pstmt.setInt(6, slide.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
@@ -202,7 +202,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setNoidung(rs.getString("noidung"));
                 slide.setNam(rs.getInt("nam"));
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
-                slide.setTulieu(tulieu);
+                slide.setTuLieu(tulieu);
                 slideList.add(slide);
             }
         } catch (SQLException | ClassNotFoundException e) {
