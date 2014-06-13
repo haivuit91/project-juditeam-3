@@ -41,6 +41,7 @@
                                         <option value="all">Tất cả</option>
                                         <option value="slide">Slide</option>
                                         <option value="baiGiang">Bài giảng</option>
+                                        <option value="deCuong">Đề cương</option>
                                     </select>
                                 </div>
                             </div>
@@ -54,7 +55,7 @@
                             <div class="form-group">
                                 <label for="select" class="col-lg-2 control-label">Ngày tháng năm</label>
                                 <div class="col-lg-5">
-                                    <input type="text" name="nam" class="form-control" id="inputEmail" placeholder="">
+                                    <input type="text" name="nam" value="2014" class="form-control" id="inputEmail" placeholder="">
                                 </div>
                             </div><div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">                                    
@@ -70,55 +71,150 @@
                     <div class="col-md-9">NỘI DUNG</div>
                 </div> 
                 <c:if test="${gvhsList != null}">
-                      <c:forEach items="${gvhsList}" var="gvhs">
+                    <c:forEach items="${gvhsList}" var="gvhs">
                         <div class="panel-body">
                             <div class="col-md-3">
                                 ${gvhs.getTenGVHS()} <br>
                             </div>
                             <div class="col-md-9">
-                                <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
-                                        ${dc.getNoidung()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                <c:if test="${type == 'deCuong'}" >
+                                    <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                        <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                            ${dc.getTenDC()}: 
+                                            ${dc.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            </c:if>
+                                        </c:forEach>
                                     </c:if>
-                                </c:forEach><br>
-
+                                    <c:if test="${type == 'baiGiang'}" >
+                                        <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
+                                            <c:if test="${bg.getNoidung().contains(noiDung)}">
+                                                ${bg.getTenBG()}: 
+                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            </c:if>
+                                        </c:forEach><br>
+                                </c:if>
+                                <c:if test="${type == 'slide'}" >
+                                    <c:forEach items="${gvhs.getSlideList()}" var="sl">
+                                        <c:if test="${sl.getNoidung().contains(noiDung)}">
+                                            ${sl.getTenSilde()}: 
+                                            ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            </c:if>
+                                        </c:forEach><br>
+                                </c:if>     
+                                <c:if test="${type == 'all'}" >
+                                    <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                        <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                            ${dc.getTenDC()}: 
+                                            ${dc.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
+                                            <c:if test="${bg.getNoidung().contains(noiDung)}">
+                                                ${bg.getTenBG()}: 
+                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            </c:if>
+                                        </c:forEach><br>
+                                    <c:forEach items="${gvhs.getSlideList()}" var="sl">
+                                        <c:if test="${sl.getNoidung().contains(noiDung)}">
+                                            ${sl.getTenSilde()}: 
+                                            ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            </c:if>
+                                        </c:forEach><br>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>
                 </c:if>
 
                 <div class="panel-body" style="background:#f7f6f4">
-                    <!---------------------------------------------------->
-                    <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
-                    <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
-                        Họ tên
-                    </div>
+                    <c:if test="${currentDC != null}">
+                        <div class="panel-body" style="background:#f7f6f4">
+                            <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
+                            <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
+                                ${currentGVHS.getTenGVHS()}
+                            </div>
 
-                    <!---------------------------------------------------->
-                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
-                    <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
-                        Khoa cơ bản
+                            <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                            <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
+                                ${currentGVHS.getDonvi()}
+                            </div>
+                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                ${currentGVHS.getNgaysinh()}
+                            </div>
+                            <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                            <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                                ${currentGVHS.getDiachi()}
+                            </div>
+                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Tên đề cương</div>
+                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                ${currentDC.getTenDC()}
+                            </div>
+                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                ${currentDC.getNoidung()}
+                            </div>
+                        </c:if>
+                        <c:if test="${currentSL != null}">
+                            <div class="panel-body" style="background:#f7f6f4">
+                                <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
+                                <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
+                                    ${currentGVHS.getTenGVHS()}
+                                </div>
+
+                                <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                                <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
+                                    ${currentGVHS.getDonvi()}
+                                </div>
+                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                    ${currentGVHS.getNgaysinh()}
+                                </div>
+                                <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                                <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                                    ${currentGVHS.getDiachi()}
+                                </div>
+                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Tên Slide</div>
+                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                    ${currentSL.getTenSilde()}
+                                </div>
+                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                    ${currentSL.getNoidung()}
+                                </div>
+                            </c:if>
+                            <c:if test="${currentBG != null}">
+                                <div class="panel-body" style="background:#f7f6f4">
+                                    <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
+                                    <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
+                                        ${currentGVHS.getTenGVHS()}
+                                    </div>
+
+                                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                                    <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
+                                        ${currentGVHS.getDonvi()}
+                                    </div>
+                                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                        ${currentGVHS.getNgaysinh()}
+                                    </div>
+                                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                                    <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                                        ${currentGVHS.getDiachi()}
+                                    </div>
+                                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Tên bài giảng</div>
+                                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                        ${currentBG.getTenBG()}
+                                    </div>
+                                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                        ${currentBG.getNoidung()}
+                                    </div>
+                                </c:if>
+                            </div>
+                        </div>
                     </div>
-                    <!---------------------------------------------------->
-                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
-                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
-                        15/06/1990
-                    </div>
-                    <!---------------------------------------------------->
-                    <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
-                    <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
-                        45 Dũng Sĩ Thanh Khê- Đà Nẵng
-                    </div>
-                    <!---------------------------------------------------->
-                    <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
-                    <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
-                        Nội dung cần hiển thị
-                    </div>
-                    <!---------------------------------------------------->
-                </div>
-            </div>
-        </div>
-        <script src="../js/bootstrap.js" type="text/javascript"></script>
-        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-    </body>
-</html>
+                    <script src="../js/bootstrap.js" type="text/javascript"></script>
+                    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+                    </body>
+                    </html>
