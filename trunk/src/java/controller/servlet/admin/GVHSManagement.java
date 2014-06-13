@@ -35,7 +35,35 @@ public class GVHSManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String p = request.getParameter("p");
+        if (p != null) {
+            switch (p) {
+                case "manage-gvhs":
+                    List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    request.setAttribute("gvhsList", gvhsList);
+                    request.setAttribute(util.Constants.PAGE, "manage-gvhs");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
+            }
+        }
 
+        String action = request.getParameter("do");
+        if (action != null) {
+            switch (action) {
+                case "edit":
+                    doEdit(request, response);
+                    break;
+                case "add":
+                    doAddnew(request, response);
+                    break;
+                case "del":
+                    doDel(request, response);
+                    break;
+            }
+        }
     }
 
     /**
@@ -49,7 +77,20 @@ public class GVHSManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String submit = request.getParameter("submit");
+        switch (submit) {
+            case "Sửa":
+                editGVHS(request, response);
+                break;
+            case "Thêm mới":
+                addGVHS(request, response);
+                break;
+            case "Tìm kiếm":
+                search(request, response);
+                break;
+        }
     }
 
     private void doAddnew(HttpServletRequest request, HttpServletResponse response)
@@ -124,16 +165,24 @@ public class GVHSManagement extends HttpServlet {
             throws ServletException, IOException {
         int maGVHS = Integer.parseInt(request.getParameter("id"));
         if (GVHS_SERVICE.xoaGiangVienHocSinh(maGVHS)) {
-            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
-            request.setAttribute("gvhsList", gvhsList);
-            request.setAttribute(util.Constants.PAGE, "manage-gvhs");
             request.setAttribute("msgResult", "Bạn đã xóa GVHS thành công");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
-            request.setAttribute(util.Constants.PAGE, "manage-gvhs");
             request.setAttribute("msgResult", "Có lỗi xảy ra, xóa GVHS thất bại");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+        request.setAttribute("gvhsList", gvhsList);
+        request.setAttribute(util.Constants.PAGE, "manage-gvhs");
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tenGV = request.getParameter("tenGVHS");
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(tenGV);
+        request.setAttribute("gvhsList", gvhsList);
+        request.setAttribute(util.Constants.PAGE, "manage-gvhs");
+        request.removeAttribute("msgResult");
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     /**
