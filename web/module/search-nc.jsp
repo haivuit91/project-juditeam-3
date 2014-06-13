@@ -67,61 +67,112 @@
                     </form>
                 </div>
                 <div class="panel-body" style="background:#004050;color:wheat">
-                    <div class="col-md-3">HỌ TÊN</div>
-                    <div class="col-md-9">NỘI DUNG</div>
+                    <div class="col-md-2">HỌ TÊN</div>
+                    <div class="col-md-2">LOẠI THÔNG TIN</div>
+                    <div class="col-md-3">TÊN</div>
+                    <div class="col-md-5">NỘI DUNG</div>
                 </div> 
                 <c:if test="${gvhsList != null}">
                     <c:forEach items="${gvhsList}" var="gvhs">
                         <div class="panel-body">
-                            <div class="col-md-3">
-                                ${gvhs.getTenGVHS()} <br>
-                            </div>
-                            <div class="col-md-9">
-                                <c:if test="${type == 'deCuong'}" >
-                                    <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                        <c:if test="${dc.getNoidung().contains(noiDung)}">
-                                            ${dc.getTenDC()}: 
+                            <c:if test="${type == 'deCuong'}" >
+                                <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                        <div class="col-md-2">
+                                            ${gvhs.getTenGVHS()} <br>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Đề cương
+                                        </div>
+                                        <div class="col-md-3">
+                                            ${dc.getTenDC()}
+                                        </div>
+                                        <div class="col-md-5">
                                             ${dc.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                            </c:if>
-                                        </c:forEach>
-                                    </c:if>
-                                    <c:if test="${type == 'baiGiang'}" >
-                                        <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
-                                            <c:if test="${bg.getNoidung().contains(noiDung)}">
-                                                ${bg.getTenBG()}: 
-                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                            </c:if>
-                                        </c:forEach><br>
-                                </c:if>
-                                <c:if test="${type == 'slide'}" >
-                                    <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                        <c:if test="${sl.getNoidung().contains(noiDung)}">
-                                            ${sl.getTenSilde()}: 
+                                        </div>
+                                    </c:if></c:forEach>
+                            </c:if>
+                            <c:if test="${type == 'slide'}" >
+                                <c:forEach items="${gvhs.getSlideList()}" var="sl">
+                                    <c:if test="${sl.getNoidung().contains(noiDung)}">
+                                        <div class="col-md-2">
+                                            ${gvhs.getTenGVHS()} <br>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Slide
+                                        </div>
+                                        <div class="col-md-3">
+                                            ${sl.getTenSilde()}
+                                        </div>
+                                        <div class="col-md-5">
                                             ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                            </c:if>
-                                        </c:forEach><br>
-                                </c:if>     
-                                <c:if test="${type == 'all'}" >
-                                    <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                        <c:if test="${dc.getNoidung().contains(noiDung)}">
-                                            ${dc.getTenDC()}: 
+                                        </div>
+                                    </c:if></c:forEach>
+                            </c:if>
+                            <c:if test="${type == 'baiGiang'}" >
+                                <c:forEach items="${gvhs.getDecuongList()}" var="bg">
+                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                        <div class="col-md-2">
+                                            ${gvhs.getTenGVHS()} <br>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Bài giảng
+                                        </div>
+                                        <div class="col-md-3">
+                                            ${bg.getTenBG()}
+                                        </div>
+                                        <div class="col-md-5">
+                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        </div>
+                                    </c:if></c:forEach>
+                            </c:if>
+                            <c:if test="${type == 'all'}" >
+                                <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                        <div class="col-md-2">
+                                            ${gvhs.getTenGVHS()} <br>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Đề cương
+                                        </div>
+                                        <div class="col-md-3">
+                                            ${dc.getTenDC()}
+                                        </div>
+                                        <div class="col-md-5">
                                             ${dc.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                            </c:if>
-                                        </c:forEach>
-                                        <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
-                                            <c:if test="${bg.getNoidung().contains(noiDung)}">
-                                                ${bg.getTenBG()}: 
-                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                            </c:if>
-                                        </c:forEach><br>
-                                    <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                        <c:if test="${sl.getNoidung().contains(noiDung)}">
-                                            ${sl.getTenSilde()}: 
+                                        </div>
+                                    </c:if></c:forEach>
+                                <c:forEach items="${gvhs.getSlideList()}" var="sl">
+                                    <c:if test="${sl.getNoidung().contains(noiDung)}">
+                                        <div class="col-md-2">
+                                            ${gvhs.getTenGVHS()} <br>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Slide
+                                        </div>
+                                        <div class="col-md-3">
+                                            ${sl.getTenSilde()}
+                                        </div>
+                                        <div class="col-md-5">
                                             ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                            </c:if>
-                                        </c:forEach><br>
-                                </c:if>
-                            </div>
+                                        </div>
+                                    </c:if></c:forEach>
+                                <c:forEach items="${gvhs.getDecuongList()}" var="bg">
+                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                        <div class="col-md-2">
+                                            ${gvhs.getTenGVHS()} <br>
+                                        </div>
+                                        <div class="col-md-2">
+                                            Bài giảng
+                                        </div>
+                                        <div class="col-md-3">
+                                            ${bg.getTenBG()}
+                                        </div>
+                                        <div class="col-md-5">
+                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        </div>
+                                    </c:if></c:forEach>
+                            </c:if>
                         </div>
                     </c:forEach>
                 </c:if>
