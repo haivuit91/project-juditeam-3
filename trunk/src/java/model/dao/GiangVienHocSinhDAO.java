@@ -61,7 +61,8 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
 
     @Override
     public GiangVienHocSinh getGiangVienHocSinhByMa(int maGVHS) {
-        GiangVienHocSinh gVienHS = new GiangVienHocSinh();
+
+        GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
         try {
             Connection conn = ConnectionFactory.getConnection();
             String sql = "select * from tbl_giangvien_hocsinh where maGVHS = ?";
@@ -69,7 +70,6 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             pstmt.setInt(1, maGVHS);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
                 giangvienhocsinh.setMaGVHS(rs.getInt("maGVHS"));
                 giangvienhocsinh.setTenGVHS(rs.getString("tenGVHS"));
                 giangvienhocsinh.setDiachi(rs.getString("diachi"));
@@ -77,12 +77,13 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
                 giangvienhocsinh.setNgaysinh(rs.getDate("ngaysinh"));
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
-                giangvienhocsinh.setTrangthai(rs.getInt("trangthai"));
+                giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
+
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return gVienHS;
+        return giangvienhocsinh;
     }
 
     @Override
@@ -156,9 +157,10 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             pstmt.setString(5, gvhs.getDonvi());
             pstmt.setInt(6, gvhs.getTrinhdo());
             pstmt.setInt(7, gvhs.getTrangthai());
-            return pstmt.executeUpdate() == 1;
+            pstmt.executeUpdate();
+            isCheck = true;
         } catch (Exception ex) {
-            System.out.println(ex.toString());
+            ex.printStackTrace();
         }
         return isCheck;
     }
@@ -166,9 +168,10 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
     @Override
     public boolean chinhsuaGiangVienHocSinh(GiangVienHocSinh gvhs) {
         boolean isCheck = false;
-        String sql = "update tbl_giangvien_hocsinh set tenGVHS = ?, diachi = ?, dienthoai = ?, ngaysinh = ?, donvi = ?, trinhdo = ?, trangthai = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
+            String sql = "update tbl_giangvien_hocsinh set tenGVHS = ?, diachi = ?, dienthoai = ?,"
+                    + " ngaysinh = ?, donvi = ?, trinhdo = ?, trangthai= ? where maGVHS = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, gvhs.getTenGVHS());
             pstmt.setString(2, gvhs.getDiachi());
@@ -177,10 +180,13 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             pstmt.setString(5, gvhs.getDonvi());
             pstmt.setInt(6, gvhs.getTrinhdo());
             pstmt.setInt(7, gvhs.getTrangthai());
+            pstmt.setInt(8, gvhs.getMaGVHS());
+            pstmt.executeUpdate();
+            
+            isCheck = true;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return isCheck;
     }
 
@@ -192,7 +198,8 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement sm = conn.prepareStatement(sql);
             sm.setInt(1, maGVHS);
-            return sm.executeUpdate() == 1;
+            sm.executeUpdate();
+            isCheck = true;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
