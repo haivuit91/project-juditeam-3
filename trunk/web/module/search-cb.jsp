@@ -60,11 +60,26 @@
                     </div>
                     <c:forEach items="${gvhsList}" var="gvhs">
                         <div class="panel-body" style="background:#dadadd">
-                            <div class="col-md-1">${gvhsList.getMaGVHS()}</div>
-                            <div class="col-md-8">Nguyễn Ngọc Duy</div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-1">
-                                <a href="#" class="label label-default"><span class="glyphicon glyphicon-ok"></span>&nbsp;Chi tiết</a>
+                            <div class="col-md-1">${gvhs.getMaGVHS()}</div>
+                            <div class="col-md-9">Tên GVHS: ${gvhs.getTenGVHS()}<br>
+                                <c:if test="${gvhs.getDecuongList().size() > 0}">
+                                    DS Đề cương: <br>
+                                    <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                        - ${dc.getTenDC()}<br>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${gvhs.getSlideList().size() > 0}">
+                                    DS Slide: 
+                                    <c:forEach items="${gvhs.getSlideList()}" var="sl">
+                                        - <a href="#">${sl.getTenSilde()}</a><br>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${gvhs.getBaigiangList().size() > 0}">
+                                    DS Bài giảng: 
+                                    <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
+                                       - ${bg.getTenBG()}<br>
+                                    </c:forEach>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>
