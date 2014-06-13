@@ -20,6 +20,9 @@
     <body>
         <div class="container">
             <div class="row">
+                <c:if test="${msgResult != null}">
+                    <p>${msgResult}</p>
+                </c:if>
                 
                 <c:if test="${page == null || page == 'manage'}">
                     <%@include file="admin/nav_admin.jsp" %>    
@@ -36,6 +39,10 @@
                 <c:if test="${page == 'addbg'}">
                     <%@include file="admin/nav_admin.jsp" %>
                     <%@include file="admin/add-baigiang.jsp" %>
+                </c:if>
+                <c:if test="${page == 'addGVHS'}">
+                    <%@include file="admin/nav_admin.jsp" %>
+                    <%@include file="admin/add_gvhs.jsp" %>
                 </c:if>
                 <c:if test="${page == 'manage-dcct'}">
                     <%@include file="admin/nav_admin.jsp" %>    
