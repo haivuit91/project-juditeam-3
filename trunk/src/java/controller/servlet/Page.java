@@ -12,11 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dao.SlideDAO;
 import model.dao.BaiGiangDAO;
 import model.dao.GiangVienHocSinhDAO;
 import model.dao.TuLieuDAO;
-import model.dao.service.SlideDAOService;
 import model.dao.service.BaiGiangDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.dao.service.TuLieuDAOService;
@@ -90,39 +88,7 @@ public class Page extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
-<<<<<<< .mine
-=======
-                case "manage-bg":
-                    List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
-                    List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
-                    request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
-                    request.setAttribute("bgList", bgList);
-                    request.setAttribute(util.Constants.PAGE, "manage-bg");
-                    request.removeAttribute(util.Constants.MSG_RESULT);
-                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                    break;
-                case "manage-dcct":
-                    request.setAttribute(util.Constants.PAGE, "manage-dcct");
-                    request.removeAttribute(util.Constants.MSG_RESULT);
-                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                    break;
-                case "manage-sl":
-                    List<Slide> slideList = SL_SERVICE.getAllSlide();
-                    List<GiangVienHocSinh> gvhsListSL = GVHS_SERVICE.getAllGiangVienHocSinh();
-                    request.setAttribute(util.Constants.GVHS_LIST, gvhsListSL);
-                    request.setAttribute(util.Constants.SL_LIST, slideList);
-                    request.setAttribute(util.Constants.PAGE, "manage-sl");
-                    request.removeAttribute(util.Constants.MSG_RESULT);
-                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                    break;
-                case "manage-tl":
-                    List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
-                    request.setAttribute(util.Constants.TL_LIST, tulieuList);
-                    request.setAttribute(util.Constants.PAGE, "manage-tl");
-                    request.removeAttribute(util.Constants.MSG_RESULT);
-                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
-                    break;
->>>>>>> .r150
+                
             }
         }
 
