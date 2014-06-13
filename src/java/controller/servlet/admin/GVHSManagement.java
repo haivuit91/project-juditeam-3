@@ -47,6 +47,9 @@ public class GVHSManagement extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
+                case "manage":
+                    request.setAttribute(util.Constants.PAGE, "manage");
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
             }
         }
 
