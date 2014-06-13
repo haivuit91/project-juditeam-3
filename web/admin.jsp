@@ -23,7 +23,7 @@
                 <c:if test="${msgResult != null}">
                     <p>${msgResult}</p>
                 </c:if>
-                
+
                 <c:if test="${page == null || page == 'manage'}">
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="admin/manage.jsp" %>
@@ -51,6 +51,10 @@
                 <c:if test="${page == 'manage-sl'}">
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="/admin/manage-slide.jsp" %>
+                </c:if>
+                <c:if test="${page == 'manage-add-edit-sl'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/add_slide.jsp" %>
                 </c:if>
                 <c:if test="${page == 'manage-tl'}">
                     <%@include file="admin/nav_admin.jsp" %>    
