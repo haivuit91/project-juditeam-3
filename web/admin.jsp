@@ -56,6 +56,10 @@
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="/admin/manage-tulieu.jsp" %>
                 </c:if>
+                <c:if test="${page == 'manage-add-edit-tl'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/add_tulieu.jsp" %>
+                </c:if>
             </div>
         </div>
 

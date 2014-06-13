@@ -38,11 +38,10 @@ public interface TuLieuDAOService {
 
     /**
      * find TuLieu
-     * @param tenTL
-     * @param noidung
+     * @param tukhoa
      * @return TuLieu
      */
-    public List<TuLieu> timkiemTuLieu(String tenTL, String noidung);
+    public List<TuLieu> timkiemTuLieu(String tukhoa);
 
     /**
      * create TuLieu

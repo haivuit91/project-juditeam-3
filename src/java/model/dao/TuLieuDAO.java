@@ -99,14 +99,14 @@ public class TuLieuDAO implements TuLieuDAOService {
     }
 
     @Override
-    public List<TuLieu> timkiemTuLieu(String tenTL, String noidung) {
+    public List<TuLieu> timkiemTuLieu(String tukhoa) {
         String sql = "";
         List<TuLieu> listTuLieu = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_tulieu where tenTL = ? and noidung  like '%" + noidung + "%' ";
+            sql = "select * from tbl_tulieu where tenTL like '" + "%" + tukhoa + "%" + "' or noidung like '" + "%" + tukhoa + "%" + "'"
+                        + "or loaiTL like '" + "%" + tukhoa + "%" + "' or nguonTL like '" + "%" + tukhoa + "%" + "' or nam like '" + "%" + tukhoa + "%" + "'";
             PreparedStatement sm = conn.prepareStatement(sql);
-            sm.setString(1, tenTL);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 TuLieu tulieu = new TuLieu();
@@ -147,7 +147,7 @@ public class TuLieuDAO implements TuLieuDAOService {
     @Override
     public boolean chinhsuaTuLieu(TuLieu tulieu) {
         boolean isCheck = false;
-        String sql = "update tbl_tulieu set tenTl=?,noidung=?,loaiTL=?,nguonTL=?,nam=?,trangthai=?";
+        String sql = "update tbl_tulieu set tenTl=?,noidung=?,loaiTL=?,nguonTL=?,nam=?,trangthai=? where maTL = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -157,6 +157,7 @@ public class TuLieuDAO implements TuLieuDAOService {
             pstmt.setString(4, tulieu.getNguonTL());
             pstmt.setInt(5, tulieu.getNam());
             pstmt.setInt(6, tulieu.getTrangthai());
+            pstmt.setInt(7, tulieu.getMaTL());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());

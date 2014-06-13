@@ -1,16 +1,25 @@
 <%-- 
-    Document   : add_giangvien
-    Created on : Jun 13, 2014, 7:38:00 AM
-    Author     : Welcomes
+    Document   : add-baigiang
+    Created on : Jun 12, 2014, 10:26:43 PM
+    Author     : Khoa
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="../css/bootstrap-theme.min.css" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Quản lý tư liệu</title>
+        <style>
+            body{
+                padding:70px 0px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -18,55 +27,48 @@
                 <div class="col-lg-4 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-user"></span>${tk.getMaTK() > 0 ? 'Thay đổi thông tin tư liệu' : 'Thêm mới tư liệu'}</h3>
+                            <h3><span class="glyphicon glyphicon-user"></span>${tl.getMaTL() > 0 ? 'Thay đổi thông tin tư liệu' : 'Thêm mới tư liệu'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project1/umanage?id=${tk.getMaTK()}" method="post">
-                                <!-- /.UserName -->
+                            <form class="form-horizontal" role="form" action="/project3/tlmamage?id=${tl.getMaTL()}" method="post">
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
-                                        <select class="form-control">
-                                            <option>mã tư liệu 1</option>
-                                            <option>mã tư liệu 2</option>
-                                            <option>mã tư liệu 3</option>
-                                        </select>
+                                        <input type="text" name="maTL" value="${tl.getMaTL()}" disabled class="form-control" id="inputEmail3" placeholder="Mã tư liệu">
                                     </div>
                                 </div>
-                                <!-- /.UserName -->
                                 <div class="form-group">
                                     <div class="col-sm-12" >
-                                        <select class="form-control">
-                                            <option>ten tư liệu 1</option>
-                                            <option>ten tư liệu 2</option>
-                                            <option>ten tư liệu 3</option>
-                                        </select>
+                                        <input type="text" name="tenTL" value="${tl.getTenTL()}" class="form-control" id="inputEmail3" placeholder="Tên tư liệu">
                                     </div>
                                 </div>
-                                <!-- /.Password -->
                                 <div class="form-group">
-
                                     <div class="col-sm-12" >
-                                        <input type="text" name="noidung" value="${tk.getMatkhau()}" class="form-control" id="inputEmail3" placeholder="Nội dung">
+                                        <textarea name="noidung" class="col-md-12 form-control" style="margin-top: 5px" rows="4" id="inputEmail3" placeholder="Nội dung" >${tl.getNoidung()}</textarea>
                                     </div>
                                 </div>
-                                     <div class="form-group">
-                                    <div class="col-sm-12" >
-                                        <select class="form-control">
-                                            <option>Nguồn tư liệu 1</option>
-                                            <option>Nguồn tư liệu 2</option>
-                                            <option>Nguồn tư liệu 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                               
                                 <div class="form-group">
-                                    <div class="col-sm-8 col-md-offset-4" >
-                                        <input type="submit" ${tk.getMaTK() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
+                                    <div class="col-sm-12" >
+                                        <input type="text" name="loaiTL" value="${tl.getLoaiTL()}" class="form-control" id="inputEmail3" placeholder="Loại tư liệu">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12" >
+                                        <input type="text" name="nguonTL" value="${tl.getNguonTL()}" class="form-control" id="inputEmail3" placeholder="Nguồn tư liệu">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12" >
+                                        <input type="text" name="nam" value="${tl.getNam()}" class="form-control" id="inputEmail3" placeholder="Năm phát hành">
+                                    </div>
+                                </div>
+                                <!-- /.Button -->
+                                <div class="form-group">
+                                    <div class="col-sm-12" >
+                                        <input type="submit" ${tl.getMaTL() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
                                         &nbsp;
-                                        <button type="reset" class="btn btn-warning">Clear</button>
+                                        <button type="reset" class="btn btn-warning">Nhập lại</button>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
