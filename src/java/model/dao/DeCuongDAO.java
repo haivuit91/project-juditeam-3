@@ -8,6 +8,7 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.service.DeCuongDAOService;
@@ -250,6 +251,35 @@ public class DeCuongDAO implements DeCuongDAOService {
             ex.printStackTrace();
         }
         return isCheck;
+    }
+
+    @Override
+    public List<DeCuong> getDCListByMaGV(int maGVHS) {
+        List<DeCuong> listDC = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            String sql = "select * from tbl_dcct where maGVHS = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, maGVHS);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                DeCuong decuong = new DeCuong();
+                decuong.setMaDC(rs.getInt("maDC"));
+                decuong.setTenDC(rs.getString("tenDC"));
+                decuong.setDvhoctrinh(rs.getInt("dvhoctrinh"));
+                decuong.setThoigian(rs.getString("thoigian"));
+                decuong.setDieukien(rs.getString("dieukien"));
+                decuong.setMuctieu(rs.getString("muctieu"));
+                decuong.setNoidung(rs.getString("noidung"));
+                decuong.setTieuchuan(rs.getString("tieuchuan"));
+                decuong.setNam(rs.getInt("nam"));
+                decuong.setTrangthai(rs.getInt("trangthai"));
+                listDC.add(decuong);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return listDC;
     }
 
 }

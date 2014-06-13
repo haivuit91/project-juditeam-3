@@ -55,6 +55,8 @@ public interface DeCuongDAOService {
      */
     public List<DeCuong> timkiemDeCuongByNoiDung(String noidung);
 
+    public List<DeCuong> getDCListByMaGV(int maGVHS);
+
     /**
      * find DeCuong
      *

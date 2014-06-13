@@ -49,6 +49,8 @@ public interface SlideDAOService {
      */
     public List<Slide> timkiemSlide(int nam, String noidung, GiangVienHocSinh gvhs);
 
+    public List<Slide> getSlideListByMaGVHS(int maGVHS);
+    
     /**
      * create Slide
      *

@@ -8,6 +8,7 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.dao.service.SlideDAOService;
@@ -183,6 +184,31 @@ public class SlideDAO implements SlideDAOService {
             ex.printStackTrace();
         }
         return isCheck;
+    }
+
+    @Override
+    public List<Slide> getSlideListByMaGVHS(int maGVHS) {
+        List<Slide> slideList = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            String sql = "select * from tbl_slide where maGVHS = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, maGVHS);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Slide slide = new Slide();
+                slide.setMaSlide(rs.getInt("maSlide"));
+                slide.setTenSilde(rs.getString("tenSlide"));
+                slide.setNoidung(rs.getString("noidung"));
+                slide.setNam(rs.getInt("nam"));
+                TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTulieu(tulieu);
+                slideList.add(slide);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return slideList;
     }
 
 }
