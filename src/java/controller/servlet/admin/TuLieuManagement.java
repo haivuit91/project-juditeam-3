@@ -133,7 +133,7 @@ public class TuLieuManagement extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute("msgResult", "Có lỗi xảy ra, thêm tư liệu thất bại!");
-            request.setAttribute(util.Constants.PAGE, "addTL");
+            request.setAttribute(util.Constants.PAGE, "manage-add-edit-tl");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
@@ -166,7 +166,7 @@ public class TuLieuManagement extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute("msgResult", "Có lỗi xảy ra, sửa tư liệu thất bại!");
-            request.setAttribute(util.Constants.PAGE, "editTL");
+            request.setAttribute(util.Constants.PAGE, "manage-add-edit-tl");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
