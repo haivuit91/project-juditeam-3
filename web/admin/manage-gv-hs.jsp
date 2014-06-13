@@ -65,7 +65,7 @@
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getDienthoai()}</div>
                     <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getNgaysinh()}</div>
                     <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDonvi()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Học sinh'}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Sinh viên'}</div>
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">
                         <div class="col-md-6">
                             <a href="/project3/GVHSManage?do=edit&id=${gvhs.getMaGVHS()}" class="btn btn-primary btn-sm" >
