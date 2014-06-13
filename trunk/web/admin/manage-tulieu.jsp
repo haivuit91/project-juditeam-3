@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project1/umanage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/project3/umanage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới tư liệu
                 </a>               
                 <div class="row">
@@ -48,34 +49,32 @@
             <div class="panel panel-default">
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
                 <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên TL</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nội dung</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Loại TL</div>
+                <div class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nội dung</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Loại TL</div>
                 <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nguồn TL</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Năm</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">T-Thái</div>
+                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Năm</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
             </div>
+            <c:forEach items="${requestScope.tulieuList}" var="tlList">
                 <div class="panel panel-title">
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">1</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px" >Nguyễn Ngọc Duy</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">Quảng Nam</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">0906427601</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">
-                        <p>Trường THPT Nguyễn Huệ</p>
-                    </div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">Vui vẻ</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">Đại học</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getMaTL()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px" >${tlList.getTenTL()}</div>
+                    <div class="col-md-3" style="text-transform: inherit;padding:5px">${tlList.getNoidung()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getLoaiTL()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getNguonTL()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getNam()}</div>
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=edit&id=${tkList.getMaTK()}" class="btn btn-primary btn-sm" >
+                            <a href="/project3/tlmamage?do=edit&id=${tlList.getMaTL()}" class="btn btn-primary btn-sm" >
                                 <span class="glyphicon glyphicon-wrench"></span>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=del&id=${tkList.getMaTK()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tkList.getTenTK()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="/project3/tlmamage?do=del&id=${tlList.getMaTL()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tlList.getTenTL()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
                     </div>
-                </div>                               
+                </div>
+            </c:forEach>
         </div>
     </body>
 </html>
