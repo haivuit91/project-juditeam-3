@@ -27,30 +27,30 @@
                 <div class="col-lg-4 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-user"></span>${vb.getMaBG() > 0 ? 'Thay đổi thông tin bài giảng' : 'Thêm mới bài giảng'}</h3>
+                            <h3><span class="glyphicon glyphicon-user"></span>${bg.getMaBG() > 0 ? 'Thay đổi thông tin bài giảng' : 'Thêm mới bài giảng'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project3/bgmanage?id=${vb.getMaBG()}" method="post">
+                            <form class="form-horizontal" role="form" action="/project3/bgmanage?maBG=${bg.getMaBG()}" method="post">
                                 <!-- /.Mã BG -->
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
-                                        <input type="text" name="maBG" value="${vb.getMaBG()}" disabled class="form-control" id="inputEmail3" placeholder="Mã bài giảng">
+                                        <input type="text" name="maBG" value="${bg.getMaBG()}" disabled class="form-control" id="inputEmail3" placeholder="Mã bài giảng">
                                     </div>
                                 </div>
                                 <!-- /.tên BGB -->
                                 <div class="form-group">
                                     <div class="col-sm-12" >
-                                        <input type="text" name="tenBG" value="${vb.getTenBG()}" class="form-control" id="inputEmail3" placeholder="Tên bài giảng">
+                                        <input type="text" name="tenBG" value="${bg.getTenBG()}" class="form-control" id="inputEmail3" placeholder="Tên bài giảng">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12" >
-                                        <textarea name="noiDung" class="col-md-12 form-control" style="margin-top: 5px" rows="4" id="inputEmail3" placeholder="Nội dung" >${vb.getNoiDung()}</textarea>
+                                        <textarea name="noiDung" class="col-md-12 form-control" style="margin-top: 5px" rows="4" id="inputEmail3" placeholder="Nội dung" >${bg.getNoidung()}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12" >
-                                        <input type="text" name="nam" value="${vb.getNam()}" class="form-control" id="inputEmail3" placeholder="Năm phát hành">
+                                        <input type="text" name="nam" value="${bg.getNam()}" class="form-control" id="inputEmail3" placeholder="Năm phát hành">
                                     </div>
                                 </div>
                                 <!-- /.Giang vien hoc sinh -->
@@ -61,7 +61,7 @@
                                     <div class="col-sm-9" >
                                         <select class="form-control" name="gVienHS">
                                             <c:forEach items="${gvhsList}" var="gvhsList">
-                                                <option value="${gvhsList.getGiangVienHocSinh().getTenGVHS()}">${gvhsList.getGiangVienHocSinh().getTenGVHS()}</option>
+                                                <option value="${gvhsList.getTenGVHS()}">${gvhsList.getTenGVHS()}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -69,7 +69,7 @@
                                 <!-- /.Button -->
                                 <div class="form-group">
                                     <div class="col-sm-12" >
-                                        <input type="submit" ${vb.getMaBG() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
+                                        <input type="submit" ${bg.getMaBG() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
                                         &nbsp;
                                         <button type="reset" class="btn btn-warning">Clear</button>
                                     </div>
