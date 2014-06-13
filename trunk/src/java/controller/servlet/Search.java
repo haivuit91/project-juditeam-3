@@ -19,7 +19,10 @@ import model.dao.service.BaiGiangDAOService;
 import model.dao.service.DeCuongDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.dao.service.SlideDAOService;
+import model.entities.BaiGiang;
+import model.entities.DeCuong;
 import model.entities.GiangVienHocSinh;
+import model.entities.Slide;
 
 /**
  *
@@ -43,6 +46,51 @@ public class Search extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("do");
+        if (action != null) {
+            switch (action) {
+                case "details":
+                    showDetail(request, response);
+                    break;
+            }
+        }
+    }
+
+    private void showDetail(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String GVHS = request.getParameter("maGV");
+        String DC = request.getParameter("maDC");
+        String BG = request.getParameter("maBG");
+        String SL = request.getParameter("maSL");
+        DeCuong dc = null;
+        BaiGiang bg = null;
+        Slide sl = null;
+        GiangVienHocSinh gvhs = null;
+        if (GVHS != null) {
+            int maGVHS = Integer.parseInt(GVHS);
+            gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+            if (DC != null) {
+                int maDC = Integer.parseInt(DC);
+                dc = DC_SERVICE.getDeCuongByMa(maDC);
+            }
+            if (BG != null) {
+                int maBG = Integer.parseInt(BG);
+                bg = BG_SERVICE.getBaiGiangByMa(maBG);
+            }
+            if (SL != null) {
+                int maSL = Integer.parseInt(SL);
+                sl = SLIDE_SERVICE.getSlideByMa(maSL);
+            }
+        }
+        request.setAttribute("currentDC", dc);
+        request.setAttribute("currentBG", bg);
+        request.setAttribute("currentSL", sl);
+        request.setAttribute("currentGVHS", gvhs);
+        request.setAttribute(util.Constants.PAGE, "search-cb");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
     }
 
     /**
