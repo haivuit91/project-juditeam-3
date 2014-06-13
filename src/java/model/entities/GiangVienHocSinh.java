@@ -28,6 +28,7 @@ public class GiangVienHocSinh {
     private List<Slide> slideList = null;
     private List<DeCuong> decuongList = null;
 
+    
     public GiangVienHocSinh() {
     }
 

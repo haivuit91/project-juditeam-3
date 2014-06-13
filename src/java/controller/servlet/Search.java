@@ -11,8 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.BaiGiangDAO;
+import model.dao.DeCuongDAO;
 import model.dao.GiangVienHocSinhDAO;
+import model.dao.SlideDAO;
+import model.dao.service.BaiGiangDAOService;
+import model.dao.service.DeCuongDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
+import model.dao.service.SlideDAOService;
 import model.entities.GiangVienHocSinh;
 
 /**
@@ -22,6 +28,9 @@ import model.entities.GiangVienHocSinh;
 public class Search extends HttpServlet {
 
     GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
+    BaiGiangDAOService BG_SERVICE = BaiGiangDAO.getInstance();
+    SlideDAOService SLIDE_SERVICE = SlideDAO.getInstance();
+    DeCuongDAOService DC_SERVICE = DeCuongDAO.getInstance();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -76,13 +85,18 @@ public class Search extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String tenTT = request.getParameter("tenTT");
+        String noiDung = request.getParameter("tenTT");
         String loaiTT = request.getParameter("loaiTT");
         int nam = Integer.parseInt(request.getParameter("nam"));
         String nguoiThucHien = request.getParameter("nguoiThucHien");
-        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(tenTT);
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(nguoiThucHien);
         switch (loaiTT) {
             case "baiGiang":
+                request.setAttribute("gvhsList", gvhsList);
+                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("nam", nam);
+                request.setAttribute(util.Constants.PAGE, "search-nc");
+                request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
             case "slide":
                 break;
