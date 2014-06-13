@@ -31,6 +31,7 @@ public class SlideManagement extends HttpServlet {
     private final GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
     private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
 
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -44,6 +45,19 @@ public class SlideManagement extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        String p = request.getParameter("p");
+        if (p != null) {
+            switch (p) {
+                case "manage-sl":
+                    List<Slide> slideList = SL_SERVICE.getAllSlide();
+                    request.setAttribute(util.Constants.SL_LIST, slideList);
+                    request.setAttribute(util.Constants.PAGE, "manage-sl");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
+            }
+        }
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("do");
         if (action != null) {
             switch (action) {
@@ -55,18 +69,6 @@ public class SlideManagement extends HttpServlet {
                     break;
                 case "del":
                     doDel(request, response);
-                    break;
-            }
-        }
-        String p = request.getParameter("p");
-        if (p != null) {
-            switch (p) {
-                case "manage-sl":
-                    List<Slide> slideList = SL_SERVICE.getAllSlide();
-                    request.setAttribute(util.Constants.SL_LIST, slideList);
-                    request.setAttribute(util.Constants.PAGE, "manage-sl");
-                    request.removeAttribute(util.Constants.MSG_RESULT);
-                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
             }
         }

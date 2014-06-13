@@ -71,7 +71,7 @@ public class TuLieuManagement extends HttpServlet {
         String p = request.getParameter("p");
         if (p != null) {
             switch (p) {
-                case "manage-user":
+                case "manage-tl":
                     List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
                     request.setAttribute(util.Constants.TL_LIST, tulieuList);
                     request.setAttribute(util.Constants.PAGE, "manage-tl");

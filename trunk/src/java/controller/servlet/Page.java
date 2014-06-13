@@ -7,6 +7,7 @@ package controller.servlet;
 
 import java.io.IOException;
 import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import model.entities.Slide;
 import model.entities.BaiGiang;
 import model.entities.GiangVienHocSinh;
 import model.entities.TuLieu;
+import util.DataFile;
 
 /**
  *
@@ -31,9 +33,22 @@ import model.entities.TuLieu;
 public class Page extends HttpServlet {
 
     private final TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
-    private final SlideDAOService SL_SERVICE = SlideDAO.getInstance();
     private final BaiGiangDAOService BG_SERVICE = BaiGiangDAO.getInstance();
     private final GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
+
+    @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+        ServletContext context = getServletContext();
+        boolean isLoaded = false;
+        if (context.getAttribute("loaded") != null) {
+            isLoaded = (boolean) context.getAttribute("loaded");
+        }
+        if (!isLoaded) {
+            DataFile.loadFile();
+            context.setAttribute("loaded", true);
+        }
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -75,6 +90,8 @@ public class Page extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
+<<<<<<< .mine
+=======
                 case "manage-bg":
                     List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
                     List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
@@ -105,6 +122,7 @@ public class Page extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
+>>>>>>> .r150
             }
         }
 
