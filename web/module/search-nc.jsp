@@ -19,11 +19,11 @@
                     TRA CỨU THÔNG TIN
                 </div>
                 <div class="col-sm-2 col-sm-offset-10">
-                    <a href="/project3/Page?p=search-cb"class="label label-warning">Tìm kiếm cơ bản</a>
+                    <a href="/project3/Page?p=search-cb" class="label label-warning">Tìm kiếm cơ bản</a>
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="/project3/search?do=search-nc" method="post">
                         <fieldset>
                             <legend>Tìm kiếm nâng cao</legend>
 
@@ -70,7 +70,20 @@
                     </form>
                 </div>
                 <div class="panel-body">
-                    Ket qua tim kiem
+                    <c:if test="${gvhsList != null}">
+                        Kết quả:
+                        <c:forEach items="${gvhsList}" var="gvhs">
+                            Họ tên: ${gvhs.getTenGVHS()}<br>
+                            Bài giảng: 
+                            <c:forEach items="${gvhs.getDecuongList()}" var="dc">
+                                <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                    ${dc.getNoidung()}
+                                </c:if>
+                            </c:forEach><br>
+                        </c:forEach>
+                    </c:if>
+
+
                 </div>
 
             </div>
