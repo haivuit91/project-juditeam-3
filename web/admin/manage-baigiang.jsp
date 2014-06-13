@@ -60,7 +60,7 @@
                         <div class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getTenBG()}</div>
                         <div class="col-md-3" style="text-transform: inherit;padding:5px">${bgList.getNoidung()}</div>
                         <div class="col-md-1" style="text-transform: inherit;padding:5px">${bgList.getNam()}</div>
-                        <div class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getGiangVienHocSinh().getMaGVHS()}</div>
+                        <div class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getGiangVienHocSinh().getTenGVHS()}</div>
                         <div class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.isTrangthai()}</div>
                         <div class="col-md-1" style="text-transform: inherit;padding:5px">
                             <!--Edit-->
