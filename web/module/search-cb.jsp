@@ -48,7 +48,7 @@
                 <div class="panel-heading" style="text-align: center">
                     KẾT QUẢ TÌM KIẾM
                 </div>
-                <c:if test="${gvhsList.size() < 1 || gvhsList == null}">
+                <c:if test="${gvhsList.size() < 1 || gvhsList == null && currentDC == null && currentSL == null && currentBG == null}">
                     <p>Không có bản ghi nào được tìm thấy!</p>
                 </c:if>
                 <c:if test="${gvhsList.size() > 0}">
@@ -68,61 +68,118 @@
                             <div class="col-md-3">
                                 <c:if test="${gvhs.getDecuongList().size() > 0}">
                                     <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                        ${dc.getTenDC()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                    </c:forEach>
-                                </c:if>
+                                        ${dc.getTenDC()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        </c:forEach>
+                                    </c:if>
                             </div>
                             <div class="col-md-3">
                                 <c:if test="${gvhs.getSlideList().size() > 0}">
                                     <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                        ${sl.getTenSilde()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                    </c:forEach>
-                                </c:if>
+                                        ${sl.getTenSilde()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        </c:forEach>
+                                    </c:if>
                             </div>
                             <div class="col-md-3">
                                 <c:if test="${gvhs.getBaigiangList().size() > 0}">
                                     <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
-                                        ${bg.getTenBG()}&nbsp;<a href="#"><span class="glyphicon glyphicon-share-alt"></span></a><br>
-                                    </c:forEach>
-                                </c:if>
+                                        ${bg.getTenBG()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        </c:forEach>
+                                    </c:if>
                             </div>
                         </div>
                     </c:forEach>
+
+                </c:if>
+                <c:if test="${currentDC != null}">
                     <div class="panel-body" style="background:#f7f6f4">
-                        <!---------------------------------------------------->
                         <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
                         <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
-                            Họ tên
+                            ${currentGVHS.getTenGVHS()}
                         </div>
 
-                        <!---------------------------------------------------->
                         <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
                         <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
-                            Khoa cơ bản
+                            ${currentGVHS.getDonvi()}
                         </div>
-                        <!---------------------------------------------------->
                         <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
                         <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
-                            15/06/1990
+                            ${currentGVHS.getNgaysinh()}
                         </div>
-                        <!---------------------------------------------------->
                         <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
                         <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
-                            45 Dũng Sĩ Thanh Khê- Đà Nẵng
+                            ${currentGVHS.getDiachi()}
                         </div>
-                        <!---------------------------------------------------->
+                        <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Tên đề cương</div>
+                        <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                            ${currentDC.getTenDC()}
+                        </div>
                         <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
                         <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
-                            Nội con mẹ nó dung
+                            ${currentDC.getNoidung()}
                         </div>
                     </c:if>
-                    <!---------------------------------------------------->
+                    <c:if test="${currentSL != null}">
+                        <div class="panel-body" style="background:#f7f6f4">
+                            <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
+                            <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
+                                ${currentGVHS.getTenGVHS()}
+                            </div>
+
+                            <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                            <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
+                                ${currentGVHS.getDonvi()}
+                            </div>
+                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                ${currentGVHS.getNgaysinh()}
+                            </div>
+                            <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                            <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                                ${currentGVHS.getDiachi()}
+                            </div>
+                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Tên Slide</div>
+                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                ${currentSL.getTenSilde()}
+                            </div>
+                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                ${currentSL.getNoidung()}
+                            </div>
+                        </c:if>
+                        <c:if test="${currentBG != null}">
+                            <div class="panel-body" style="background:#f7f6f4">
+                                <div class="col-md-2 lert alert-success "  style="font-weight:bold;padding: 5px">Họ tên</div>
+                                <div class="col-md-10 lert alert-success" style="font-weight: initial;padding: 5px">
+                                    ${currentGVHS.getTenGVHS()}
+                                </div>
+
+                                <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Đơn vị</div>
+                                <div class="col-md-10 alert-warning" style="font-weight: initial;padding: 5px" >
+                                    ${currentGVHS.getDonvi()}
+                                </div>
+                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Ngày sinh</div>
+                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                    ${currentGVHS.getNgaysinh()}
+                                </div>
+                                <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Địa chỉ</div>
+                                <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
+                                    ${currentGVHS.getDiachi()}
+                                </div>
+                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Tên bài giảng</div>
+                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                    ${currentBG.getTenBG()}
+                                </div>
+                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
+                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                    ${currentBG.getNoidung()}
+                                </div>
+                            </c:if>
+                        </div>
+
+                    </div>
+
                 </div>
-
-            </div>
-
-        </div>
-        <script src="../js/bootstrap.js" type="text/javascript"></script>
-        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-    </body>
-</html>
+                <script src="../js/bootstrap.js" type="text/javascript"></script>
+                <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+                </body>
+                </html>
