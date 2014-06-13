@@ -117,6 +117,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 BaiGiang baigiang = new BaiGiang();
+                baigiang.setMaBG(rs.getInt("maBG"));
                 baigiang.setTenBG(rs.getString("tenBG"));
                 baigiang.setNoidung(rs.getString("noidung"));
                 baigiang.setNam(rs.getInt("nam"));
@@ -199,6 +200,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 BaiGiang baigiang = new BaiGiang();
+                baigiang.setMaBG(rs.getInt("maBG"));
                 baigiang.setTenBG(rs.getString("tenBG"));
                 baigiang.setNoidung(rs.getString("noidung"));
                 baigiang.setNam(rs.getInt("nam"));
@@ -222,6 +224,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 BaiGiang baigiang = new BaiGiang();
+                baigiang.setMaBG(rs.getInt("maBG"));
                 baigiang.setTenBG(rs.getString("tenBG"));
                 baigiang.setNoidung(rs.getString("noidung"));
                 baigiang.setNam(rs.getInt("nam"));
