@@ -66,11 +66,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TuLieuManagement</servlet-name>
-        <url-pattern>/TuLieuManagement</url-pattern>
+        <url-pattern>/tlmamage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DCCTManagement</servlet-name>
-        <url-pattern>/DCCTManagement</url-pattern>
+        <url-pattern>/dcctmamage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
