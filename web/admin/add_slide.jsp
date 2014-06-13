@@ -4,12 +4,13 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>quản lý Slide</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet"/>
     </head>
     <body>
@@ -18,68 +19,57 @@
                 <div class="col-lg-4 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-user"></span>${tk.getMaTK() > 0 ? 'Thay đổi thông tin GV-HS' : 'Thêm mới GV-HS'}</h3>
+                            <h3><span class="glyphicon glyphicon-user"></span>${sl.getMaSlide() > 0 ? 'Thay đổi thông tin slide' : 'Thêm mới slide'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project1/umanage?id=${tk.getMaTK()}" method="post">
-                                <!-- /.UserName -->
+                            <form class="form-horizontal" role="form" action="/project3/slidemanage?id=${sl.getMaSlide()}" method="post">
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
-                                        <input type="text" name="maSlide" value="${tk.getMaTK()}" disabled class="form-control" id="inputEmail3">
+                                        <input type="text" name="maSlide" value="${sl.getMaSlide()}" disabled class="form-control" id="inputEmail3" placeholder="Mã slide">
                                     </div>
                                 </div>
-                                <!-- /.UserName -->
                                 <div class="form-group">
-
                                     <div class="col-sm-12" >
-                                        <input type="text" name="tenSlide" value="${tk.getTenTK()}" ${tk.getMaTK() > 0 ? 'disabled' : ''} class="form-control" id="inputEmail3" placeholder="Tên  slide">
+                                        <input type="text" name="tenSlide" value="${sl.getTenSilde()}" class="form-control" id="inputEmail3" placeholder="Tên slide">
                                     </div>
                                 </div>
-                                <!-- /.Password -->
                                 <div class="form-group">
-
                                     <div class="col-sm-12" >
-                                        <input type="text" name="noidung" value="${tk.getMatkhau()}" class="form-control" id="inputEmail3" placeholder="Nội dung">
+                                        <textarea name="noidung" class="col-md-12 form-control" style="margin-top: 5px" rows="4" id="inputEmail3" placeholder="Nội dung" >${sl.getNoidung()}</textarea>
                                     </div>
                                 </div>
-                                <!-- /.FullName -->
                                 <div class="form-group">
-
                                     <div class="col-sm-12" >
-                                        <input type="text" name="nam" value="${tk.getHoTen()}" class="form-control" id="inputEmail3" placeholder="Năm">
+                                        <input type="text" name="nam" value="${sl.getNam()}" class="form-control" id="inputEmail3" placeholder="Năm">
                                     </div>
                                 </div>
-                                
                                 <div class="form-group">
-
                                     <div class="col-sm-12" >
-                                        <select class="form-control">
-                                            <option>HOC SINH</option>
-                                            <option>GIAO VIEN</option>
-                                            <option>LUYEN THUYEN</option>
+                                        <select class="form-control" name="gvhs">
+                                            <option value="${sl.getGiangVienHocSinh().getMaGVHS()}">${sl.getGiangVienHocSinh().getTenGVHS()}</option>
+                                            <c:forEach items="${requestScope.GV}" var="GV">
+                                                <option value="${GV.getMaGVHS()}">${GV.getMaGVHS()} - ${GV.getTenGVHS()}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
-                                <!-- /.Phone -->
                                 <div class="form-group">
-
                                     <div class="col-sm-12" >
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
+                                        <select class="form-control" name="tulieu">
+                                            <option value="${sl.getTuLieu().getMaTL()}">${sl.getTuLieu().getTenTL()}</option>
+                                            <c:forEach items="${requestScope.tl}" var="tl">
+                                                <option value="${tl.getMaTL()}">${tl.getTenTL()}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group">
                                     <div class="col-sm-8 col-md-offset-4" >
-                                        <input type="submit" ${tk.getMaTK() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
+                                        <input type="submit" ${sl.getMaSlide() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
                                         &nbsp;
-                                        <button type="reset" class="btn btn-warning">Clear</button>
+                                        <button type="reset" class="btn btn-warning">Nhập lại</button>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>

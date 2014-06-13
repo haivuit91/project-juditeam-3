@@ -16,12 +16,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project1/umanage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/project3/slidemanage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới Slide
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project1/umanage?do=search" method="post">
+                        <form action="/project3/slidemanage?do=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -33,7 +33,7 @@
 
                                     </div><!-- /btn-group -->
 
-                                    <input type="text" name="userName" class="form-control" placeholder="Nhập tên tài khoản muốn tìm...">
+                                    <input type="text" name="tukhoa" class="form-control" placeholder="Nhập từ khóa muốn tìm...">
 
                                 </div><!-- /input-group -->
                             </div><!-- /input-group -->
@@ -60,16 +60,16 @@
                     <div class="col-md-2" style="text-transform: inherit;padding:5px" >${slList.getTenSilde()}</div>
                     <div class="col-md-3" style="text-transform: inherit;padding:5px">${slList.getNoidung()}</div>
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">${slList.getNam()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getGvhsList()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTulieuList().getTenTL()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getGiangVienHocSinh().getTenGVHS()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTuLieu().getTenTL()}</div>
                     <div class="col-md-1" style="text-transform: inherit;padding:5px">
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=edit&id=${slList.getMaSlide()}" class="btn btn-primary btn-sm" >
+                            <a href="/project3/slidemanage?do=edit&id=${slList.getMaSlide()}" class="btn btn-primary btn-sm" >
                                 <span class="glyphicon glyphicon-wrench"></span>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="/project1/umanage?do=del&id=${slList.getMaSlide()}" onclick="return confirm('Bạn thực sự muốn xóa: ${slList.getTenSilde()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            <a href="/project3/slidemanage?do=del&id=${slList.getMaSlide()}" onclick="return confirm('Bạn thực sự muốn xóa: ${slList.getTenSilde()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                         </div>
                     </div>
                 </div>  
