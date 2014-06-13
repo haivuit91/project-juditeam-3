@@ -130,7 +130,7 @@ public class GVHSManagement extends HttpServlet {
         int maGVHS = Integer.parseInt(request.getParameter("id"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         request.setAttribute("gvhs", gvhs);
-        request.setAttribute(util.Constants.PAGE, "editGVHS");
+        request.setAttribute(util.Constants.PAGE, "addGVHS");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
@@ -149,16 +149,14 @@ public class GVHSManagement extends HttpServlet {
 
         GiangVienHocSinh gvhs = new GiangVienHocSinh(maGVHS, tenGVHS, diaChi, dienThoai, ns, donVi, trinhDo, trangThai);
         if (GVHS_SERVICE.chinhsuaGiangVienHocSinh(gvhs)) {
-            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
-            request.setAttribute("gvhsList", gvhsList);
-            request.setAttribute(util.Constants.PAGE, "manage-gvhs");
             request.setAttribute("msgResult", "Bạn đã sửa GVHS thành công");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute("msgResult", "Có lỗi xảy ra, sửa GVHS thất bại!");
-            request.setAttribute(util.Constants.PAGE, "addGVHS");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+        request.setAttribute("gvhsList", gvhsList);
+        request.setAttribute(util.Constants.PAGE, "manage-gvhs");
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     private void doDel(HttpServletRequest request, HttpServletResponse response)
