@@ -55,7 +55,6 @@ public class Page extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
-
                 case "search-nc":
                     request.setAttribute(util.Constants.PAGE, "search-nc");
                     request.removeAttribute(util.Constants.MSG_RESULT);
@@ -77,6 +76,10 @@ public class Page extends HttpServlet {
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
                 case "manage-bg":
+                    List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
+                    List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
+                    request.setAttribute("bgList", bgList);
                     request.setAttribute(util.Constants.PAGE, "manage-bg");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
@@ -87,6 +90,8 @@ public class Page extends HttpServlet {
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
                 case "manage-sl":
+                    List<Slide> slideList = SL_SERVICE.getAllSlide();
+                    request.setAttribute(util.Constants.SL_LIST, slideList);
                     request.setAttribute(util.Constants.PAGE, "manage-sl");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
@@ -98,7 +103,6 @@ public class Page extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
-
             }
         }
 
