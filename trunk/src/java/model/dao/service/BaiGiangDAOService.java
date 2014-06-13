@@ -69,8 +69,8 @@ public interface BaiGiangDAOService {
     
     /**
      * find BaiGiang by tenBG
-     * @param tenBG
+     * @param maGVHS
      * @return BaiGiang by tenBG
      */
-    public List<BaiGiang> timkiemBaiGiangByMaGVHS(String key);
+    public List<BaiGiang> timkiemBaiGiangByMaGVHS(int maGVHS);
 }

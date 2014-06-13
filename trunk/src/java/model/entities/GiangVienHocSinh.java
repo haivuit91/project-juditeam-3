@@ -27,6 +27,14 @@ public class GiangVienHocSinh {
     private List<BaiGiang> baigiangList = null;
     private List<Slide> slideList = null;
     private List<DeCuong> decuongList = null;
+
+    public List<DeCuong> getDecuongList() {
+        return decuongList;
+    }
+
+    public void setDecuongList(List<DeCuong> decuongList) {
+        this.decuongList = decuongList;
+    }
     
     
     public GiangVienHocSinh() {

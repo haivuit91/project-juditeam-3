@@ -188,29 +188,23 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     }
 
     @Override
-    public List<BaiGiang> timkiemBaiGiangByMaGVHS(String key) {
-        String sql = "";
+    public List<BaiGiang> timkiemBaiGiangByMaGVHS(int maGVHS) {
         List<BaiGiang> listBaiGiang = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            switch (key) {
-                case "maGVHS":
-                    sql = "select * from tbl_baigiang where maGVHS like '%" + key + "%' ";
-                    break;
-            }
+           String sql = "select * from tbl_baigiang where maGVHS = ? ";
             PreparedStatement sm = conn.prepareStatement(sql);
+            sm.setInt(1, maGVHS);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 BaiGiang baigiang = new BaiGiang();
                 baigiang.setTenBG(rs.getString("tenBG"));
                 baigiang.setNoidung(rs.getString("noidung"));
                 baigiang.setNam(rs.getInt("nam"));
-                GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                baigiang.setGiangVienHocSinh(giangvienhocsinh);
                 baigiang.setTrangthai(rs.getInt("trangthai"));
                 listBaiGiang.add(baigiang);
             }
-        } catch (Exception ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
         return listBaiGiang;

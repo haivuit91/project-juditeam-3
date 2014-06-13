@@ -9,11 +9,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.entities.GiangVienHocSinh;
 
@@ -23,7 +20,7 @@ import model.entities.GiangVienHocSinh;
  */
 public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
 
-    public static GiangVienHocSinhDAO giangvienhocsinhDAO;
+    private static GiangVienHocSinhDAO giangvienhocsinhDAO;
 
     public static GiangVienHocSinhDAO getInstance() {
         if (giangvienhocsinhDAO == null) {
@@ -50,7 +47,9 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
                 giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
-
+                giangvienhocsinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
+                giangvienhocsinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
+                giangvienhocsinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));
                 listGVHS.add(giangvienhocsinh);
             }
         } catch (Exception ex) {
@@ -78,7 +77,9 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
                 giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
-
+                giangvienhocsinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
+                giangvienhocsinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
+                giangvienhocsinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -105,6 +106,9 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
                 giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
+                giangvienhocsinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
+                giangvienhocsinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
+                giangvienhocsinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -135,6 +139,9 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
                 giangVienHocSinh.setDonvi(rs.getString("donvi"));
                 giangVienHocSinh.setTrinhdo(rs.getInt("trinhdo"));
                 giangVienHocSinh.setTrangthai(rs.getInt("trangthai"));
+                giangVienHocSinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
+                giangVienHocSinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
+                giangVienHocSinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));
                 listGVHS.add(giangVienHocSinh);
             }
         } catch (Exception ex) {
@@ -182,7 +189,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
             pstmt.setInt(7, gvhs.getTrangthai());
             pstmt.setInt(8, gvhs.getMaGVHS());
             pstmt.executeUpdate();
-            
+
             isCheck = true;
         } catch (Exception ex) {
             ex.printStackTrace();
