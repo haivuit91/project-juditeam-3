@@ -22,7 +22,7 @@ public class DeCuong {
     private String noidung;
     private String tieuchuan;
     private int nam;
-    private GiangVienHocSinh giangvienhocsinh;
+    private GiangVienHocSinh giangVienHocSinh;
     private int trangthai;
 
     List<GiangVienHocSinh> listGVHS = null;
@@ -31,7 +31,7 @@ public class DeCuong {
 
     }
 
-    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, GiangVienHocSinh giangvienhocsinh, int trangthai) {
+    public DeCuong(int maDC, String tenDC, int dvhoctrinh, String thoigian, String dieukien, String muctieu, String noidung, String tieuchuan, int nam, GiangVienHocSinh giangVienHocSinh, int trangthai) {
         this.maDC = maDC;
         this.tenDC = tenDC;
         this.dvhoctrinh = dvhoctrinh;
@@ -41,7 +41,7 @@ public class DeCuong {
         this.noidung = noidung;
         this.tieuchuan = tieuchuan;
         this.nam = nam;
-        this.giangvienhocsinh = giangvienhocsinh;
+        this.giangVienHocSinh = giangVienHocSinh;
         this.trangthai = trangthai;
     }
 
@@ -113,12 +113,24 @@ public class DeCuong {
         return nam;
     }
 
-    public GiangVienHocSinh getGiangvienhocsinh() {
-        return giangvienhocsinh;
+    public void setNam(int nam) {
+        this.nam = nam;
     }
 
-    public void setGiangvienhocsinh(GiangVienHocSinh giangvienhocsinh) {
-        this.giangvienhocsinh = giangvienhocsinh;
+    public GiangVienHocSinh getGiangVienHocSinh() {
+        return giangVienHocSinh;
+    }
+
+    public void setGiangVienHocSinh(GiangVienHocSinh giangVienHocSinh) {
+        this.giangVienHocSinh = giangVienHocSinh;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
 
     public List<GiangVienHocSinh> getListGVHS() {
@@ -127,18 +139,6 @@ public class DeCuong {
 
     public void setListGVHS(List<GiangVienHocSinh> listGVHS) {
         this.listGVHS = listGVHS;
-    }
-
-    public void setNam(int nam) {
-        this.nam = nam;
-    }
-
-    public int isTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
     }
 
 }

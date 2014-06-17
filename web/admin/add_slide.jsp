@@ -46,9 +46,11 @@
                                 <div class="form-group">
                                     <div class="col-sm-12" >
                                         <select class="form-control" name="gvhs">
-                                            <option value="${sl.getGiangVienHocSinh().getMaGVHS()}">${sl.getGiangVienHocSinh().getTenGVHS()}</option>
+                                            <option value="${sl.getGiangVienHocSinh().getMaGVHS()}">${sl.getGiangVienHocSinh().getMaGVHS()} - ${sl.getGiangVienHocSinh().getTenGVHS()}</option>
                                             <c:forEach items="${requestScope.GV}" var="GV">
-                                                <option value="${GV.getMaGVHS()}">${GV.getMaGVHS()} - ${GV.getTenGVHS()}</option>
+                                                <c:if test="${GV.getMaGVHS() != sl.getGiangVienHocSinh().getMaGVHS()}">
+                                                    <option value="${GV.getMaGVHS()}">${GV.getMaGVHS()} - ${GV.getTenGVHS()}</option>
+                                                </c:if>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -58,7 +60,9 @@
                                         <select class="form-control" name="tulieu">
                                             <option value="${sl.getTuLieu().getMaTL()}">${sl.getTuLieu().getTenTL()}</option>
                                             <c:forEach items="${requestScope.tl}" var="tl">
-                                                <option value="${tl.getMaTL()}">${tl.getTenTL()}</option>
+                                                <c:if test="${tl.getMaTL() != sl.getTuLieu().getMaTL()}">
+                                                    <option value="${tl.getMaTL()}">${tl.getTenTL()}</option>
+                                                </c:if>
                                             </c:forEach>
                                         </select>
                                     </div>

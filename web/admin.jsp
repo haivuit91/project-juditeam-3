@@ -51,6 +51,10 @@
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="/admin/manage-decuongchitiet.jsp" %>
                 </c:if>
+                <c:if test="${page == 'add-edit-dcct'}">
+                    <%@include file="admin/nav_admin.jsp" %>    
+                    <%@include file="/admin/add_decuongchitiet.jsp" %>
+                </c:if>
                 <c:if test="${page == 'manage-sl'}">
                     <%@include file="admin/nav_admin.jsp" %>    
                     <%@include file="/admin/manage-slide.jsp" %>

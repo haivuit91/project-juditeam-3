@@ -39,20 +39,35 @@ public class DCCTManagement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String p = request.getParameter("p");
+        String p = request.getParameter("page");
         if (p != null) {
             switch (p) {
                 case "manage-dcct":
+                    List<DeCuong> dcctList = DCCT_SERVICE.getAllDeCuong();
+                    request.setAttribute(util.Constants.DC_LIST, dcctList);
                     request.setAttribute(util.Constants.PAGE, "manage-dcct");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
             }
         }
-
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("do");
+        if (action != null) {
+            switch (action) {
+                case "edit":
+                    doEdit(request, response);
+                    break;
+                case "add":
+                    doAddnew(request, response);
+                    break;
+                case "delete":
+                    doDel(request, response);
+                    break;
+            }
+        }
     }
 
     /**
@@ -66,11 +81,28 @@ public class DCCTManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String submit = request.getParameter("submit");
+        switch (submit) {
+            case "Sửa":
+                editDCCT(request, response);
+                break;
+            case "Thêm mới":
+                addDCCT(request, response);
+                break;
+//            case "Tìm kiếm":
+//                search(request, response);
+//                break;
+        }
     }
 
     private void doAddnew(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute(util.Constants.PAGE, "addDCCT");
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+        request.setAttribute("GV", gvhsList);
+        request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
+        request.removeAttribute(util.Constants.MSG_RESULT);
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
@@ -81,54 +113,53 @@ public class DCCTManagement extends HttpServlet {
         String thoigian = request.getParameter("thoigian");
         String dieukien = request.getParameter("dieukien");
         String muctieu = request.getParameter("muctieu");
-        String noiDung = request.getParameter("noidung");
+        String noiDung = request.getParameter("noiDung");
         String tieuchuan = request.getParameter("tieuchuan");
         int nam = Integer.parseInt(request.getParameter("nam"));
-        String GVHS = request.getParameter("gvhs");
-
-        String[] arrGVHS = GVHS.split("-");
-        int maGVHS = Integer.parseInt(arrGVHS[0]);
+        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         int trangThai = 1;
 
         DeCuong dcct = new DeCuong(1, tenDC, dvhoctrinh, thoigian, dieukien, muctieu, noiDung, tieuchuan, nam, gvhs, trangThai);
         if (DCCT_SERVICE.themDeCuong(dcct)) {
             List<DeCuong> dcctList = DCCT_SERVICE.getAllDeCuong();
-            request.setAttribute("dcctList", dcctList);
+            request.setAttribute(util.Constants.DC_LIST, dcctList);
             request.setAttribute(util.Constants.PAGE, "manage-dcct");
+            request.removeAttribute(util.Constants.MSG_RESULT);
             request.setAttribute("msgResult", "Bạn đã thêm đề cương chi tiết thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
+            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+            request.setAttribute("GV", gvhsList);
             request.setAttribute("msgResult", "Có lỗi xảy ra, thêm đề cương chi tiết thất bại!");
-            request.setAttribute(util.Constants.PAGE, "addDCCT");
+            request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
 
     private void doEdit(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int maDC = Integer.parseInt(request.getParameter("id"));
+        int maDC = Integer.parseInt(request.getParameter("maDC"));
         DeCuong dcct = DCCT_SERVICE.getDeCuongByMa(maDC);
-        request.setAttribute("dcct", dcct);
-        request.setAttribute(util.Constants.PAGE, "editDCCT");
+        request.setAttribute(util.Constants.DC_LIST, dcct);
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+        request.setAttribute("GV", gvhsList);
+        request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     private void editDCCT(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int maDC = Integer.parseInt(request.getParameter("id"));
+        int maDC = Integer.parseInt(request.getParameter("maDC"));
         String tenDC = request.getParameter("tenDC");
         int dvhoctrinh = Integer.parseInt(request.getParameter("dvhoctrinh"));
         String thoigian = request.getParameter("thoigian");
         String dieukien = request.getParameter("dieukien");
         String muctieu = request.getParameter("muctieu");
-        String noiDung = request.getParameter("noidung");
+        String noiDung = request.getParameter("noiDung");
         String tieuchuan = request.getParameter("tieuchuan");
         int nam = Integer.parseInt(request.getParameter("nam"));
-        String GVHS = request.getParameter("gvhs");
-
-        String[] arrGVHS = GVHS.split("-");
-        int maGVHS = Integer.parseInt(arrGVHS[0]);
+        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         int trangThai = 1;
 
@@ -140,24 +171,30 @@ public class DCCTManagement extends HttpServlet {
             request.setAttribute("msgResult", "Bạn đã sửa đề cương chi tiết thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
+            int madc = Integer.parseInt(request.getParameter("maDC"));
+            DeCuong dc = DCCT_SERVICE.getDeCuongByMa(madc);
+            request.setAttribute(util.Constants.DC_LIST, dc);
+            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+            request.setAttribute("GV", gvhsList);
             request.setAttribute("msgResult", "Có lỗi xảy ra, sửa đề cương chi tiết thất bại!");
-            request.setAttribute(util.Constants.PAGE, "editDCCT");
+            request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
 
     private void doDel(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int maDC = Integer.parseInt(request.getParameter("id"));
+        int maDC = Integer.parseInt(request.getParameter("maDC"));
         if (DCCT_SERVICE.xoaDeCuong(maDC)) {
             List<DeCuong> dcctList = DCCT_SERVICE.getAllDeCuong();
-            request.setAttribute("dcctList", dcctList);
+            request.setAttribute(util.Constants.DC_LIST, dcctList);
             request.setAttribute(util.Constants.PAGE, "manage-dcct");
-            request.setAttribute("msgResult", "Bạn đã sửa đề cương chi tiết thành công");
+            request.removeAttribute(util.Constants.MSG_RESULT);
+            request.setAttribute("msgResult", "Bạn đã xóa đề cương chi tiết thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "manage-dcct");
-            request.setAttribute("msgResult", "Có lỗi xảy ra, sửa đề cương chi tiết thất bại");
+            request.setAttribute("msgResult", "Có lỗi xảy ra, xóa đề cương chi tiết thất bại");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }
