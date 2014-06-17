@@ -50,7 +50,7 @@ public class DeCuongDAO implements DeCuongDAOService {
                 decuong.setTieuchuan(rs.getString("tieuchuan"));
                 decuong.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                decuong.setGiangvienhocsinh(giangvienhocsinh);
+                decuong.setGiangVienHocSinh(giangvienhocsinh);
                 decuong.setTrangthai(rs.getInt("trangthai"));
                 listDC.add(decuong);
             }
@@ -80,7 +80,7 @@ public class DeCuongDAO implements DeCuongDAOService {
                 decuong.setTieuchuan(rs.getString("tieuchuan"));
                 decuong.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                decuong.setGiangvienhocsinh(giangvienhocsinh);
+                decuong.setGiangVienHocSinh(giangvienhocsinh);
                 decuong.setTrangthai(rs.getInt("trangthai"));
             }
         } catch (Exception ex) {
@@ -111,7 +111,7 @@ public class DeCuongDAO implements DeCuongDAOService {
                 decuong.setTieuchuan(rs.getString("tieuchuan"));
                 decuong.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                decuong.setGiangvienhocsinh(giangvienhocsinh);
+                decuong.setGiangVienHocSinh(giangvienhocsinh);
                 decuong.setTrangthai(rs.getInt("trangthai"));
                 listDeCuong.add(decuong);
             }
@@ -144,7 +144,7 @@ public class DeCuongDAO implements DeCuongDAOService {
                 decuong.setTieuchuan(rs.getString("tieuchuan"));
                 decuong.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                decuong.setGiangvienhocsinh(giangvienhocsinh);
+                decuong.setGiangVienHocSinh(giangvienhocsinh);
                 decuong.setTrangthai(rs.getInt("trangthai"));
                 listDeCuong.add(decuong);
             }
@@ -175,7 +175,7 @@ public class DeCuongDAO implements DeCuongDAOService {
                 decuong.setTieuchuan(rs.getString("tieuchuan"));
                 decuong.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                decuong.setGiangvienhocsinh(giangvienhocsinh);
+                decuong.setGiangVienHocSinh(giangvienhocsinh);
                 decuong.setTrangthai(rs.getInt("trangthai"));
                 listDeCuong.add(decuong);
             }
@@ -205,8 +205,8 @@ public class DeCuongDAO implements DeCuongDAOService {
             pstmt.setString(6, decuong.getNoidung());
             pstmt.setString(7, decuong.getTieuchuan());
             pstmt.setInt(8, decuong.getNam());
-            pstmt.setInt(9, decuong.getGiangvienhocsinh().getMaGVHS());
-            pstmt.setInt(10, decuong.isTrangthai());
+            pstmt.setInt(9, decuong.getGiangVienHocSinh().getMaGVHS());
+            pstmt.setInt(10, decuong.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -217,7 +217,7 @@ public class DeCuongDAO implements DeCuongDAOService {
     @Override
     public boolean chinhsuaDeCuong(DeCuong decuong) {
         boolean isCheck = false;
-        String sql = "update tbl_dcct set tenDC=?, dvhoctring = ?, thoigian = ?, dieukien = ?, muctieu = ?, noidung=?, tieuchuan = ?, nam=?, maGVHS=?,trangthai=?";
+        String sql = "update tbl_dcct set tenDC=?, dvhoctrinh = ?, thoigian = ?, dieukien = ?, muctieu = ?, noidung=?, tieuchuan = ?, nam=?, maGVHS=?,trangthai=? where maDC=?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -229,8 +229,9 @@ public class DeCuongDAO implements DeCuongDAOService {
             pstmt.setString(6, decuong.getNoidung());
             pstmt.setString(7, decuong.getTieuchuan());
             pstmt.setInt(8, decuong.getNam());
-            pstmt.setInt(9, decuong.getGiangvienhocsinh().getMaGVHS());
-            pstmt.setInt(10, decuong.isTrangthai());
+            pstmt.setInt(9, decuong.getGiangVienHocSinh().getMaGVHS());
+            pstmt.setInt(10, decuong.getTrangthai());
+            pstmt.setInt(11, decuong.getMaDC());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());

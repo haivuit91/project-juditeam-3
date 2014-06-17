@@ -6,7 +6,6 @@
 package controller.servlet;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +17,6 @@ import model.dao.TuLieuDAO;
 import model.dao.service.BaiGiangDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.dao.service.TuLieuDAOService;
-import model.entities.Slide;
-import model.entities.BaiGiang;
-import model.entities.GiangVienHocSinh;
-import model.entities.TuLieu;
 import util.DataFile;
 
 /**

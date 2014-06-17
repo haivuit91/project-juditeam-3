@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,12 +17,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project3/dcctmamage?page=add" class="btn btn-primary btn-sm" >
+                <a href="/project3/dcctmamage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới đề cương chi tiết
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project3/dcctmamage?page=search" method="post">
+                        <form action="/project3/dcctmamage?do=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -55,33 +56,33 @@
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nôi dung</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tiêu chuẩn</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GViên HSinh</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Trạng thái</div>
+                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GViên HSinh</div>
                 <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa chọn</div>
             </div>
-            <div class="panel panel-title">
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getMaDC()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getTenDC()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getDvhoctrinh()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getThoigian()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getDieukien()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getMuctieu()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getNoidung()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getTieuchuan()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getNam()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getGiangVienHocSinh().getTenGVHS()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.isTrangthai()}</div>
-                <div class="col-md-1" style="text-transform: inherit;padding:5px">
-                    <div class="col-md-6">
-                        <a href="/project3/dcctmamage?page=edit&maDC=${dcctList.getMaDC()}" class="btn btn-primary btn-sm" >
-                            <span class="glyphicon glyphicon-wrench"></span>
-                        </a>
+            <c:forEach items="${dcctList}" var="dcctList">
+                <div class="panel panel-title">
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getMaDC()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getTenDC()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getDvhoctrinh()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getThoigian()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getDieukien()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getMuctieu()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getNoidung()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getTieuchuan()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getNam()}</div>
+                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${dcctList.getGiangVienHocSinh().getTenGVHS()}</div>
+                    <div class="col-md-1" style="text-transform: inherit;padding:5px">
+                        <div class="col-md-6">
+                            <a href="/project3/dcctmamage?do=edit&maDC=${dcctList.getMaDC()}" class="btn btn-primary btn-sm" >
+                                <span class="glyphicon glyphicon-wrench"></span>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/project3/dcctmamage?do=delete&maDC=${dcctList.getMaDC()}" onclick="return confirm('Bạn thực sự muốn xóa: ${dcctList.getTenDC()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <a href="/project3/dcctmamage?page=delete&maDC=${dcctList.getMaDC()}" onclick="return confirm('Bạn thực sự muốn xóa: ${dcctList.getTenDC()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-                    </div>
-                </div>
-            </div>                               
+                </div>    
+            </c:forEach>
         </div>
     </body>
 </html>

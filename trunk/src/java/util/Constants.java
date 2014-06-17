@@ -51,6 +51,8 @@ public class Constants {
     public static final String TL_LIST = "tulieuList";
     
     public static final String SL_LIST = "slideList";
+    
+    public static final String DC_LIST = "dcctList";
     public static final String STORAGE_PATH = "project3/config/";
     public static final String SEPERATOR = ":";
     public static final String DATA_FILE = "config.txt";
