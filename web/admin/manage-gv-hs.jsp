@@ -46,37 +46,39 @@
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
             </div>
-
-            <div class="panel panel-default">
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên GVHS</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Địa chỉ</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Điện thoại</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Ngày sinh</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Đơn vị</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Trình độ</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Lựa chọn</div>
-            </div>
-            <c:forEach items="${gvhsList}" var="gvhs">
-                <div class="panel panel-title">
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getMaGVHS()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTenGVHS()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDiachi()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getDienthoai()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getNgaysinh()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDonvi()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Sinh viên'}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">
-                        <div class="col-md-6">
-                            <a href="/project3/GVHSManage?do=edit&id=${gvhs.getMaGVHS()}" class="btn btn-primary btn-sm" >
-                                <span class="glyphicon glyphicon-wrench"></span>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="/project3/GVHSManage?do=del&id=${gvhs.getMaGVHS()}" onclick="return confirm('Bạn thực sự muốn xóa: ${gvhs.getTenGVHS()} ?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-                        </div>
-                    </div>
-                </div>  </c:forEach>                             
+            <table>
+                <tr>
+                    <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GVHS</td>
+                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Địa Chỉ</td>
+                    <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Điện Thoại</td>
+                    <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Ngày Sinh</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Đơn Vị</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Trình Độ</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
+                </tr>
+                <c:forEach items="${gvhsList}" var="gvhs">
+                    <tr>
+                        <td style="text-transform: inherit;padding:5px">${gvhs.getMaGVHS()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTenGVHS()}</td>
+                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${gvhs.getDiachi()}</td>
+                        <td class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getDienthoai()}</td>
+                        <td class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getNgaysinh()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDonvi()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Sinh viên'}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">
+                            <div class="col-md-6">
+                                <a href="/project3/GVHSManage?do=edit&id=${gvhs.getMaGVHS()}" class="btn btn-primary btn-sm" >
+                                    <span class="glyphicon glyphicon-wrench"></span>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/project3/GVHSManage?do=del&id=${gvhs.getMaGVHS()}" onclick="return confirm('Bạn thực sự muốn xóa: ${gvhs.getTenGVHS()} ?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>                            
         </div>
     </body>
 </html>

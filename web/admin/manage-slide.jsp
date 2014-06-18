@@ -44,36 +44,37 @@
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
             </div>
-
-            <div class="panel panel-default">
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên Slide</div>
-                <div class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nội dung</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Năm</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên GVHS</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên tư liệu</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
-            </div>
-            <c:forEach items="${requestScope.slideList}" var="slList">
-                <div class="panel panel-title">
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${slList.getMaSlide()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px" >${slList.getTenSilde()}</div>
-                    <div class="col-md-3" style="text-transform: inherit;padding:5px">${slList.getNoidung()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${slList.getNam()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getGiangVienHocSinh().getTenGVHS()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTuLieu().getTenTL()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">
-                        <div class="col-md-6">
-                            <a href="/project3/slidemanage?do=edit&id=${slList.getMaSlide()}" class="btn btn-primary btn-sm" >
-                                <span class="glyphicon glyphicon-wrench"></span>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="/project3/slidemanage?do=del&id=${slList.getMaSlide()}" onclick="return confirm('Bạn thực sự muốn xóa: ${slList.getTenSilde()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-                        </div>
-                    </div>
-                </div>  
-            </c:forEach>
+            <table>
+                <tr>
+                    <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên Slide</td>
+                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên Giảng Viên</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tư Liệu</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
+                </tr>
+                <c:forEach items="${requestScope.slideList}" var="slList">
+                    <tr>
+                        <td style="text-transform: inherit;padding:5px">${slList.getMaSlide()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTenSilde()}</td>
+                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${slList.getNoidung()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getNam()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getGiangVienHocSinh().getTenGVHS()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTuLieu().getTenTL()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">
+                            <div class="col-md-6">
+                                <a href="/project3/slidemanage?do=edit&id=${slList.getMaSlide()}" class="btn btn-primary btn-sm" >
+                                    <span class="glyphicon glyphicon-wrench"></span>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/project3/slidemanage?do=del&id=${slList.getMaSlide()}" onclick="return confirm('Bạn thực sự muốn xóa: ${slList.getTenSilde()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </body>
 </html>
