@@ -178,8 +178,8 @@ public class GVHSManagement extends HttpServlet {
 
     private void search(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tenGV = request.getParameter("tenGVHS");
-        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinhByTen(tenGV);
+        String tukhoa = request.getParameter("tukhoa");
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinh(tukhoa);
         request.setAttribute("gvhsList", gvhsList);
         request.setAttribute(util.Constants.PAGE, "manage-gvhs");
         request.removeAttribute("msgResult");
