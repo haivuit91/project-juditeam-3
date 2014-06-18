@@ -86,7 +86,7 @@ public class Authentication extends HttpServlet {
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "login");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+            request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
         }
     }
 
