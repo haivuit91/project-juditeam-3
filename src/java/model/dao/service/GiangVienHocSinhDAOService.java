@@ -41,15 +41,14 @@ public interface GiangVienHocSinhDAOService {
      * find GiangVienDeCuong
      *
      * @param tukhoa
-     * @param dieukien
      * @return GiangVienDeCuong
      */
-    public List<GiangVienHocSinh> timkiemGiangVienHocSinh(String tukhoa, String dieukien);
+    public List<GiangVienHocSinh> timkiemGiangVienHocSinh(String tukhoa);
 
     /**
      * find GiangVienDeCuong
      *
-     * @param tenGVHS
+     * @param key
      * @return GiangVienDeCuong
      */
     public List<GiangVienHocSinh> timkiemGiangVienHocSinhByTen(String key);

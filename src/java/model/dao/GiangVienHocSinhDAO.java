@@ -117,8 +117,33 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
     }
 
     @Override
-    public List<GiangVienHocSinh> timkiemGiangVienHocSinh(String tukhoa, String dieukien) {
-        return null;
+    public List<GiangVienHocSinh> timkiemGiangVienHocSinh(String tukhoa) {
+        String sql = "";
+        List<GiangVienHocSinh> listGVHS = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            sql = "select * from tbl_giangvien_hocsinh where tenGVHS like '" + "%" + tukhoa + "%" + "' or diachi like '" + "%" + tukhoa + "%" + "' or donvi like '" + "%" + tukhoa + "%" + "'";
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
+                giangvienhocsinh.setMaGVHS(rs.getInt("maGVHS"));
+                giangvienhocsinh.setTenGVHS(rs.getString("tenGVHS"));
+                giangvienhocsinh.setDiachi(rs.getString("diachi"));
+                giangvienhocsinh.setDienthoai(rs.getString("dienthoai"));
+                giangvienhocsinh.setNgaysinh(rs.getDate("ngaysinh"));
+                giangvienhocsinh.setDonvi(rs.getString("donvi"));
+                giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
+                giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
+                giangvienhocsinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
+                giangvienhocsinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
+                giangvienhocsinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));
+                listGVHS.add(giangvienhocsinh);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listGVHS;
     }
 
     @Override
