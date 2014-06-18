@@ -63,7 +63,7 @@ public interface DeCuongDAOService {
      * @param nam
      * @return DeCuong
      */
-    public List<DeCuong> timkiemDeCuongByNam(int nam);
+    public List<DeCuong> timkiemDeCuong(String tukhoa);
 
     /**
      * create DeCuong

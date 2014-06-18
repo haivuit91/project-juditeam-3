@@ -174,8 +174,8 @@ public class DeCuongDAO implements DeCuongDAOService {
                 decuong.setNoidung(rs.getString("noidung"));
                 decuong.setTieuchuan(rs.getString("tieuchuan"));
                 decuong.setNam(rs.getInt("nam"));
-                GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
-                decuong.setGiangVienHocSinh(giangvienhocsinh);
+                GiangVienHocSinh gvhs = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                decuong.setGiangVienHocSinh(gvhs);
                 decuong.setTrangthai(rs.getInt("trangthai"));
                 listDeCuong.add(decuong);
             }
@@ -186,8 +186,36 @@ public class DeCuongDAO implements DeCuongDAOService {
     }
 
     @Override
-    public List<DeCuong> timkiemDeCuongByNam(int nam) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<DeCuong> timkiemDeCuong(String tukhoa) {
+        String sql = "";
+        List<DeCuong> listDeCuong = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            sql = "select * from tbl_dcct where tenDC like '" + "%" + tukhoa + "%" + "' or dvhoctrinh like '" + "%" + tukhoa + "%" + "' or thoigian like '" + "%" + tukhoa + "%" + "'"
+                    + " or dieukien like '" + "%" + tukhoa + "%" + "' or muctieu like '" + "%" + tukhoa + "%" + "' or noidung like '" + "%" + tukhoa + "%" + "' or tieuchuan like '" + "%" + tukhoa + "%" + "'"
+                    + " or nam like '" + "%" + tukhoa + "%" + "'";
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                DeCuong decuong = new DeCuong();
+                decuong.setMaDC(rs.getInt("maDC"));
+                decuong.setTenDC(rs.getString("tenDC"));
+                decuong.setDvhoctrinh(rs.getInt("dvhoctrinh"));
+                decuong.setThoigian(rs.getString("thoigian"));
+                decuong.setDieukien(rs.getString("dieukien"));
+                decuong.setMuctieu(rs.getString("muctieu"));
+                decuong.setNoidung(rs.getString("noidung"));
+                decuong.setTieuchuan(rs.getString("tieuchuan"));
+                decuong.setNam(rs.getInt("nam"));
+                GiangVienHocSinh gvhs = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
+                decuong.setGiangVienHocSinh(gvhs);
+                decuong.setTrangthai(rs.getInt("trangthai"));
+                listDeCuong.add(decuong);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listDeCuong;
     }
 
     @Override
@@ -217,7 +245,7 @@ public class DeCuongDAO implements DeCuongDAOService {
     @Override
     public boolean chinhsuaDeCuong(DeCuong decuong) {
         boolean isCheck = false;
-        String sql = "update tbl_dcct set tenDC=?, dvhoctrinh = ?, thoigian = ?, dieukien = ?, muctieu = ?, noidung=?, tieuchuan = ?, nam=?, maGVHS=?,trangthai=? where maDC=?";
+        String sql = "update tbl_dcct set tenDC=?, dvhoctrinh = ?, thoigian = ?, dieukien = ?, muctieu = ?, noidung=?, tieuchuan = ?, nam=?, maGVHS=?,trangthai=? where maDC = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);

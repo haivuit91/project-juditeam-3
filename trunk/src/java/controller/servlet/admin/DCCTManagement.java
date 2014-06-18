@@ -91,9 +91,9 @@ public class DCCTManagement extends HttpServlet {
             case "Thêm mới":
                 addDCCT(request, response);
                 break;
-//            case "Tìm kiếm":
-//                search(request, response);
-//                break;
+            case "Tìm kiếm":
+                search(request, response);
+                break;
         }
     }
 
@@ -197,6 +197,15 @@ public class DCCTManagement extends HttpServlet {
             request.setAttribute("msgResult", "Có lỗi xảy ra, xóa đề cương chi tiết thất bại");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<DeCuong> dcctList = DCCT_SERVICE.timkiemDeCuong(tukhoa);
+        request.setAttribute(util.Constants.DC_LIST, dcctList);
+        request.setAttribute(util.Constants.PAGE, "manage-dcct");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     /**
