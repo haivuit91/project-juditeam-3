@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller.servlet;
 
 import java.io.IOException;
@@ -42,7 +41,8 @@ public class Contact extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {response.setContentType("text/html;charset=UTF-8");
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         if (request.getCharacterEncoding() == null) {
             request.setCharacterEncoding("UTF-8");
         }
@@ -50,8 +50,11 @@ public class Contact extends HttpServlet {
         String email = request.getParameter("email");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-//        util.Support.sendFeedBackMail(email, fullName, title, content);
-        response.getWriter().print("Bạn đã gửi phản hồi thành công! Cảm ơn!");
+        if (util.Support.sendFeedBackMail(email, fullName, title, content)) {
+            response.getWriter().print("Bạn đã gửi phản hồi thành công! Cảm ơn!");
+        }else {
+            response.getWriter().print("Bạn đã gửi phản hồi thất bại! Vui lòng thử lại!");
+        }
     }
 
     /**

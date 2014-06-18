@@ -25,8 +25,9 @@ import javax.mail.internet.MimeMessage;
  */
 public class Support {
 
-    public static void sendFeedBackMail(String email, String fullName, String title, String content) {
+    public static boolean sendFeedBackMail(String email, String fullName, String title, String content) {
 
+        boolean isCheck = false;
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
@@ -57,10 +58,11 @@ public class Support {
             message.setContent(contents, "text/html; charset=UTF-8");
             message.setHeader("Content-Type", "text/plain; charset=UTF-8");
             Transport.send(message);
-
+            isCheck = true;
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+        return isCheck;
     }
     /**
      * Convert three args day month year to type java.sql.Date
