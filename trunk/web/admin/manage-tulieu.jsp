@@ -45,36 +45,37 @@
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
             </div>
-
-            <div class="panel panel-default">
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Mã</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Tên TL</div>
-                <div class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nội dung</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Loại TL</div>
-                <div class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Nguồn TL</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">Năm</div>
-                <div class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;text-transform: uppercase;color:#ffffff">lựa chọn</div>
-            </div>
-            <c:forEach items="${requestScope.tulieuList}" var="tlList">
-                <div class="panel panel-title">
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getMaTL()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px" >${tlList.getTenTL()}</div>
-                    <div class="col-md-3" style="text-transform: inherit;padding:5px">${tlList.getNoidung()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getLoaiTL()}</div>
-                    <div class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getNguonTL()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getNam()}</div>
-                    <div class="col-md-1" style="text-transform: inherit;padding:5px">
-                        <div class="col-md-6">
-                            <a href="/project3/tlmamage?do=edit&id=${tlList.getMaTL()}" class="btn btn-primary btn-sm" >
-                                <span class="glyphicon glyphicon-wrench"></span>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="/project3/tlmamage?do=del&id=${tlList.getMaTL()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tlList.getTenTL()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
+            <table>
+                <tr>
+                    <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
+                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên TL</td>
+                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Loại TL</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nguồn TL</td>
+                    <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
+                </tr>
+                <c:forEach items="${requestScope.tulieuList}" var="tlList">
+                    <tr>
+                        <td style="text-transform: inherit;padding:5px">${tlList.getMaTL()}</td>
+                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${tlList.getTenTL()}</td>
+                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${tlList.getNoidung()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getLoaiTL()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getNguonTL()}</td>
+                        <td class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getNam()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">
+                            <div class="col-md-6">
+                                <a href="/project3/tlmamage?do=edit&id=${tlList.getMaTL()}" class="btn btn-primary btn-sm" >
+                                    <span class="glyphicon glyphicon-wrench"></span>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/project3/tlmamage?do=del&id=${tlList.getMaTL()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tlList.getTenTL()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </body>
 </html>
