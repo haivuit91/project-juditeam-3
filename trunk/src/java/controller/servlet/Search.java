@@ -146,7 +146,7 @@ public class Search extends HttpServlet {
             case "baiGiang":
                 request.setAttribute("type", "baiGiang");
                 request.setAttribute("gvhsList", gvhsList);
-                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("noiDung", noiDung.toUpperCase());
                 request.setAttribute("nam", nam);
                 request.setAttribute(util.Constants.PAGE, "search-nc");
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
@@ -154,7 +154,7 @@ public class Search extends HttpServlet {
             case "slide":
                 request.setAttribute("type", "slide");
                 request.setAttribute("gvhsList", gvhsList);
-                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("noiDung", noiDung.toUpperCase());
                 request.setAttribute("nam", nam);
                 request.setAttribute(util.Constants.PAGE, "search-nc");
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
@@ -162,7 +162,7 @@ public class Search extends HttpServlet {
             case "deCuong":
                 request.setAttribute("type", "deCuong");
                 request.setAttribute("gvhsList", gvhsList);
-                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("noiDung", noiDung.toUpperCase());
                 request.setAttribute("nam", nam);
                 request.setAttribute(util.Constants.PAGE, "search-nc");
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
@@ -170,7 +170,7 @@ public class Search extends HttpServlet {
             case "all":
                 request.setAttribute("type", "all");
                 request.setAttribute("gvhsList", gvhsList);
-                request.setAttribute("noiDung", noiDung);
+                request.setAttribute("noiDung", noiDung.toUpperCase());
                 request.setAttribute("nam", nam);
                 request.setAttribute(util.Constants.PAGE, "search-nc");
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
