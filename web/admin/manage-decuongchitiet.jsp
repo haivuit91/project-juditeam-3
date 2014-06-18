@@ -34,7 +34,7 @@
 
                                     </div><!-- /btn-group -->
 
-                                    <input type="text" name="tenDC" class="form-control" placeholder="Nhập tên tài khoản muốn tìm...">
+                                    <input type="text" name="tukhoa" class="form-control" placeholder="Nhập từ khóa muốn tìm...">
 
                                 </div><!-- /input-group -->
                             </div><!-- /input-group -->
