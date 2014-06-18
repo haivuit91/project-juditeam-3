@@ -30,7 +30,7 @@
                     <div class="col-md-8">
                         <ul class="nav navbar-nav">
 
-                            <li class="active"><a href="/project3/home.jsp">Trang chủ</a></li>
+                            <li><a href="/project3/home.jsp">Trang chủ</a></li>
                             <li><a href="/project3/Page?p=about">Giới Thiệu</a></li>
                             <li><a href="/project3/Page?p=login">Đăng Nhập</a></li>
                             <li><a href="/project3/Page?p=search-cb">Tìm Kiếm</a></li>
