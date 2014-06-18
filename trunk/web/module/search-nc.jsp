@@ -77,7 +77,7 @@
                         <div class="panel-body">
                             <c:if test="${type == 'deCuong'}" >
                                 <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                    <c:if test="${dc.getNoidung().toUpperCase().contains(noiDung)}">
                                         <div class="col-md-2">
                                             ${gvhs.getTenGVHS()} <br>
                                         </div>
@@ -94,7 +94,7 @@
                             </c:if>
                             <c:if test="${type == 'slide'}" >
                                 <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                    <c:if test="${sl.getNoidung().contains(noiDung)}">
+                                    <c:if test="${sl.getNoidung().toUpperCase().contains(noiDung)}">
                                         <div class="col-md-2">
                                             ${gvhs.getTenGVHS()} <br>
                                         </div>
@@ -110,8 +110,8 @@
                                     </c:if></c:forEach>
                             </c:if>
                             <c:if test="${type == 'baiGiang'}" >
-                                <c:forEach items="${gvhs.getDecuongList()}" var="bg">
-                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
+                                    <c:if test="${bg.getNoidung().toUpperCase().contains(noiDung)}">
                                         <div class="col-md-2">
                                             ${gvhs.getTenGVHS()} <br>
                                         </div>
@@ -128,7 +128,7 @@
                             </c:if>
                             <c:if test="${type == 'all'}" >
                                 <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                    <c:if test="${dc.getNoidung().toUpperCase().contains(noiDung)}">
                                         <div class="col-md-2">
                                             ${gvhs.getTenGVHS()} <br>
                                         </div>
@@ -143,7 +143,7 @@
                                         </div>
                                     </c:if></c:forEach>
                                 <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                    <c:if test="${sl.getNoidung().contains(noiDung)}">
+                                    <c:if test="${sl.getNoidung().toUpperCase().contains(noiDung)}">
                                         <div class="col-md-2">
                                             ${gvhs.getTenGVHS()} <br>
                                         </div>
@@ -157,8 +157,8 @@
                                             ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
-                                <c:forEach items="${gvhs.getDecuongList()}" var="bg">
-                                    <c:if test="${dc.getNoidung().contains(noiDung)}">
+                                <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
+                                    <c:if test="${bg.getNoidung().toUpperCase().contains(noiDung)}">
                                         <div class="col-md-2">
                                             ${gvhs.getTenGVHS()} <br>
                                         </div>
@@ -267,5 +267,6 @@
                     </div>
                     <script src="../js/bootstrap.js" type="text/javascript"></script>
                     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-                    </body>
-                    </html>
+                </div></div></div>
+    </body>
+</html>
