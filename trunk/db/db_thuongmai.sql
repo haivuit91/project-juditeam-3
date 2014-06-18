@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `db_thuongmai` /*!40100 DEFAULT CHARACTER SET utf
 USE `db_thuongmai`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: 127.0.0.1    Database: db_thuongmai
+-- Host: localhost    Database: db_thuongmai
 -- ------------------------------------------------------
 -- Server version	5.6.19
 
@@ -104,7 +104,7 @@ CREATE TABLE `tbl_giangvien_hocsinh` (
 
 LOCK TABLES `tbl_giangvien_hocsinh` WRITE;
 /*!40000 ALTER TABLE `tbl_giangvien_hocsinh` DISABLE KEYS */;
-INSERT INTO `tbl_giangvien_hocsinh` VALUES (1,'Phạm Đình Công','Thanh Hóa','0982207386','1991-11-24 00:00:00','JUDI',1,1),(2,'Nguyễn Ngọc Duy','Quảng Nam','0905888222','0014-07-07 00:00:00','JUDI',1,1),(3,'Nguyễn Phương Nguyên','Quang trị','01659050720','1992-04-06 00:00:00','JuDi',1,1),(4,'Nguyễn Văn Thanh','Quảng Trị','01222334567','1992-05-07 00:00:00','Judi',1,1),(5,'Lê Văn Tân','Thanh Hóa','0165929293','0009-11-15 00:00:00','Judi',1,1);
+INSERT INTO `tbl_giangvien_hocsinh` VALUES (1,'Phạm Đình Công','Thanh Hóa','0982207386','1991-11-24 00:00:00','JUDI',1,1),(2,'Nguyễn Ngọc Duy','Quảng Nam','0905888222','0014-07-07 00:00:00','JUDI',1,1),(3,'Phương Nguyên','Quang trị','01659050720','1992-04-06 00:00:00','JuDi',1,1),(4,'Nguyễn Văn Thanh','Quảng Trị','01222334567','1992-05-07 00:00:00','Judi',1,1),(5,'Lê Văn Tân','Thanh Hóa','0165929293','0009-11-15 00:00:00','Judi',1,1);
 /*!40000 ALTER TABLE `tbl_giangvien_hocsinh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,4 +205,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-18  9:09:21
+-- Dump completed on 2014-06-18  9:40:18
