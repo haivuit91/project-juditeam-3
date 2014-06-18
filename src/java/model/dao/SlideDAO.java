@@ -145,6 +145,31 @@ public class SlideDAO implements SlideDAOService {
     }
 
     @Override
+    public List<Slide> timkiemAllSlide(String tukhoa) {
+        String sql = "";
+        List<Slide> listSlide = new ArrayList<>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            sql = "select * from tbl_slide where tenSlide like '" + "%" + tukhoa + "%" + "' or noidung like '" + "%" + tukhoa + "%" + "'";
+            PreparedStatement sm = conn.prepareStatement(sql);
+            ResultSet rs = sm.executeQuery();
+            while (rs.next()) {
+                Slide slide = new Slide();
+                slide.setMaSlide(rs.getInt("maSlide"));
+                slide.setTenSilde(rs.getString("tenSlide"));
+                slide.setNoidung(rs.getString("noidung"));
+                slide.setNam(rs.getInt("nam"));
+                TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
+                slide.setTuLieu(tulieu);
+                listSlide.add(slide);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listSlide;
+    }
+
+    @Override
     public boolean themSlide(Slide slide) {
         boolean isCheck = false;
         String sql = "insert into tbl_slide (tenSlide, noidung, nam, maGVHS, maTL, trangthai) values(?,?,?,?,?,?)";
@@ -223,31 +248,6 @@ public class SlideDAO implements SlideDAOService {
             e.printStackTrace();
         }
         return slideList;
-    }
-
-    @Override
-    public List<Slide> timkiemAllSlide(String tukhoa) {
-        String sql = "";
-        List<Slide> listSlide = new ArrayList<>();
-        try {
-            Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_slide where tenSlide like '" + "%" + tukhoa + "%" + "' or noidung like '" + "%" + tukhoa + "%" + "'";
-            PreparedStatement sm = conn.prepareStatement(sql);
-            ResultSet rs = sm.executeQuery();
-            while (rs.next()) {
-                Slide slide = new Slide();
-                slide.setMaSlide(rs.getInt("maSlide"));
-                slide.setTenSilde(rs.getString("tenSlide"));
-                slide.setNoidung(rs.getString("noidung"));
-                slide.setNam(rs.getInt("nam"));
-                TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
-                slide.setTuLieu(tulieu);
-                listSlide.add(slide);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return listSlide;
     }
 
 }
