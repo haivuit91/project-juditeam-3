@@ -107,22 +107,24 @@ public class BGManagement extends HttpServlet {
 
         BaiGiang bg = new BaiGiang(1, tenBG, noiDung, nam, gvhs, trangThai);
         if (BG_SERVICE.themBaiGiang(bg)) {
-//            List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
-//            request.setAttribute("bgList", bgList);
-//            request.setAttribute(util.Constants.PAGE, "manage-baigiang");
+            List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
+            request.setAttribute(util.Constants.BG_LIST, bgList);
+            request.setAttribute(util.Constants.PAGE, "manage-bg");
             request.setAttribute("msgResult", "Bạn đã thêm Bài giảng thành công");
-//            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
+            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+            request.setAttribute(util.Constants.GVHS_LIST, gvhsList);
             request.setAttribute("msgResult", "Có lỗi xảy ra, thêm bài giảng thất bại!");
-//            request.setAttribute(util.Constants.PAGE, "addbg");
-//            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+            request.setAttribute(util.Constants.PAGE, "addbg");
+            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
-        List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
-        List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
-        request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
-        request.setAttribute("bgList", bgList);
-        request.setAttribute(util.Constants.PAGE, "manage-bg");
-        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+//        List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
+//        List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
+//        request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
+//        request.setAttribute("bgList", bgList);
+//        request.setAttribute(util.Constants.PAGE, "manage-bg");
+//        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     private void updateBG(HttpServletRequest request, HttpServletResponse response)
