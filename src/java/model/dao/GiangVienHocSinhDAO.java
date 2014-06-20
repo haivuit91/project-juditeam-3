@@ -46,7 +46,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
                 giangvienhocsinh.setNgaysinh(rs.getDate("ngaysinh"));
                 giangvienhocsinh.setDonvi(rs.getString("donvi"));
                 giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
-                giangvienhocsinh.setTrangthai(rs.getInt("trinhdo"));
+                giangvienhocsinh.setTrangthai(rs.getInt("trangthai"));
                 giangvienhocsinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
                 giangvienhocsinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
                 giangvienhocsinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));

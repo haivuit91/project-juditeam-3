@@ -13,31 +13,31 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="col-md-12">
-                <p class="alert alert-success" style="text-align: center;text-transform: uppercase;font-weight: bold">danh sách giảng viên học sinh</p>
+                <p class="alert alert-success" style="text-align: center;text-transform: uppercase;font-weight: bold">danh sách giảng viên</p>
             </div>
             <table class="col-md-12"style="font-weight: bold;color:wheat;background:#4986bd;text-transform: uppercase">
                 <tr >
-                    <td class="col-md-2">Tên GVHS</td>
-                    <td class="col-md-2">Địa chỉ</td>
-                    <td class="col-md-1">Điện thoại</td>
+                    <td class="col-md-2">Tên giảng viên</td>
+                    <td class="col-md-4">Địa chỉ</td>
                     <td class="col-md-2">Ngày sinh</td>
+                    <td class="col-md-2">Điện thoại</td>
                     <td class="col-md-2">Đơn vị</td>
-                    <td class="col-md-2">Trình độ</td>
-                    <td class="col-md-1">Xem thêm</td>
                 </tr>
             </table>
             <table class="col-md-12 table-hover">
-                <tr class="">
-                   <td class="col-md-2">Nguyễn Ngọc Duy</td>
-                    <td class="col-md-2">Núi Thành - Quảng Nam</td>
-                    <td class="col-md-1">0906427601</td>
-                    <td class="col-md-2">25-03-1990</td>
-                    <td class="col-md-2">JUDI</td>
-                    <td class="col-md-2">TRÙM CUỐI GIÁO SƯ</td>
-                    <td class="col-md-1"><a href="#" class="label label-success">Xem chi tiết</a></td>
-                </tr>
+                <c:forEach items="${gvhsList}" var="gvhs">
+                    <c:if test="${gvhs.getTrinhdo() == 1 && gvhs.getTrangthai() == 1}">
+                        <tr style="border-bottom: #acb6c0 solid thin">
+                            <td class="col-md-2">${gvhs.getTenGVHS()}</td>
+                            <td class="col-md-4">${gvhs.getDiachi()}</td>
+                            <td class="col-md-2">${gvhs.getNgaysinh()}</td>
+                            <td class="col-md-2">${gvhs.getDienthoai()}</td>
+                            <td class="col-md-2">${gvhs.getDonvi()}</td>
+                        </tr>
+                    </c:if>
+                </c:forEach>
             </table>
         </div>
     </body>
