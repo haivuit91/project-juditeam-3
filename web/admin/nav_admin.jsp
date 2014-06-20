@@ -29,11 +29,11 @@
                 </div>
                 <div class="col-md-12">
                     <ul class="nav navbar-nav">
-                        <li><a  class="active" href="/project3/GVHSManage?p=manage">ADMINISTRATOR</a></li>
-                         <li class=""><a href="/project3/home.jsp">Trang chủ</a></li>
+                        <li><a  class="active" href="/HeThongTTQL/GVHSManage?p=manage">ADMINISTRATOR</a></li>
+                         <li class=""><a href="/HeThongTTQL/home.jsp">Trang chủ</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/project3/authen?do=logout"><span class="glyphicon glyphicon-th-large"  >Đăng xuất</span></a></li>
+                        <li><a href="/HeThongTTQL/authen?do=logout"><span class="glyphicon glyphicon-th-large"  >Đăng xuất</span></a></li>
                     </ul>
                 </div>
             </div><!-- /.container -->

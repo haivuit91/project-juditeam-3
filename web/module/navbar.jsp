@@ -4,6 +4,7 @@
     Author     : Welcomes
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,14 +31,19 @@
                     <div class="col-md-12">
                         <ul class="nav navbar-nav">
 
-                            <li><a href="/project3/home.jsp">Trang chủ</a></li>
-                            <li><a href="/project3/Page?p=about">Giới Thiệu</a></li>
-                            <li><a href="/project3/Page?p=search-cb">Tìm Kiếm</a></li>
-                            <li><a href="/project3/Page?p=contact">Liên Hệ</a></li>
+                            <li><a href="/HeThongTTQL/home.jsp">Trang chủ</a></li>
+                            <li><a href="/HeThongTTQL/Page?p=about">Giới Thiệu</a></li>
+                            <li><a href="/HeThongTTQL/Page?p=search-cb">Tìm Kiếm</a></li>
+                            <li><a href="/HeThongTTQL/Page?p=contact">Liên Hệ</a></li>
 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/project3/Page?p=login"><span class="glyphicon glyphicon-new-window"></span>&nbsp; Đăng Nhập</a></li>
+                            <c:if test="${currentUser == null}">
+                            <li><a href="/HeThongTTQL/Page?p=login"><span class="glyphicon glyphicon-new-window"></span>&nbsp; Đăng nhập</a></li>
+                            </c:if>
+                            <c:if test="${currentUser != null}">
+                            <li><a href="/HeThongTTQL/bgmanage?page=manage"><span class="glyphicon glyphicon-new-window"></span>&nbsp; Xin chào: ${currentUser.getTenTK()}</a></li>
+                            </c:if>
                         </ul>
                     </div>
                 </div><!--/.nav-collapse -->

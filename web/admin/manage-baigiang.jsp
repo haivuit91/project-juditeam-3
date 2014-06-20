@@ -16,12 +16,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project3/bgmanage?page=add" class="btn btn-primary btn-sm" >
+                <a href="/HeThongTTQL/bgmanage?page=add" class="btn btn-primary btn-sm" >
                     Tạo mới bài giảng
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project3/bgmanage?page=search" method="post">
+                        <form action="/HeThongTTQL/bgmanage?page=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -62,12 +62,12 @@
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getGiangVienHocSinh().getTenGVHS()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
-                                <a href="/project3/bgmanage?page=edit&maBG=${bgList.getMaBG()}" class="btn btn-primary btn-sm" >
+                                <a href="/HeThongTTQL/bgmanage?page=edit&maBG=${bgList.getMaBG()}" class="btn btn-primary btn-sm" >
                                     <span class="glyphicon glyphicon-wrench"></span>
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="/project3/bgmanage?page=delete&maBG=${bgList.getMaBG()}" onclick="return confirm('Bạn thực sự muốn xóa: ${bgList.getTenBG()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/HeThongTTQL/bgmanage?page=delete&maBG=${bgList.getMaBG()}" onclick="return confirm('Bạn thực sự muốn xóa: ${bgList.getTenBG()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </td>
                     </tr>

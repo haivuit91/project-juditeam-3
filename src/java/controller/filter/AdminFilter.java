@@ -111,7 +111,7 @@ public class AdminFilter implements Filter {
                 e.printStackTrace();
             }
         }else{
-            res.sendRedirect("/project3/admin.jsp");
+            res.sendRedirect("/HeThongTTQL/admin.jsp");
         }
     }
 

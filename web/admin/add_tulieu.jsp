@@ -30,7 +30,7 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${tl.getMaTL() > 0 ? 'Thay đổi thông tin tư liệu' : 'Thêm mới tư liệu'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project3/tlmamage?id=${tl.getMaTL()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/tlmamage?id=${tl.getMaTL()}" method="post">
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
                                         <input type="text" name="maTL" value="${tl.getMaTL()}" disabled class="form-control" id="inputEmail3" placeholder="Mã tư liệu">

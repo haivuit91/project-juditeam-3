@@ -43,6 +43,11 @@ public class BGManagement extends HttpServlet {
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
+                case "manage":
+                    request.setAttribute(util.Constants.PAGE, "manage");
+                    request.removeAttribute(util.Constants.MSG_RESULT);
+                    request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+                    break;
                 case "add":
                     request.setAttribute(util.Constants.PAGE, "addbg");
                     List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();

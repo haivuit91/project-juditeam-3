@@ -17,12 +17,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project3/tlmamage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/HeThongTTQL/tlmamage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới tư liệu
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project3/tlmamage?do=search" method="post">
+                        <form action="/HeThongTTQL/tlmamage?do=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -65,12 +65,12 @@
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getNam()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
-                                <a href="/project3/tlmamage?do=edit&id=${tlList.getMaTL()}" class="btn btn-primary btn-sm" >
+                                <a href="/HeThongTTQL/tlmamage?do=edit&id=${tlList.getMaTL()}" class="btn btn-primary btn-sm" >
                                     <span class="glyphicon glyphicon-wrench"></span>
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="/project3/tlmamage?do=del&id=${tlList.getMaTL()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tlList.getTenTL()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/HeThongTTQL/tlmamage?do=del&id=${tlList.getMaTL()}" onclick="return confirm('Bạn thực sự muốn xóa: ${tlList.getTenTL()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </td>
                     </tr>

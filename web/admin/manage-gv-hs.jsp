@@ -18,12 +18,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project3/GVHSManage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/HeThongTTQL/GVHSManage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới tài khoản
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project3/GVHSManage?do=search" method="post">
+                        <form action="/HeThongTTQL/GVHSManage?do=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -68,12 +68,12 @@
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Sinh viên'}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
-                                <a href="/project3/GVHSManage?do=edit&id=${gvhs.getMaGVHS()}" class="btn btn-primary btn-sm" >
+                                <a href="/HeThongTTQL/GVHSManage?do=edit&id=${gvhs.getMaGVHS()}" class="btn btn-primary btn-sm" >
                                     <span class="glyphicon glyphicon-wrench"></span>
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="/project3/GVHSManage?do=del&id=${gvhs.getMaGVHS()}" onclick="return confirm('Bạn thực sự muốn xóa: ${gvhs.getTenGVHS()} ?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/HeThongTTQL/GVHSManage?do=del&id=${gvhs.getMaGVHS()}" onclick="return confirm('Bạn thực sự muốn xóa: ${gvhs.getTenGVHS()} ?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </td>
                     </tr>

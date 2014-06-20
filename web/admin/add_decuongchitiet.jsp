@@ -23,7 +23,7 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${dcctList.getMaDC() > 0 ? 'Thay đổi thông tin ĐCCT' : 'Thêm mới ĐCCT'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project3/dcctmamage?maDC=${dcctList.getMaDC()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/dcctmamage?maDC=${dcctList.getMaDC()}" method="post">
                                 <!-- /.UserName -->
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >

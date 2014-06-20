@@ -82,8 +82,8 @@ public class Authentication extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute(util.Constants.CURRENT_USER, tk);
             session.setMaxInactiveInterval(30 * 60);
-            request.setAttribute(util.Constants.PAGE, "manage");
-            request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
+//            request.setAttribute(util.Constants.PAGE, "manage");
+            response.sendRedirect(util.Constants.URL_HOME);
         } else {
             request.setAttribute(util.Constants.PAGE, "login");
             request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);

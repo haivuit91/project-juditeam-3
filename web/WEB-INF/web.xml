@@ -53,6 +53,10 @@
         <servlet-name>Contact</servlet-name>
         <servlet-class>controller.servlet.Contact</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowListCatelories</servlet-name>
+        <servlet-class>controller.servlet.ShowListCatelories</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/Page</url-pattern>
@@ -92,6 +96,10 @@
     <servlet-mapping>
         <servlet-name>Contact</servlet-name>
         <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowListCatelories</servlet-name>
+        <url-pattern>/show</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

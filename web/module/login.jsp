@@ -24,7 +24,7 @@
                     ĐĂNG NHẬP HỆ THỐNG
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="/project3/authen?do=login" method="POST">
+                    <form role="form" action="/HeThongTTQL/authen?do=login" method="POST">
                         <div class="form-group">
                             <span class="glyphicon glyphicon-user"></span> <label for="exampleInputEmail1">Tên đăng nhập</label>
                             <input type="text" name="tenTK" class="form-control" id="exampleInputEmail1" placeholder="">

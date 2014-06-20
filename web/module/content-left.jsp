@@ -20,11 +20,11 @@
                 <ul class="list-group"style="background:#4986bd">
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="#"> Đề cương CTHP</a>
+                        <a href="/HeThongTTQL/show?p=dsdcct"> Đề cương CTHP</a>
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="#">Bài giảng</a>
+                        <a href="/HeThongTTQL/show?p=dsdcct">Bài giảng</a>
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
