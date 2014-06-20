@@ -19,12 +19,12 @@
                     TRA CỨU THÔNG TIN
                 </div>
                 <div class="col-sm-2 col-sm-offset-10">
-                    <a href="/project3/Page?p=search-nc"class="label label-default">Tìm kiếm nâng cao</a>
+                    <a href="/HeThongTTQL/Page?p=search-nc"class="label label-default">Tìm kiếm nâng cao</a>
 
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/project3/search?do=search-cb" method="post">
+                    <form class="form-horizontal" action="/HeThongTTQL/search?do=search-cb" method="post">
                         <fieldset>
                             <legend>Tìm kiếm cơ bản</legend>
                             <div class="form-group">
@@ -68,21 +68,21 @@
                             <div class="col-md-3">
                                 <c:if test="${gvhs.getDecuongList().size() > 0}">
                                     <c:forEach items="${gvhs.getDecuongList()}" var="dc">
-                                        ${dc.getTenDC()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        ${dc.getTenDC()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </c:forEach>
                                     </c:if>
                             </div>
                             <div class="col-md-3">
                                 <c:if test="${gvhs.getSlideList().size() > 0}">
                                     <c:forEach items="${gvhs.getSlideList()}" var="sl">
-                                        ${sl.getTenSilde()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        ${sl.getTenSilde()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </c:forEach>
                                     </c:if>
                             </div>
                             <div class="col-md-3">
                                 <c:if test="${gvhs.getBaigiangList().size() > 0}">
                                     <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
-                                        ${bg.getTenBG()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                        ${bg.getTenBG()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maBG=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </c:forEach>
                                     </c:if>
                             </div>

@@ -17,12 +17,12 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
-                <a href="/project3/dcctmamage?do=add" class="btn btn-primary btn-sm" >
+                <a href="/HeThongTTQL/dcctmamage?do=add" class="btn btn-primary btn-sm" >
                     Tạo mới đề cương chi tiết
                 </a>               
                 <div class="row">
                     <div class="col-lg-5 col-lg-push-6">
-                        <form action="/project3/dcctmamage?do=search" method="post">
+                        <form action="/HeThongTTQL/dcctmamage?do=search" method="post">
                             <div class="col-md-11">
 
                                 <div class="input-group">
@@ -73,12 +73,12 @@
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getGiangVienHocSinh().getTenGVHS()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
-                                <a href="/project3/dcctmamage?do=edit&maDC=${dcctList.getMaDC()}" class="btn btn-primary btn-sm" >
+                                <a href="/HeThongTTQL/dcctmamage?do=edit&maDC=${dcctList.getMaDC()}" class="btn btn-primary btn-sm" >
                                     <span class="glyphicon glyphicon-wrench"></span>
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <a href="/project3/dcctmamage?do=delete&maDC=${dcctList.getMaDC()}" onclick="return confirm('Bạn thực sự muốn xóa: ${dcctList.getTenDC()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
+                                <a href="/HeThongTTQL/dcctmamage?do=delete&maDC=${dcctList.getMaDC()}" onclick="return confirm('Bạn thực sự muốn xóa: ${dcctList.getTenDC()}?')" class="btn btn-primary btn-sm" role="button"><span class="glyphicon glyphicon-trash"></span></a>
                             </div>
                         </td>
                     </tr>

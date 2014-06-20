@@ -22,7 +22,7 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${sl.getMaSlide() > 0 ? 'Thay đổi thông tin slide' : 'Thêm mới slide'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project3/slidemanage?id=${sl.getMaSlide()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/slidemanage?id=${sl.getMaSlide()}" method="post">
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
                                         <input type="text" name="maSlide" value="${sl.getMaSlide()}" disabled class="form-control" id="inputEmail3" placeholder="Mã slide">

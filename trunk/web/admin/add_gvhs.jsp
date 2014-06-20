@@ -21,7 +21,7 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${gvhs.getMaGVHS() > 0 ? 'Thay đổi thông tin GV-HS' : 'Thêm mới GV-HS'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/project3/GVHSManage?id=${gvhs.getMaGVHS()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/GVHSManage?id=${gvhs.getMaGVHS()}" method="post">
                                 <!-- /.UserName -->
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >

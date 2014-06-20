@@ -53,9 +53,21 @@
                 <c:if test="${page == null}">
                     <%@include file="module/content-right.jsp" %>
                 </c:if>
-
-
-
+                <c:if test="${page == 'dsbg'}">
+                    <%@include file="module/ds-baigiang.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dsdcct'}">
+                    <%@include file="module/ds-dccthp.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dsslide'}">
+                    <%@include file="module/ds-slide.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dstl'}">
+                    <%@include file="module/ds-tulieu.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dsgvhs'}">
+                    <%@include file="module/ds-gvhs.jsp" %>
+                </c:if>
             </div>
 
         </div>

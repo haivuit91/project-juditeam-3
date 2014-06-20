@@ -19,11 +19,11 @@
                     TRA CỨU THÔNG TIN
                 </div>
                 <div class="col-sm-2 col-sm-offset-10">
-                    <a href="/project3/Page?p=search-cb" class="label label-warning">Tìm kiếm cơ bản</a>
+                    <a href="/HeThongTTQL/Page?p=search-cb" class="label label-warning">Tìm kiếm cơ bản</a>
                 </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" action="/project3/search?do=search-nc" method="post">
+                    <form class="form-horizontal" action="/HeThongTTQL/search?do=search-nc" method="post">
                         <fieldset>
                             <legend>Tìm kiếm nâng cao</legend>
 
@@ -88,7 +88,7 @@
                                             ${dc.getTenDC()}
                                         </div>
                                         <div class="col-md-5">
-                                            ${dc.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            ${dc.getNoidung()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
                             </c:if>
@@ -105,7 +105,7 @@
                                             ${sl.getTenSilde()}
                                         </div>
                                         <div class="col-md-5">
-                                            ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            ${sl.getNoidung()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
                             </c:if>
@@ -122,7 +122,7 @@
                                             ${bg.getTenBG()}
                                         </div>
                                         <div class="col-md-5">
-                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            ${bg.getNoidung()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
                             </c:if>
@@ -139,7 +139,7 @@
                                             ${dc.getTenDC()}
                                         </div>
                                         <div class="col-md-5">
-                                            ${dc.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            ${dc.getNoidung()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${dc.getMaDC()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
                                 <c:forEach items="${gvhs.getSlideList()}" var="sl">
@@ -154,7 +154,7 @@
                                             ${sl.getTenSilde()}
                                         </div>
                                         <div class="col-md-5">
-                                            ${sl.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            ${sl.getNoidung()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maSL=${sl.getMaSlide()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
                                 <c:forEach items="${gvhs.getBaigiangList()}" var="bg">
@@ -169,7 +169,7 @@
                                             ${bg.getTenBG()}
                                         </div>
                                         <div class="col-md-5">
-                                            ${bg.getNoidung()}&nbsp;<a href="/project3/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
+                                            ${bg.getNoidung()}&nbsp;<a href="/HeThongTTQL/search?do=details&maGV=${gvhs.getMaGVHS()}&maDC=${bg.getMaBG()}"><span class="glyphicon glyphicon-share-alt"></span></a><br>
                                         </div>
                                     </c:if></c:forEach>
                             </c:if>
