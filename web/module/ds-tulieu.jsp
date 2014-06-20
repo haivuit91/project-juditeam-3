@@ -35,7 +35,7 @@
                         <td class="col-md-2">${tl.getNguonTL()}</td>
                         <td class="col-md-1">${tl.getNam()}</td>
                         <td class="col-md-4">${tl.getNoidung()}</td>
-                        <td class="col-md-1"><a href="/HeThongTTQL/show?details=slide&id=${tl.getMaTL()}" class="label label-default">Chi tiết</a></td>
+                        <td class="col-md-1"><a href="/HeThongTTQL/show?details=tl&id=${tl.getMaTL()}" class="label label-default">Chi tiết</a></td>
                     </tr>
                 </c:forEach>
             </table>

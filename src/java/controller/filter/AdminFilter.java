@@ -102,7 +102,6 @@ public class AdminFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         if(session.getAttribute(util.Constants.CURRENT_USER) != null){
             try {
@@ -111,7 +110,9 @@ public class AdminFilter implements Filter {
                 e.printStackTrace();
             }
         }else{
-            res.sendRedirect("/HeThongTTQL/admin.jsp");
+            req.setAttribute(util.Constants.MSG_RESULT, "Vui lòng đăng nhập để tiếp tục...");
+            req.setAttribute(util.Constants.PAGE, "login");
+            req.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
         }
     }
 

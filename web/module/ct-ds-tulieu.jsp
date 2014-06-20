@@ -13,10 +13,10 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="col-md-6 col-md-offset-3">
-            <h3 class=" col-md-12 alert alert-success" style="text-align: center;font-weight: bold">
-                CHI TIẾT TƯ LIỆU
-            </h3>
+        <div class="col-md-10">
+            <div class="col-md-12">
+                <p class="alert alert-warning" style="text-align: center;text-transform: uppercase;font-weight: bold">chi tiết tư liệu</p>
+            </div>
             <div class="panel panel-body ">
                 <div class="form-group">  
                     <div class="col-md-2 alert-info">

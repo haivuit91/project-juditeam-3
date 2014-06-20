@@ -7,6 +7,7 @@ package controller.servlet.admin;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -132,7 +133,10 @@ public class GVHSManagement extends HttpServlet {
             throws ServletException, IOException {
         int maGVHS = Integer.parseInt(request.getParameter("id"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String bd = df.format(gvhs.getNgaysinh());
         request.setAttribute("gvhs", gvhs);
+        request.setAttribute("ns", bd);
         request.setAttribute(util.Constants.PAGE, "addGVHS");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }

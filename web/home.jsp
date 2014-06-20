@@ -91,6 +91,7 @@
         <div class="container">
             <div class="row panel panel-warning" style="background:#4986bd;color:white">
                 <footer style="text-align: center">
+                    &nbsp <br>
                     <p>Hỗ trợ giảng dạy và học tập HTTQL Trường Cao đẳng Thương Mại</p>
                     <p>Địa chỉ:45 Dũng Sĩ Thanh Khê, Đà Nẵng</p>
                     <p>Design by Judi Team</p>

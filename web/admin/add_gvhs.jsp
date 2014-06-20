@@ -53,7 +53,7 @@
                                 <div class="form-group">
 
                                     <div class="col-sm-12" >
-                                        <input type="text" name="ngaySinh" value="${gvhs.getNgaysinh()}" class="form-control" id="inputEmail3" placeholder="ngày-tháng-năm">
+                                        <input type="text" name="ngaySinh" value="${ns}" class="form-control" id="inputEmail3" placeholder="ngày-tháng-năm">
                                     </div>
                                 </div>
                                 <!-- /.Phone -->
