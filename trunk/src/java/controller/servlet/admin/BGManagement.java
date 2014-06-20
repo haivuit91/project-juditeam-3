@@ -96,7 +96,7 @@ public class BGManagement extends HttpServlet {
         String noiDung = request.getParameter("noiDung");
         int nam = Integer.parseInt(request.getParameter("nam"));
         int mshv = Integer.parseInt(request.getParameter("gVienHS"));
-        
+
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(mshv);
         int trangThai = 1;
 
@@ -126,14 +126,8 @@ public class BGManagement extends HttpServlet {
         String tenBG = request.getParameter("tenBG");
         String noiDung = request.getParameter("noiDung");
         int nam = Integer.parseInt(request.getParameter("nam"));
-//        String GVHS = request.getParameter("gvhs");
-//
-//        String[] arrGVHS = GVHS.split("-");
-//        int maGVHS = Integer.parseInt(arrGVHS[0]);
-//        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
-        String tenGVHS = request.getParameter("gVienHS");
-
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByTen(tenGVHS);
+        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
+        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         int trangThai = 1;
 
         BaiGiang bg = new BaiGiang(maBG, tenBG, noiDung, nam, gvhs, trangThai);
