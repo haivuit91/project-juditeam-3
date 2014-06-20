@@ -15,14 +15,17 @@ import model.dao.BaiGiangDAO;
 import model.dao.DeCuongDAO;
 import model.dao.GiangVienHocSinhDAO;
 import model.dao.SlideDAO;
+import model.dao.TuLieuDAO;
 import model.dao.service.BaiGiangDAOService;
 import model.dao.service.DeCuongDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.dao.service.SlideDAOService;
+import model.dao.service.TuLieuDAOService;
 import model.entities.BaiGiang;
 import model.entities.DeCuong;
 import model.entities.GiangVienHocSinh;
 import model.entities.Slide;
+import model.entities.TuLieu;
 
 /**
  *
@@ -34,6 +37,7 @@ public class Search extends HttpServlet {
     BaiGiangDAOService BG_SERVICE = BaiGiangDAO.getInstance();
     SlideDAOService SLIDE_SERVICE = SlideDAO.getInstance();
     DeCuongDAOService DC_SERVICE = DeCuongDAO.getInstance();
+    TuLieuDAOService TL_SERVICE = TuLieuDAO.getInstance();
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -54,6 +58,7 @@ public class Search extends HttpServlet {
                     break;
             }
         }
+
     }
 
     private void showDetail(HttpServletRequest request, HttpServletResponse response)
@@ -107,13 +112,38 @@ public class Search extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("do");
-        switch (action) {
-            case "search-cb":
-                searchCB(request, response);
-                break;
-            case "search-nc":
-                searchNC(request, response);
-                break;
+        if (action != null) {
+            switch (action) {
+                case "search-cb":
+                    searchCB(request, response);
+                    break;
+                case "search-nc":
+                    searchNC(request, response);
+                    break;
+            }
+        }
+        String searchBy = request.getParameter("by");
+        if (searchBy != null) {
+            switch (searchBy) {
+                case "bg":
+                    searchDSBG(request, response);
+                    break;
+                case "gv":
+                    searchDSGV(request, response);
+                    break;
+                case "hs":
+                    searchDSHS(request, response);
+                    break;
+                case "tl":
+                    searchDSTL(request, response);
+                    break;
+                case "dcct":
+                    searchDSDCCT(request, response);
+                    break;
+                case "slide":
+                    searchDSSlide(request, response);
+                    break;
+            }
         }
     }
 
@@ -176,6 +206,65 @@ public class Search extends HttpServlet {
                 request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                 break;
         }
+    }
+
+    private void searchDSBG(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tenBG = request.getParameter("tenBG");
+        List<BaiGiang> bgList = BG_SERVICE.timBaiGiangByTen(tenBG);
+        request.setAttribute(util.Constants.BG_LIST, bgList);
+        request.setAttribute(util.Constants.PAGE, "dsbg");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+    }
+
+    private void searchDSDCCT(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<DeCuong> dcctList = DC_SERVICE.timkiemDeCuong(tukhoa);
+        request.setAttribute("dcList", dcctList);
+        request.setAttribute(util.Constants.PAGE, "dsdcct");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+    }
+
+    private void searchDSGV(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.timkiemGiangVienHocSinh(tukhoa);
+        request.setAttribute("gvhsList", gvhsList);
+        request.setAttribute(util.Constants.PAGE, "dsgvhs");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+    }
+
+    private void searchDSHS(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<GiangVienHocSinh> hsList = GVHS_SERVICE.timkiemGiangVienHocSinh(tukhoa);
+        request.setAttribute("hsList", hsList);
+        request.setAttribute(util.Constants.PAGE, "dshs");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+    }
+
+    private void searchDSSlide(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<Slide> slideList = SLIDE_SERVICE.timkiemAllSlide(tukhoa);
+        request.setAttribute("slList", slideList);
+        request.setAttribute(util.Constants.PAGE, "dsslide");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+    }
+
+    private void searchDSTL(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String tukhoa = request.getParameter("tukhoa");
+        List<TuLieu> tlList = TL_SERVICE.timkiemTuLieu(tukhoa);
+        request.setAttribute("tlList", tlList);
+        request.setAttribute(util.Constants.PAGE, "dstl");
+        request.removeAttribute(util.Constants.MSG_RESULT);
+        request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
     }
 
     /**

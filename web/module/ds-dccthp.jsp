@@ -18,6 +18,32 @@
             <div class="col-md-12">
                 <p class="alert alert-info" style="text-align: center;text-transform: uppercase;font-weight: bold">ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</p>
             </div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-5 col-lg-push-6">
+                        <form action="/HeThongTTQL/search?by=dcct" method="post">
+                            <div class="col-md-11">
+
+                                <div class="input-group">
+
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                            <span class="caret"></span></button>
+
+                                    </div><!-- /btn-group -->
+
+                                    <input type="text" name="tukhoa" class="form-control" placeholder="Nhập tên thông tin muốn tìm...">
+
+                                </div><!-- /input-group -->
+                            </div><!-- /input-group -->
+                            <div class="col-md-1">
+                                <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-default dropdown-toggle" style="background:#3e8f3e;color:#ffffff">
+                            </div>
+                        </form>
+                    </div><!-- /.col-lg-6 -->
+                </div>
+            </div>
             <table class="col-md-12"style="font-weight: bold;color:wheat;background:#4986bd;text-transform: uppercase">
                 <tr >
                     <td class="col-md-2">Tên ĐCCT</td>

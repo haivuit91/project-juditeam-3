@@ -146,17 +146,18 @@ public class SlideDAO implements SlideDAOService {
 
     @Override
     public List<Slide> timkiemAllSlide(String tukhoa) {
-        String sql = "";
         List<Slide> listSlide = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            sql = "select * from tbl_slide where tenSlide like '" + "%" + tukhoa + "%" + "' or noidung like '" + "%" + tukhoa + "%" + "'";
+            String sql = "select * from tbl_slide where tenSlide like '" + "%" + tukhoa + "%" + "' or "
+                    + "noidung like '" + "%" + tukhoa + "%" + "'";
             PreparedStatement sm = conn.prepareStatement(sql);
             ResultSet rs = sm.executeQuery();
             while (rs.next()) {
                 Slide slide = new Slide();
                 slide.setMaSlide(rs.getInt("maSlide"));
                 slide.setTenSilde(rs.getString("tenSlide"));
+                slide.setGiangVienHocSinh(GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS")));
                 slide.setNoidung(rs.getString("noidung"));
                 slide.setNam(rs.getInt("nam"));
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
