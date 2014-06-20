@@ -30,10 +30,9 @@
                 <div class="col-md-12">
                     <ul class="nav navbar-nav">
                         <li><a  class="active" href="/project3/GVHSManage?p=manage">ADMINISTRATOR</a></li>
-                        <li><a href="/project3/Page?p=about">Thống kê</a></li>
+                         <li class=""><a href="/project3/home.jsp">Trang chủ</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="/project3/home.jsp">Trang chủ</a></li>
                         <li><a href="/project3/authen?do=logout"><span class="glyphicon glyphicon-th-large"  >Đăng xuất</span></a></li>
                     </ul>
                 </div>
