@@ -59,11 +59,13 @@
                                         <label class="label label-info" style="padding: 5px;font-size:13px">Tác Giả</label>
                                     </div>
                                     <div class="col-sm-9" >
-                                        <select class="form-control" name="gVienHS">
-                                            <option value="${bg.getGiangVienHocSinh().getMaGVHS()}">${bg.getGiangVienHocSinh().getMaGVHS()} - ${bg.getGiangVienHocSinh().getTenGVHS()}</option>
-                                            <c:forEach items="${gvhsList}" var="gvhsList">
-                                                <c:if test="${gvhsList.getMaGVHS() != bg.getGiangVienHocSinh().getMaGVHS()}">
-                                                    <option value="${gvhsList.getMaGVHS()}">${gvhsList.getMaGVHS()} - ${gvhsList.getTenGVHS()}</option>
+                                        <select class="form-control" name="gvhs">
+                                            <option value="${bgList.getGiangVienHocSinh().getMaGVHS()}">${bgList.getGiangVienHocSinh().getMaGVHS()} - ${bgList.getGiangVienHocSinh().getTenGVHS()}</option>
+                                            <c:forEach items="${requestScope.gvhsList}" var="GV">
+                                                <c:if test="${GV.getMaGVHS() != dcctList.getGiangVienHocSinh().getMaGVHS()}">
+                                                    <c:if test="${GV.getTrinhdo() != 0}">
+                                                        <option value="${GV.getMaGVHS()}">${GV.getMaGVHS()} - ${GV.getTenGVHS()}</option>
+                                                    </c:if>
                                                 </c:if>
                                             </c:forEach>
                                         </select>

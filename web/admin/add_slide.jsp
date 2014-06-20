@@ -49,7 +49,9 @@
                                             <option value="${sl.getGiangVienHocSinh().getMaGVHS()}">${sl.getGiangVienHocSinh().getMaGVHS()} - ${sl.getGiangVienHocSinh().getTenGVHS()}</option>
                                             <c:forEach items="${requestScope.GV}" var="GV">
                                                 <c:if test="${GV.getMaGVHS() != sl.getGiangVienHocSinh().getMaGVHS()}">
-                                                    <option value="${GV.getMaGVHS()}">${GV.getMaGVHS()} - ${GV.getTenGVHS()}</option>
+                                                    <c:if test="${GV.getTrinhdo() != 0}">
+                                                        <option value="${GV.getMaGVHS()}">${GV.getMaGVHS()} - ${GV.getTenGVHS()}</option>
+                                                    </c:if>
                                                 </c:if>
                                             </c:forEach>
                                         </select>
