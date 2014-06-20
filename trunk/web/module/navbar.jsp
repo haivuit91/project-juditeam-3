@@ -27,15 +27,17 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <ul class="nav navbar-nav">
 
                             <li><a href="/project3/home.jsp">Trang chủ</a></li>
                             <li><a href="/project3/Page?p=about">Giới Thiệu</a></li>
-                            <li><a href="/project3/Page?p=login">Đăng Nhập</a></li>
                             <li><a href="/project3/Page?p=search-cb">Tìm Kiếm</a></li>
                             <li><a href="/project3/Page?p=contact">Liên Hệ</a></li>
 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/project3/Page?p=login"><span class="glyphicon glyphicon-new-window"></span>&nbsp; Đăng Nhập</a></li>
                         </ul>
                     </div>
                 </div><!--/.nav-collapse -->

@@ -141,8 +141,8 @@
                             <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
                                 ${currentSL.getTenSilde()}
                             </div>
-                            <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
-                            <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                            <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Nội dung</div>
+                            <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
                                 ${currentSL.getNoidung()}
                             </div>
                         </c:if>
@@ -169,8 +169,8 @@
                                 <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
                                     ${currentBG.getTenBG()}
                                 </div>
-                                <div class="col-md-2 alert-success " style="font-weight:bold;padding: 5px">Nội dung</div>
-                                <div class="col-md-10 alert-success " style="font-weight: initial;padding: 5px">
+                                <div class="col-md-2 alert-warning " style="font-weight:bold;padding: 5px">Nội dung</div>
+                                <div class="col-md-10 alert-warning " style="font-weight: initial;padding: 5px">
                                     ${currentBG.getNoidung()}
                                 </div>
                             </c:if>
