@@ -100,9 +100,10 @@ public class BGManagement extends HttpServlet {
         String tenBG = request.getParameter("tenBG");
         String noiDung = request.getParameter("noiDung");
         int nam = Integer.parseInt(request.getParameter("nam"));
-        int mshv = Integer.parseInt(request.getParameter("gVienHS"));
-
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(mshv);
+        String strGVHS = request.getParameter("gvhs");
+        String[] arr = strGVHS.split("-");
+        int maGV = Integer.parseInt(arr[0]);
+        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGV);
         int trangThai = 1;
 
         BaiGiang bg = new BaiGiang(1, tenBG, noiDung, nam, gvhs, trangThai);

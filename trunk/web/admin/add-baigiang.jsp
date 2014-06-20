@@ -60,7 +60,9 @@
                                     </div>
                                     <div class="col-sm-9" >
                                         <select class="form-control" name="gvhs">
-                                            <option value="${bgList.getGiangVienHocSinh().getMaGVHS()}">${bgList.getGiangVienHocSinh().getMaGVHS()} - ${bgList.getGiangVienHocSinh().getTenGVHS()}</option>
+                                            <c:if test="${bg.getMaBG() > 0}">
+                                                <option value="${bg.getGiangVienHocSinh().getMaGVHS()}">${bg.getGiangVienHocSinh().getMaGVHS()} - ${bg.getGiangVienHocSinh().getTenGVHS()}</option>
+                                            </c:if>
                                             <c:forEach items="${requestScope.gvhsList}" var="GV">
                                                 <c:if test="${GV.getMaGVHS() != dcctList.getGiangVienHocSinh().getMaGVHS()}">
                                                     <c:if test="${GV.getTrinhdo() != 0}">
