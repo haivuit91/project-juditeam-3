@@ -68,6 +68,22 @@
                 <c:if test="${page == 'dsgvhs'}">
                     <%@include file="module/ds-gvhs.jsp" %>
                 </c:if>
+                <c:if test="${page == 'ct-bg'}">
+                    <%@include file="module/ct-ds-baigiang.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-slide'}">
+                    <%@include file="module/ct-ds-slide.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-dcct'}">
+                    <%@include file="module/ct-ds-dccthp.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-tl'}">
+                    <%@include file="module/ct-ds-tulieu.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dshs'}">
+                    <%@include file="module/ds-hs.jsp" %>
+                </c:if>
+                
             </div>
 
         </div>

@@ -13,60 +13,51 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-      <div class="col-md-6 col-md-offset-3">
-                <h3 class=" col-md-12 alert alert-success" style="text-align: center;font-weight: bold">
-                    CHI TIẾT TƯ LIỆU
-                </h3>
+        <div class="col-md-6 col-md-offset-3">
+            <h3 class=" col-md-12 alert alert-success" style="text-align: center;font-weight: bold">
+                CHI TIẾT TƯ LIỆU
+            </h3>
             <div class="panel panel-body ">
-                 <div class="form-group">  
-                    <div class="col-md-3 alert-info">
-                        <p>
-                            Tên tư liệu
-                        </p>
+                <div class="form-group">  
+                    <div class="col-md-2 alert-info">
+                        Tên tư liệu: 
                     </div>
-                    <div class="col-md-9 alert-info">
-                        <p>
-                           Lập trình Java	
-                        </p>
+                    <div class="col-md-10 alert-info">
+                        ${tl.getTenTL()}
                     </div>
                 </div>
-                
-                 <div class="form-group">  
-                    <div class="col-md-3 alert-warning">
-                       Loại
+
+                <div class="form-group">  
+                    <div class="col-md-2 alert-warning">
+                        Loại: 
                     </div>
-                    <div class="col-md-9 alert-warning">
-                       JSE
-                    </div>
-                </div>
-                 <div class="form-group">  
-                    <div class="col-md-3 alert-info">
-                      Nguồn
-                    </div>
-                    <div class="col-md-9 alert-info">
-                      ĐH Bách Khoa
+                    <div class="col-md-10 alert-warning">
+                        ${tl.getLoaiTL()}
                     </div>
                 </div>
-                 <div class="form-group">  
-                    <div class="col-md-3 alert-warning">
-                       Năm
+                <div class="form-group">  
+                    <div class="col-md-2 alert-info">
+                        Nguồn
                     </div>
-                    <div class="col-md-9 alert-warning">
-                        2014
+                    <div class="col-md-10 alert-info">
+                        ${tl.getNguonTL()}
                     </div>
                 </div>
-               
-                 <div class="form-group">  
+                <div class="form-group">  
+                    <div class="col-md-2 alert-warning">
+                        Năm
+                    </div>
+                    <div class="col-md-10 alert-warning">
+                        ${tl.getNam()}
+                    </div>
+                </div>
+
+                <div class="form-group">  
                     <div class="col-md-12 alert-info">
-                       Nội Dung
+                        Nội Dung
                     </div>
                     <div class="col-md-12 alert-success">
-                        <p>
-                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-                        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-                        </p>
-                        
+                        ${tl.getNoidung()}
                     </div>
                 </div>
             </div>

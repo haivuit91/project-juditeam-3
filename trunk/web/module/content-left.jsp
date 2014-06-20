@@ -24,23 +24,23 @@
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="/HeThongTTQL/show?p=dsdcct">Bài giảng</a>
+                        <a href="/HeThongTTQL/show?p=dsbg">Bài giảng</a>
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="#">Slide giảng dạy</a>
+                        <a href="/HeThongTTQL/show?p=dsslide">Slide giảng dạy</a>
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="#">Tư liệu</a>
+                        <a href="/HeThongTTQL/show?p=dstl">Tư liệu</a>
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="#">Thông tin giảng viên</a>
+                        <a href="/HeThongTTQL/show?p=dsgv">Thông tin giảng viên</a>
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="#"> Thông tin học sinh</a>
+                        <a href="/HeThongTTQL/show?p=dshs"> Thông tin học sinh</a>
                     </li>
                 </ul>
             </div>
