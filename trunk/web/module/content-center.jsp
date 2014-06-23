@@ -13,7 +13,7 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-         <div class="col-lg-10 col-md-10 col-sm-10">
+         <div class="col-lg-8 col-md-10 col-sm-10">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Hổ trợ giảng dạy và học tập HTTQL</h3>
