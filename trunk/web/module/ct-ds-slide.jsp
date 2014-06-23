@@ -59,6 +59,14 @@
                         ${sl.getNoidung()}
                     </div>
                 </div>
+                <div class="form-group">  
+                    <div class="col-md-3 alert-info">
+                        Tệp đính kèm: 
+                    </div>
+                    <div class="col-md-9 alert-info">
+                        <a href="/HeThongTTQL/files/${sl.getTlThamkhao()}">${sl.getTlThamkhao()}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
