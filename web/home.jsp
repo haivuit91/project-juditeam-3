@@ -33,7 +33,7 @@
             <div class="row">
                 <!--------------------------------CONTENT LEFT-------------------------------->
                 <%@include file="module/content-left.jsp" %>
-                <!--------------------------------CONTENT RIGHT-------------------------------->
+                <!--------------------------------CONTENT CENTER-------------------------------->
 
                 <c:if test="${page == 'search-cb'}">
                     <%@include file="module/search-cb.jsp" %>
@@ -51,7 +51,7 @@
                     <%@include file="module/about.jsp" %>
                 </c:if>
                 <c:if test="${page == null}">
-                    <%@include file="module/content-right.jsp" %>
+                    <%@include file="module/content-center.jsp" %>
                 </c:if>
                 <c:if test="${page == 'dsbg'}">
                     <%@include file="module/ds-baigiang.jsp" %>
@@ -84,6 +84,8 @@
                     <%@include file="module/ds-hs.jsp" %>
                 </c:if>
                 
+                <!--------------------------------CONTENT RIGHT-------------------------------->
+                <%@include file="module/content-right.jsp" %>
             </div>
 
         </div>
@@ -93,7 +95,7 @@
                 <footer style="padding-bottom: 20px; text-align: center">
                     &nbsp <br>
                     Hỗ trợ giảng dạy và học tập HTTQL Trường Cao đẳng Thương Mại<br>
-                    Địa chỉ:45 Dũng Sĩ Thanh Khê, Đà Nẵng<br>
+                    Địa chỉ: 45 Dũng Sĩ Thanh Khê, Đà Nẵng<br>
                     Thiết kế: Hồ Bích Thảo
                 </footer>
             </div>
