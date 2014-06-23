@@ -104,7 +104,7 @@ public class SlideManagement extends HttpServlet {
             throws ServletException, IOException {
         List<TuLieu> tl = TL_SERVICE.getAllTuLieu();
         request.setAttribute("tl", tl);
-        List<GiangVienHocSinh> GV = GVHS_SERVICE.getAllGiangVienHocSinh();
+        List<GiangVienHocSinh> GV = GVHS_SERVICE.getAllGVHS();
         request.setAttribute("GV", GV);
         request.setAttribute(util.Constants.PAGE, "manage-add-edit-sl");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
@@ -143,7 +143,7 @@ public class SlideManagement extends HttpServlet {
         request.setAttribute("sl", sl);
         List<TuLieu> tl = TL_SERVICE.getAllTuLieu();
         request.setAttribute("tl", tl);
-        List<GiangVienHocSinh> GV = GVHS_SERVICE.getAllGiangVienHocSinh();
+        List<GiangVienHocSinh> GV = GVHS_SERVICE.getAllGVHS();
         request.setAttribute("GV", GV);
         request.setAttribute(util.Constants.PAGE, "manage-add-edit-sl");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
