@@ -67,7 +67,8 @@
                                         <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
                                     </div>
                                     <div class="col-sm-9" >
-                                        <input type="text" name="file" value="${tl.getTlThamkhao()}" class="form-control" id="inputEmail3" disabled placeholder="File đính kèm">
+                                        <input type="text" name="fileName" value="${tl.getTlThamkhao()}" style="display: none"/>
+                                        <input type="text" name="fileName" value="${tl.getTlThamkhao()}" class="form-control" id="inputEmail3" disabled placeholder="File đính kèm">
                                         <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
                                     </div>
                                 </div>
