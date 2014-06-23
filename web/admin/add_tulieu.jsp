@@ -30,9 +30,10 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${tl.getMaTL() > 0 ? 'Thay đổi thông tin tư liệu' : 'Thêm mới tư liệu'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/HeThongTTQL/tlmamage?id=${tl.getMaTL()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/tlmamage?id=${tl.getMaTL()}" method="post"  enctype="multipart/form-data" accept-charset="UTF-8">
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
+                                        <input type="text" name="maTL" value="${tl.getMaTL()}" style="display: none"/>
                                         <input type="text" name="maTL" value="${tl.getMaTL()}" disabled class="form-control" id="inputEmail3" placeholder="Mã tư liệu">
                                     </div>
                                 </div>
@@ -62,10 +63,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" style="margin-top: 25px;">
                                         <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
                                     </div>
                                     <div class="col-sm-9" >
+                                        <input type="text" name="file" value="${tl.getTlThamkhao()}" class="form-control" id="inputEmail3" disabled placeholder="File đính kèm">
                                         <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
                                     </div>
                                 </div>

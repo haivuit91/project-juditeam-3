@@ -22,9 +22,10 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${sl.getMaSlide() > 0 ? 'Thay đổi thông tin slide' : 'Thêm mới slide'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/HeThongTTQL/slidemanage?id=${sl.getMaSlide()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/slidemanage?id=${sl.getMaSlide()}" method="post"  enctype="multipart/form-data" accept-charset="UTF-8">
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
+                                        <input type="text" name="maSlide" value="${sl.getMaSlide()}" style="display: none"/>
                                         <input type="text" name="maSlide" value="${sl.getMaSlide()}" disabled class="form-control" id="inputEmail3" placeholder="Mã slide">
                                     </div>
                                 </div>
@@ -70,10 +71,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" style="margin-top: 25px;">
                                         <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
                                     </div>
                                     <div class="col-sm-9" >
+                                        <input type="text" name="file" value="${sl.getTlThamkhao()}" class="form-control" id="inputEmail3" disabled placeholder="File đính kèm">
                                         <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
                                     </div>
                                 </div>
