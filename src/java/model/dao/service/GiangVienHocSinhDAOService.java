@@ -20,6 +20,8 @@ public interface GiangVienHocSinhDAOService {
      * @return GiangVienHocSinh
      */
     public List<GiangVienHocSinh> getAllGiangVienHocSinh();
+    
+    public List<GiangVienHocSinh> getAllGVHS();
 
     /**
      * Get GiangVienHocSinh
