@@ -20,7 +20,7 @@
             <div class="panel panel-body ">
                 <div class="form-group">  
                     <div class="col-md-2 alert-info">
-                        Tên ĐC chi tiết: 
+                        <b>Tên ĐC chi tiết: </b>
                     </div>
                     <div class="col-md-10 alert-info">
                         ${dc.getTenDC()}
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">  
                     <div class="col-md-2 alert-warning">
-                        Người thực hiện: 
+                       <b>  Người thực hiện: </b>
                     </div>
                     <div class="col-md-10 alert-warning">
                         ${dc.getGiangVienHocSinh().getTenGVHS()}
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">  
                     <div class="col-md-2 alert-info">
-                        Năm: 
+                        <b>  Năm: </b>
                     </div>
                     <div class="col-md-10 alert-info">
                         ${dc.getNam()}
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">  
                     <div class="col-md-2 alert-warning">
-                        Đơn vị học trình: 
+                        <b>  Đơn vị học trình:  </b> 
                     </div>
                     <div class="col-md-10 alert-warning">
                         ${dc.getDvhoctrinh()}
@@ -52,9 +52,9 @@
                 </div>
                 <div class="form-group">  
                     <div class="col-md-12 alert-info">
-                        Nội Dung: 
+                       <b>   Nội Dung:  </b> 
                     </div>
-                    <div class="col-md-12 alert-success">
+                    <div class="col-md-12 alert-info">
                         ${dc.getNoidung()}
                     </div>
                 </div>

@@ -55,16 +55,10 @@
                     <select id="Select1"onchange="window.open(this.options[this.selectedIndex].value, '_blank');
                             this.options[0].selected = true"  class="alert-link" name="select" >
                         <option selected="selected">Liên kết Web</option>
-                        <option value="about:Tabs">--------------------------</option> 
-                        <option value="http://ngoisao.net">Ngoi Sao</option>
-                        <option value="http://vnexpress.net">Vnexpress</option>
-                        <option value="http://vietnamnet.vn">Vietnamnet</option>
-                        <option value="http://www.thanhnien.com.vn">Thanh niên</option>
-                        <option value="http://www.hanoimoi.com.vn">HN mới</option>
-                        <option value="http://www.nhandan.com.vn">Nhân dân</option>
-                        <option value="http://www.tuoitre.vn/">Tuổi trẻ</option>
-                        <option value="http://www.tienphong.vn">Tiền phong</option>
-                        <option value="http://www.dantri.com.vn">Dân trí;</option>
+                        <option value="about:Tabs">----------------------</option> 
+                        <option value="http://www.moet.gov.vn">Bộ giáo dục</option>
+                        <option value="http://giaoduc.net.vn">Báo giáo dục việt nam</option>
+                        <option value="http://udn.vn">Đại học Đà Nẵng</option>
                     </select>
                 </div>
             </div>
