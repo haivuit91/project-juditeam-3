@@ -119,9 +119,10 @@ public class SlideManagement extends HttpServlet {
         int maTL = Integer.parseInt(request.getParameter("tulieu"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
+        String tlThamkhao = request.getParameter("tlThamkhao");
         int trangThai = 1;
 
-        Slide sl = new Slide(1, tenSlide, noiDung, nam, gvhs, tl, trangThai);
+        Slide sl = new Slide(1, tenSlide, noiDung, nam, gvhs, tl, tlThamkhao, trangThai);
         if (SL_SERVICE.themSlide(sl)) {
             List<Slide> slList = SL_SERVICE.getAllSlide();
             request.setAttribute("slideList", slList);
@@ -158,9 +159,10 @@ public class SlideManagement extends HttpServlet {
         int maTL = Integer.parseInt(request.getParameter("tulieu"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
+        String tlThamkhao = request.getParameter("tlThamkhao");
         int trangThai = 1;
 
-        Slide sl = new Slide(maSlide, tenSlide, noiDung, nam, gvhs, tl, trangThai);
+        Slide sl = new Slide(maSlide, tenSlide, noiDung, nam, gvhs, tl, tlThamkhao, trangThai);
         if (SL_SERVICE.chinhsuaSlide(sl)) {
             List<Slide> slList = SL_SERVICE.getAllSlide();
             request.setAttribute("slideList", slList);

@@ -44,6 +44,7 @@ public class TuLieuDAO implements TuLieuDAOService {
                 tulieu.setLoaiTL(rs.getString("loaiTL"));
                 tulieu.setNguonTL(rs.getString("nguonTL"));
                 tulieu.setNam(rs.getInt("nam"));
+                tulieu.setTlThamkhao(rs.getString("tlThamkhao"));
                 tulieuList.add(tulieu);
             }
         } catch (Exception e) {
@@ -68,6 +69,7 @@ public class TuLieuDAO implements TuLieuDAOService {
                 tulieu.setLoaiTL(rs.getString("loaiTL"));
                 tulieu.setNguonTL(rs.getString("nguonTL"));
                 tulieu.setNam(rs.getInt("nam"));
+                tulieu.setTlThamkhao(rs.getString("tlThamkhao"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,6 +93,7 @@ public class TuLieuDAO implements TuLieuDAOService {
                 tulieu.setLoaiTL(rs.getString("loaiTL"));
                 tulieu.setNguonTL(rs.getString("nguonTL"));
                 tulieu.setNam(rs.getInt("nam"));
+                tulieu.setTlThamkhao(rs.getString("tlThamkhao"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,6 +119,7 @@ public class TuLieuDAO implements TuLieuDAOService {
                 tulieu.setLoaiTL(rs.getString("loaiTL"));
                 tulieu.setNguonTL(rs.getString("nguonTL"));
                 tulieu.setNam(rs.getInt("nam"));
+                tulieu.setTlThamkhao(rs.getString("tlThamkhao"));
                 listTuLieu.add(tulieu);
             }
         } catch (Exception ex) {
@@ -127,7 +131,7 @@ public class TuLieuDAO implements TuLieuDAOService {
     @Override
     public boolean themTuLieu(TuLieu tulieu) {
         boolean isCheck = false;
-        String sql = "insert into tbl_tulieu (tenTL, noidung, loaiTL, nguonTL, nam, trangthai) values(?,?,?,?,?,?)";
+        String sql = "insert into tbl_tulieu (tenTL, noidung, loaiTL, nguonTL, nam, trangthai) values(?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -136,7 +140,8 @@ public class TuLieuDAO implements TuLieuDAOService {
             pstmt.setString(3, tulieu.getLoaiTL());
             pstmt.setString(4, tulieu.getNguonTL());
             pstmt.setInt(5, tulieu.getNam());
-            pstmt.setInt(6, tulieu.getTrangthai());
+            pstmt.setString(6, tulieu.getTlThamkhao());
+            pstmt.setInt(7, tulieu.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -147,7 +152,7 @@ public class TuLieuDAO implements TuLieuDAOService {
     @Override
     public boolean chinhsuaTuLieu(TuLieu tulieu) {
         boolean isCheck = false;
-        String sql = "update tbl_tulieu set tenTl=?,noidung=?,loaiTL=?,nguonTL=?,nam=?,trangthai=? where maTL = ?";
+        String sql = "update tbl_tulieu set tenTl=?,noidung=?,loaiTL=?,nguonTL=?,nam=?, tlThamkhao=?,trangthai=? where maTL = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -156,8 +161,9 @@ public class TuLieuDAO implements TuLieuDAOService {
             pstmt.setString(3, tulieu.getLoaiTL());
             pstmt.setString(4, tulieu.getNguonTL());
             pstmt.setInt(5, tulieu.getNam());
-            pstmt.setInt(6, tulieu.getTrangthai());
-            pstmt.setInt(7, tulieu.getMaTL());
+            pstmt.setString(6, tulieu.getTlThamkhao());
+            pstmt.setInt(7, tulieu.getTrangthai());
+            pstmt.setInt(8, tulieu.getMaTL());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());

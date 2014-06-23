@@ -18,19 +18,21 @@ public class TuLieu {
     private String loaiTL;
     private String nguonTL;
     private int nam;
+    private String tlThamkhao;
     private int trangthai;
     
     public TuLieu() {
         
     }
 
-    public TuLieu(int maTL, String tenTL, String noidung, String loaiTL, String nguonTL, int nam, int trangthai) {
+    public TuLieu(int maTL, String tenTL, String noidung, String loaiTL, String nguonTL, int nam, String tlThamkhao, int trangthai) {
         this.maTL = maTL;
         this.tenTL = tenTL;
         this.noidung = noidung;
         this.loaiTL = loaiTL;
         this.nguonTL = nguonTL;
         this.nam = nam;
+        this.tlThamkhao = tlThamkhao;
         this.trangthai = trangthai;
     }
 
@@ -82,6 +84,14 @@ public class TuLieu {
         this.nam = nam;
     }
 
+    public String getTlThamkhao() {
+        return tlThamkhao;
+    }
+
+    public void setTlThamkhao(String tlThamkhao) {
+        this.tlThamkhao = tlThamkhao;
+    }
+
     public int getTrangthai() {
         return trangthai;
     }
@@ -89,5 +99,5 @@ public class TuLieu {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-    
+
 }

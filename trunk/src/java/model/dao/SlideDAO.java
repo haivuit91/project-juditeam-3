@@ -49,6 +49,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
                 slide.setTuLieu(tulieu);
+                slide.setTlThamkhao(rs.getString("tlThamkhao"));
                 slide.setTrangthai(rs.getInt("trangthai"));
 
                 slideList.add(slide);
@@ -77,6 +78,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
                 slide.setTuLieu(tulieu);
+                slide.setTlThamkhao(rs.getString("tlThamkhao"));
                 slide.setTrangthai(rs.getInt("trangthai"));
 
             }
@@ -105,6 +107,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
                 slide.setTuLieu(tulieu);
+                slide.setTlThamkhao(rs.getString("tlThamkhao"));
                 slide.setTrangthai(rs.getInt("trangthai"));
                 listSlide.add(slide);
             }
@@ -135,6 +138,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setGiangVienHocSinh(gvienhsinh);
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
                 slide.setTuLieu(tulieu);
+                slide.setTlThamkhao(rs.getString("tlThamkhao"));
                 slide.setTrangthai(rs.getInt("trangthai"));
                 listSlide.add(slide);
             }
@@ -162,6 +166,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setNam(rs.getInt("nam"));
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
                 slide.setTuLieu(tulieu);
+                slide.setTlThamkhao(rs.getString("tlThamkhao"));
                 listSlide.add(slide);
             }
         } catch (Exception ex) {
@@ -173,7 +178,7 @@ public class SlideDAO implements SlideDAOService {
     @Override
     public boolean themSlide(Slide slide) {
         boolean isCheck = false;
-        String sql = "insert into tbl_slide (tenSlide, noidung, nam, maGVHS, maTL, trangthai) values(?,?,?,?,?,?)";
+        String sql = "insert into tbl_slide (tenSlide, noidung, nam, maGVHS, maTL, trangthai) values(?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -182,7 +187,8 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setInt(3, slide.getNam());
             pstmt.setInt(4, slide.getGiangVienHocSinh().getMaGVHS());
             pstmt.setInt(5, slide.getTuLieu().getMaTL());
-            pstmt.setInt(6, slide.getTrangthai());
+            pstmt.setString(6, slide.getTlThamkhao());
+            pstmt.setInt(7, slide.getTrangthai());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -193,7 +199,7 @@ public class SlideDAO implements SlideDAOService {
     @Override
     public boolean chinhsuaSlide(Slide slide) {
         boolean isCheck = false;
-        String sql = "update tbl_slide set tenSlide=?,noidung=?,nam=?,maGVHS=?,maTL=?,trangthai=? where maSlide = ?";
+        String sql = "update tbl_slide set tenSlide=?,noidung=?,nam=?,maGVHS=?,maTL=?, tlThamkhao=?,trangthai=? where maSlide = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -202,8 +208,9 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setInt(3, slide.getNam());
             pstmt.setInt(4, slide.getGiangVienHocSinh().getMaGVHS());
             pstmt.setInt(5, slide.getTuLieu().getMaTL());
-            pstmt.setInt(6, slide.getTrangthai());
-            pstmt.setInt(7, slide.getMaSlide());
+            pstmt.setString(6, slide.getTlThamkhao());
+            pstmt.setInt(7, slide.getTrangthai());
+            pstmt.setInt(8, slide.getMaSlide());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -243,6 +250,7 @@ public class SlideDAO implements SlideDAOService {
                 slide.setNam(rs.getInt("nam"));
                 TuLieu tulieu = TuLieuDAO.getInstance().getTuLieuByMaTL(rs.getInt("maTL"));
                 slide.setTuLieu(tulieu);
+                slide.setTlThamkhao(rs.getString("tlThamkhao"));
                 slideList.add(slide);
             }
         } catch (SQLException | ClassNotFoundException e) {
