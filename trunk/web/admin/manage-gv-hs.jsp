@@ -51,10 +51,10 @@
                 <tr>
                     <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">STT</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GVSV</td>
-                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Địa Chỉ</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Địa Chỉ</td>
                     <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Điện Thoại</td>
                     <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Ngày Sinh</td>
-                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Đơn Vị</td>
+                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Đơn Vị</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Trình Độ</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
@@ -63,10 +63,10 @@
                     <tr>
                         <td style="text-transform: inherit;padding:5px"><%=i++%></td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTenGVHS()}</td>
-                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${gvhs.getDiachi()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDiachi()}</td>
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getDienthoai()}</td>
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getNgaysinh()}</td>
-                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getDonvi()}</td>
+                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${gvhs.getDonvi()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTrinhdo() == 1?'Giảng viên':'Sinh viên'}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
