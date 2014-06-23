@@ -18,7 +18,7 @@
                 <div class="col-lg-4 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3><span class="glyphicon glyphicon-user"></span>${gvhs.getMaGVHS() > 0 ? 'Thay đổi thông tin GV-HS' : 'Thêm mới GV-HS'}</h3>
+                            <h3><span class="glyphicon glyphicon-user"></span>${gvhs.getMaGVHS() > 0 ? 'Thay đổi thông tin GV-SV' : 'Thêm mới giảng viên, sinh viên'}</h3>
                         </div>
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" action="/HeThongTTQL/GVHSManage?id=${gvhs.getMaGVHS()}" method="post">
@@ -32,7 +32,7 @@
                                 <div class="form-group">
 
                                     <div class="col-sm-12" >
-                                        <input type="text" name="tenGVHS" value="${gvhs.getTenGVHS()}" class="form-control" id="inputEmail3" placeholder="Tên giáo viên hoặc học sinh">
+                                        <input type="text" name="tenGVHS" value="${gvhs.getTenGVHS()}" class="form-control" id="inputEmail3" placeholder="Tên giangr viên hoặc sinh viên">
                                     </div>
                                 </div>
                                 <!-- /.Password -->

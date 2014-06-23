@@ -15,7 +15,7 @@
         <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="alert alert-danger" style="text-align: center"><b>QUẢN LÝ GIẢNG VIÊN HỌC SINH </b></div>
+        <div class="alert alert-danger" style="text-align: center"><b>QUẢN LÝ GIẢNG VIÊN, SINH VIÊN </b></div>
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
@@ -50,7 +50,7 @@
             <table>
                 <tr>
                     <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
-                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GVHS</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GVSV</td>
                     <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Địa Chỉ</td>
                     <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Điện Thoại</td>
                     <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Ngày Sinh</td>

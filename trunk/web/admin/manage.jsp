@@ -22,7 +22,7 @@
                         <div class="panel panel-default">   
                             <div class="panel-heading" style="background:black;color:white">
                                 <span class="glyphicon glyphicon-user"></span>
-                                QUẢN LÝ GIẢNG VIÊN HỌC SINH
+                                QUẢN LÝ GIẢNG VIÊN SINH VIÊN
                             </div>
                             <div class="panel-body">
                                 <a href="/HeThongTTQL/GVHSManage?p=manage-gvhs"><img class="img-thumbnail" src="./images/admin/user.png" alt="" width="40%"/></a>
