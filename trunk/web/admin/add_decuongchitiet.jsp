@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3" >
+                                    <div class="col-sm-3" style="margin-top: 8px;">
                                         <label class="label label-info" style="padding: 5px;font-size:13px">Tác Giả</label>
                                     </div>
                                     <div class="col-sm-9" >
