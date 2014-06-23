@@ -34,6 +34,7 @@
                                 <!-- /.Mã BG -->
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >
+                                        <input type="text" name="maBG" value="${bg.getMaBG()}" style="display: none"/>
                                         <input type="text" name="maBG" value="${bg.getMaBG()}" disabled class="form-control" id="inputEmail3" placeholder="Mã bài giảng">
                                     </div>
                                 </div>
@@ -55,7 +56,7 @@
                                 </div>
                                 <!-- /.Giang vien hoc sinh -->
                                 <div class="form-group">
-                                    <div class="col-sm-3" >
+                                    <div class="col-sm-3" style="margin-top: 8px;">
                                         <label class="label label-info" style="margin-top:5px; padding: 5px;font-size:13px">Tác Giả</label>
                                     </div>
                                     <div class="col-sm-9" >
@@ -74,10 +75,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" style="margin-top: 25px;">
                                         <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
                                     </div>
                                     <div class="col-sm-9" >
+                                        <input type="text" name="file" value="${bg.getTlThamkhao()}" class="form-control" id="inputEmail3" disabled placeholder="File đính kèm">
                                         <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
                                     </div>
                                 </div>
