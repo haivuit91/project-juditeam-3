@@ -34,7 +34,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
         List<GiangVienHocSinh> listGVHS = new ArrayList<GiangVienHocSinh>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_giangvien_hocsinh";
+            String sql = "select * from tbl_giangvien_hocsinh ORDER BY maGVHS DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -63,7 +63,7 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
         List<GiangVienHocSinh> listGVHS = new ArrayList<GiangVienHocSinh>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_giangvien_hocsinh ORDER BY maGVHS DESC";
+            String sql = "select * from tbl_giangvien_hocsinh";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {

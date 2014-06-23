@@ -178,7 +178,7 @@ public class SlideDAO implements SlideDAOService {
     @Override
     public boolean themSlide(Slide slide) {
         boolean isCheck = false;
-        String sql = "insert into tbl_slide (tenSlide, noidung, nam, maGVHS, maTL, trangthai) values(?,?,?,?,?,?,?)";
+        String sql = "insert into tbl_slide (tenSlide, noidung, nam, maGVHS, maTL, tlThamkhao, trangthai) values(?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
