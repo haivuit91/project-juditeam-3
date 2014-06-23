@@ -60,13 +60,13 @@ public class BGManagement extends HttpServlet {
                     break;
                 case "add":
                     request.setAttribute(util.Constants.PAGE, "addbg");
-                    List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGVHS();
                     request.setAttribute(util.Constants.GVHS_LIST, gvhsList);
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
                     break;
                 case "edit":
-                    List<GiangVienHocSinh> gvhsListGVHS = GVHS_SERVICE.getAllGiangVienHocSinh();
+                    List<GiangVienHocSinh> gvhsListGVHS = GVHS_SERVICE.getAllGVHS();
                     request.setAttribute(util.Constants.GVHS_LIST, gvhsListGVHS);
                     int maBG = Integer.parseInt(request.getParameter("maBG"));
                     BaiGiang bg = BG_SERVICE.getBaiGiangByMa(maBG);
@@ -87,11 +87,13 @@ public class BGManagement extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String action = null;
+        String maBG = null;
         String tenBG = null;
         String noiDung = null;
         String nam = null;
         String gvhs = null;
         String fileName = "";
+        String file = "";
         boolean isUploadSuccess = false;
         ServletFileUpload fileUpload = new ServletFileUpload();
         try {
@@ -105,8 +107,12 @@ public class BGManagement extends HttpServlet {
                     byte[] b = new byte[is.available()];
                     is.read(b);
                     String value = new String(b, "UTF-8");
+
                     if (fieldName.equals("submit")) {
                         action = value;
+                    }
+                    if (fieldName.equals("maBG")) {
+                        maBG = value;
                     }
                     if (fieldName.equals("tenBG")) {
                         tenBG = value;
@@ -119,6 +125,9 @@ public class BGManagement extends HttpServlet {
                     }
                     if (fieldName.equals("gvhs")) {
                         gvhs = value;
+                    }
+                    if (fieldName.equals("fileName")) {
+                        file = value;
                     }
                 } else {
                     String realPath = getServletContext().getRealPath("/");
@@ -137,7 +146,12 @@ public class BGManagement extends HttpServlet {
                 if (action != null) {
                     switch (action) {
                         case "Sửa":
-                            updateBG(request, response);
+                            if (file.equals("")) {
+                                updateBG(request, response, maBG, tenBG, noiDung, nam, gvhs, file);
+                            } else {
+                                updateBG(request, response, maBG, tenBG, noiDung, nam, gvhs, fileName);
+                            }
+//                            System.out.println(maBG +"-"+ tenBG +"-"+ noiDung +"-"+ nam +"-"+ gvhs +"-"+ fileName);
                             break;
                         case "Thêm mới":
                             addNew(request, response, tenBG, noiDung, nam, gvhs, fileName);
@@ -156,7 +170,8 @@ public class BGManagement extends HttpServlet {
         }
     }
 
-    private void addNew(HttpServletRequest request, HttpServletResponse response, String tenBG, String noiDung, String nam, String gvhs, String fileName) throws ServletException, IOException {
+    private void addNew(HttpServletRequest request, HttpServletResponse response, String tenBG, String noiDung,
+            String nam, String gvhs, String fileName) throws ServletException, IOException {
         int namxb = Integer.parseInt(nam);
         String strGVHS = gvhs;
         String[] arr = strGVHS.split("-");
@@ -170,7 +185,7 @@ public class BGManagement extends HttpServlet {
             request.setAttribute("msgResult", "Bạn đã thêm Bài giảng thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
-            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGVHS();
             request.setAttribute(util.Constants.GVHS_LIST, gvhsList);
             request.setAttribute("msgResult", "Có lỗi xảy ra, thêm bài giảng thất bại!");
             request.setAttribute(util.Constants.PAGE, "addbg");
@@ -178,18 +193,15 @@ public class BGManagement extends HttpServlet {
         }
     }
 
-    private void updateBG(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int maBG = Integer.parseInt(request.getParameter("maBG"));
-        String tenBG = request.getParameter("tenBG");
-        String noiDung = request.getParameter("noiDung");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
-        String tlThamkhao = request.getParameter("tlThamkhao");
-        int trangThai = 1;
+    private void updateBG(HttpServletRequest request, HttpServletResponse response, String maBG, String tenBG, String noiDung,
+            String nam, String gvhs, String fileName) throws ServletException, IOException {
+        int ma = Integer.parseInt(maBG);
+        int namxb = Integer.parseInt(nam);
+        String[] arr = gvhs.split("-");
+        int maGV = Integer.parseInt(arr[0]);
+        GiangVienHocSinh magvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGV);
 
-        BaiGiang bg = new BaiGiang(maBG, tenBG, noiDung, nam, gvhs, tlThamkhao, trangThai);
+        BaiGiang bg = new BaiGiang(ma, tenBG, noiDung, namxb, magvhs, fileName, 1);
         if (BG_SERVICE.chinhsuaBaiGiang(bg)) {
             List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
             request.setAttribute("bgList", bgList);
@@ -197,6 +209,12 @@ public class BGManagement extends HttpServlet {
             request.setAttribute("msgResult", "Bạn đã sửa bài giảng thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
+            List<GiangVienHocSinh> gvhsListGVHS = GVHS_SERVICE.getAllGVHS();
+            request.setAttribute(util.Constants.GVHS_LIST, gvhsListGVHS);
+            BaiGiang dsbg = BG_SERVICE.getBaiGiangByMa(ma);
+            request.setAttribute("bg", dsbg);
+            request.removeAttribute(util.Constants.MSG_RESULT);
+            request.setAttribute(util.Constants.PAGE, "addbg");
             request.setAttribute("msgResult", "Có lỗi xảy ra, sửa bài giảng thất bại!");
             request.setAttribute(util.Constants.PAGE, "addbg");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
@@ -212,10 +230,11 @@ public class BGManagement extends HttpServlet {
             request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
             request.setAttribute("bgList", bgList);
             request.setAttribute(util.Constants.PAGE, "manage-bg");
+            request.setAttribute("msgResult", "Bạn đã xóa bài giảng thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "manage-bg");
-            request.setAttribute("msgResult", "Bạn đã sửa bài giảng thành công");
+            request.setAttribute("msgResult", "Có lỗi xảy ra, xóa bài giảng thất bại!");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
     }

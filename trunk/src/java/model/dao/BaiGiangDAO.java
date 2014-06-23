@@ -164,7 +164,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     @Override
     public boolean chinhsuaBaiGiang(BaiGiang baigiang) {
         boolean isCheck = false;
-        String sql = "update tbl_baigiang set tenBG=?,noidung=?,nam=?,maGVHS=?, tlThamkhao=?, trangthai=? where maBG = ?";
+        String sql = "update tbl_baigiang set tenBG=?,noidung=?,nam=?,maGVHS=?, tlThamkhao=? where maBG = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -172,9 +172,8 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             pstmt.setString(2, baigiang.getNoidung());
             pstmt.setInt(3, baigiang.getNam());
             pstmt.setInt(4, baigiang.getGiangVienHocSinh().getMaGVHS());
-            pstmt.setInt(5, baigiang.getTrangthai());
-            pstmt.setString(6, baigiang.getTlThamkhao());
-            pstmt.setInt(7, baigiang.getMaBG());
+            pstmt.setString(5, baigiang.getTlThamkhao());
+            pstmt.setInt(6, baigiang.getMaBG());
             pstmt.executeUpdate();
             return true;
         } catch (Exception ex) {

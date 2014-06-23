@@ -98,7 +98,7 @@ public class DCCTManagement extends HttpServlet {
 
     private void doAddnew(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGVHS();
         request.setAttribute("GV", gvhsList);
         request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
         request.removeAttribute(util.Constants.MSG_RESULT);
@@ -128,7 +128,7 @@ public class DCCTManagement extends HttpServlet {
             request.setAttribute("msgResult", "Bạn đã thêm đề cương chi tiết thành công");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
-            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGVHS();
             request.setAttribute("GV", gvhsList);
             request.setAttribute("msgResult", "Có lỗi xảy ra, thêm đề cương chi tiết thất bại!");
             request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
@@ -141,7 +141,7 @@ public class DCCTManagement extends HttpServlet {
         int maDC = Integer.parseInt(request.getParameter("maDC"));
         DeCuong dcct = DCCT_SERVICE.getDeCuongByMa(maDC);
         request.setAttribute(util.Constants.DC_LIST, dcct);
-        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+        List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGVHS();
         request.setAttribute("GV", gvhsList);
         request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
@@ -173,7 +173,7 @@ public class DCCTManagement extends HttpServlet {
             int madc = Integer.parseInt(request.getParameter("maDC"));
             DeCuong dc = DCCT_SERVICE.getDeCuongByMa(madc);
             request.setAttribute(util.Constants.DC_LIST, dc);
-            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGiangVienHocSinh();
+            List<GiangVienHocSinh> gvhsList = GVHS_SERVICE.getAllGVHS();
             request.setAttribute("GV", gvhsList);
             request.setAttribute("msgResult", "Có lỗi xảy ra, sửa đề cương chi tiết thất bại!");
             request.setAttribute(util.Constants.PAGE, "add-edit-dcct");
