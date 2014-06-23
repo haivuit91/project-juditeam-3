@@ -151,7 +151,6 @@ public class BGManagement extends HttpServlet {
                             } else {
                                 updateBG(request, response, maBG, tenBG, noiDung, nam, gvhs, fileName);
                             }
-//                            System.out.println(maBG +"-"+ tenBG +"-"+ noiDung +"-"+ nam +"-"+ gvhs +"-"+ fileName);
                             break;
                         case "Thêm mới":
                             addNew(request, response, tenBG, noiDung, nam, gvhs, fileName);

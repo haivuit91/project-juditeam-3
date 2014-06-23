@@ -6,7 +6,11 @@
 package controller.servlet.admin;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +24,12 @@ import model.dao.service.TuLieuDAOService;
 import model.entities.GiangVienHocSinh;
 import model.entities.Slide;
 import model.entities.TuLieu;
+import org.apache.tomcat.util.http.fileupload.FileItemIterator;
+import org.apache.tomcat.util.http.fileupload.FileItemStream;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import util.FileUpload;
+import util.Support;
 
 /**
  *
@@ -84,19 +94,88 @@ public class SlideManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String submit = request.getParameter("submit");
-        switch (submit) {
-            case "Sửa":
-                editSlide(request, response);
-                break;
-            case "Thêm mới":
-                addSlide(request, response);
-                break;
-            case "Tìm kiếm":
-                search(request, response);
-                break;
+        String action = null;
+        String maSlide = null;
+        String tenSlide = null;
+        String noiDung = null;
+        String nam = null;
+        String gvhs = null;
+        String tl = null;
+        String fileName = "";
+        String file = "";
+        boolean isUploadSuccess = false;
+        ServletFileUpload fileUpload = new ServletFileUpload();
+        try {
+            FileItemIterator itr = fileUpload.getItemIterator(request);
+            while (itr.hasNext()) {
+                FileItemStream fileItemStream = itr.next();
+                if (fileItemStream.isFormField()) {
+                    String fieldName = fileItemStream.getFieldName();
+                    InputStream is = fileItemStream.openStream();
+
+                    byte[] b = new byte[is.available()];
+                    is.read(b);
+                    String value = new String(b, "UTF-8");
+
+                    if (fieldName.equals("submit")) {
+                        action = value;
+                    }
+                    if (fieldName.equals("maSlide")) {
+                        maSlide = value;
+                    }
+                    if (fieldName.equals("tenSlide")) {
+                        tenSlide = value;
+                    }
+                    if (fieldName.equals("noidung")) {
+                        noiDung = value;
+                    }
+                    if (fieldName.equals("nam")) {
+                        nam = value;
+                    }
+                    if (fieldName.equals("gvhs")) {
+                        gvhs = value;
+                    }
+                    if (fieldName.equals("tulieu")) {
+                        tl = value;
+                    }
+                    if (fieldName.equals("fileName")) {
+                        file = value;
+                    }
+                } else {
+                    String realPath = getServletContext().getRealPath("/");
+                    String filePath = realPath.replace("\\build\\web", "\\web\\files");//Duong dan luu file
+                    fileName = fileItemStream.getName();
+                    StringTokenizer token = new StringTokenizer(fileName, ".");
+                    String fileNameExtension = "";
+                    while (token.hasMoreElements()) {
+                        fileNameExtension = token.nextElement().toString();
+                    }
+                    if (!fileName.equals("")) {
+                        fileName = Support.toUrlFriendly(fileName);
+                        isUploadSuccess = FileUpload.processFile(filePath, fileItemStream, fileName);
+                    }
+                }
+                if (action != null) {
+                    switch (action) {
+                        case "Sửa":
+                            if (file.equals("")) {
+                                editSlide(request, response, maSlide, tenSlide, noiDung, nam, gvhs, tl, file);
+                            } else {
+                                editSlide(request, response, maSlide, tenSlide, noiDung, nam, gvhs, tl, fileName);
+                            }
+                            break;
+                        case "Thêm mới":
+                            addSlide(request, response, tenSlide, noiDung, nam, gvhs, tl, fileName);
+                            break;
+                        case "Tìm kiếm":
+                            search(request, response);
+                            break;
+                    }
+                }
+            }
+        } catch (FileUploadException ex) {
+            Logger.getLogger(BGManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -110,19 +189,15 @@ public class SlideManagement extends HttpServlet {
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
-    private void addSlide(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String tenSlide = request.getParameter("tenSlide");
-        String noiDung = request.getParameter("noidung");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
-        int maTL = Integer.parseInt(request.getParameter("tulieu"));
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+    private void addSlide(HttpServletRequest request, HttpServletResponse response, String tenSlide, String noidung,
+            String nam, String gvhs, String tulieu, String fileName) throws ServletException, IOException {
+        int namxb = Integer.parseInt(nam);
+        int maGVHS = Integer.parseInt(gvhs);
+        int maTL = Integer.parseInt(tulieu);
+        GiangVienHocSinh gvhsSL = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
-        String tlThamkhao = request.getParameter("tlThamkhao");
-        int trangThai = 1;
 
-        Slide sl = new Slide(1, tenSlide, noiDung, nam, gvhs, tl, tlThamkhao, trangThai);
+        Slide sl = new Slide(1, tenSlide, noidung, namxb, gvhsSL, tl, fileName, 1);
         if (SL_SERVICE.themSlide(sl)) {
             List<Slide> slList = SL_SERVICE.getAllSlide();
             request.setAttribute("slideList", slList);
@@ -149,20 +224,16 @@ public class SlideManagement extends HttpServlet {
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
-    private void editSlide(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int maSlide = Integer.parseInt(request.getParameter("id"));
-        String tenSlide = request.getParameter("tenSlide");
-        String noiDung = request.getParameter("noidung");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
-        int maTL = Integer.parseInt(request.getParameter("tulieu"));
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+    private void editSlide(HttpServletRequest request, HttpServletResponse response, String maSlide, String tenSlide,
+            String noidung, String nam, String gvhs, String tulieu, String fileName) throws ServletException, IOException {
+        int ma = Integer.parseInt(maSlide);
+        int namxb = Integer.parseInt(nam);
+        int maGVHS = Integer.parseInt(gvhs);
+        int maTL = Integer.parseInt(tulieu);
+        GiangVienHocSinh gvhsSL = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
         TuLieu tl = TL_SERVICE.getTuLieuByMaTL(maTL);
-        String tlThamkhao = request.getParameter("tlThamkhao");
-        int trangThai = 1;
 
-        Slide sl = new Slide(maSlide, tenSlide, noiDung, nam, gvhs, tl, tlThamkhao, trangThai);
+        Slide sl = new Slide(ma, tenSlide, noidung, namxb, gvhsSL, tl, fileName, 1);
         if (SL_SERVICE.chinhsuaSlide(sl)) {
             List<Slide> slList = SL_SERVICE.getAllSlide();
             request.setAttribute("slideList", slList);
@@ -180,10 +251,11 @@ public class SlideManagement extends HttpServlet {
             throws ServletException, IOException {
         int maSlide = Integer.parseInt(request.getParameter("id"));
         if (SL_SERVICE.xoaSlide(maSlide)) {
-            List<Slide> slList = SL_SERVICE.getAllSlide();
-            request.setAttribute("slideList", slList);
-            request.setAttribute(util.Constants.PAGE, "manage-slide");
+            List<Slide> slideList = SL_SERVICE.getAllSlide();
+            request.setAttribute(util.Constants.SL_LIST, slideList);
+            request.setAttribute(util.Constants.PAGE, "manage-sl");
             request.setAttribute("msgResult", "Bạn đã xóa Slide thành công");
+            request.removeAttribute(util.Constants.MSG_RESULT);
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         } else {
             request.setAttribute(util.Constants.PAGE, "manage-slide");

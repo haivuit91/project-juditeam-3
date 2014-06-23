@@ -29,15 +29,14 @@ public class Page extends HttpServlet {
     private final BaiGiangDAOService BG_SERVICE = BaiGiangDAO.getInstance();
     private final GiangVienHocSinhDAOService GVHS_SERVICE = GiangVienHocSinhDAO.getInstance();
 
-        @Override
-    public void init() throws ServletException {
-        super.init(); //To change body of generated methods, choose Tools | Templates.
+    private void refressFile(){
         String realPath = getServletContext().getRealPath("/");
         String absolutePath = realPath.replace("build\\web", "");
         ServletContext context = getServletContext();
         boolean isLoaded = false;
         if (context.getAttribute("loaded") != null) {
             isLoaded = (boolean) context.getAttribute("loaded");
+            System.out.println(DataFile.emailReceive);
         }
         if (!isLoaded) {
             DataFile.loadFile(absolutePath);
@@ -70,11 +69,13 @@ public class Page extends HttpServlet {
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
                 case "login":
+                    refressFile();
                     request.setAttribute(util.Constants.PAGE, "login");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
                     break;
                 case "contact":
+                    refressFile();
                     request.setAttribute(util.Constants.PAGE, "contact");
                     request.removeAttribute(util.Constants.MSG_RESULT);
                     request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
