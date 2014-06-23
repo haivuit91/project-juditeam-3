@@ -47,20 +47,22 @@
             <table>
                 <tr>
                     <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
-                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên BG</td>
-                    <td class="col-md-4" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên BG</td>
+                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GV</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Đính Kèm</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
-                <% int i = 1; %>
+                <% int i = 1;%>
                 <c:forEach items="${bgList}" var="bgList">
                     <tr>
                         <td style="text-transform: inherit;padding:5px"><%= i++%></td>
-                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${bgList.getTenBG()}</td>
-                        <td class="col-md-4" style="text-transform: inherit;padding:5px">${bgList.getNoidung()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getTenBG()}</td>
+                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${bgList.getNoidung()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getNam()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getGiangVienHocSinh().getTenGVHS()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getTlThamkhao()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
                                 <a href="/HeThongTTQL/bgmanage?page=edit&maBG=${bgList.getMaBG()}" class="btn btn-primary btn-sm" >

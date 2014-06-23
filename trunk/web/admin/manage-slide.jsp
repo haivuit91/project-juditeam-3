@@ -48,10 +48,11 @@
                 <tr>
                     <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên Slide</td>
-                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
-                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
+                    <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm XB</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên Giảng Viên</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tư Liệu</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Đính Kèm</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
                 <% int i = 1; %>
@@ -59,10 +60,11 @@
                     <tr>
                         <td style="text-transform: inherit;padding:5px"><%= i++%></td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTenSilde()}</td>
-                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${slList.getNoidung()}</td>
-                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getNam()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getNoidung()}</td>
+                        <td class="col-md-1" style="text-transform: inherit;padding:5px">${slList.getNam()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getGiangVienHocSinh().getTenGVHS()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTuLieu().getTenTL()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTlThamkhao()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
                                 <a href="/HeThongTTQL/slidemanage?do=edit&id=${slList.getMaSlide()}" class="btn btn-primary btn-sm" >
