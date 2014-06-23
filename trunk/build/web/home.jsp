@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Trang chủ</title>
+        <title>Cao Đẳng Thương Mại</title>
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -53,9 +53,37 @@
                 <c:if test="${page == null}">
                     <%@include file="module/content-right.jsp" %>
                 </c:if>
-
-
-
+                <c:if test="${page == 'dsbg'}">
+                    <%@include file="module/ds-baigiang.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dsdcct'}">
+                    <%@include file="module/ds-dccthp.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dsslide'}">
+                    <%@include file="module/ds-slide.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dstl'}">
+                    <%@include file="module/ds-tulieu.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dsgvhs'}">
+                    <%@include file="module/ds-gvhs.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-bg'}">
+                    <%@include file="module/ct-ds-baigiang.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-slide'}">
+                    <%@include file="module/ct-ds-slide.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-dcct'}">
+                    <%@include file="module/ct-ds-dccthp.jsp" %>
+                </c:if>
+                <c:if test="${page == 'ct-tl'}">
+                    <%@include file="module/ct-ds-tulieu.jsp" %>
+                </c:if>
+                <c:if test="${page == 'dshs'}">
+                    <%@include file="module/ds-hs.jsp" %>
+                </c:if>
+                
             </div>
 
         </div>
@@ -63,15 +91,14 @@
         <div class="container">
             <div class="row panel panel-warning" style="background:#4986bd;color:white">
                 <footer style="text-align: center">
-                    <p>Hỗ trợ bài giảng và học tập HTTQL Trường Cao đẳng Thương Mại</p>
+                    <p>Hỗ trợ giảng dạy và học tập HTTQL Trường Cao đẳng Thương Mại</p>
                     <p>Địa chỉ:45 Dũng Sĩ Thanh Khê, Đà Nẵng</p>
                     <p>Design by Judi Team</p>
                 </footer>
             </div>
         </div>
         <!--------------------------------END-------------------------------->
-
-
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
     </body>
 </html>

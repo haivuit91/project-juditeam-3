@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>controller.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/dcctmamage</url-pattern>
+        <url-pattern>/bgmanage</url-pattern>
+        <url-pattern>/slidemanage</url-pattern>
+        <url-pattern>/tlmamage</url-pattern>
+        <url-pattern>/GVHSManage</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Page</servlet-name>
         <servlet-class>controller.servlet.Page</servlet-class>
@@ -20,6 +33,30 @@
         <servlet-name>SlideManagement</servlet-name>
         <servlet-class>controller.servlet.admin.SlideManagement</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GVHSManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.GVHSManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BGManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.BGManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TuLieuManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.TuLieuManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DCCTManagement</servlet-name>
+        <servlet-class>controller.servlet.admin.DCCTManagement</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Contact</servlet-name>
+        <servlet-class>controller.servlet.Contact</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowListCatelories</servlet-name>
+        <servlet-class>controller.servlet.ShowListCatelories</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Page</servlet-name>
         <url-pattern>/Page</url-pattern>
@@ -39,6 +76,30 @@
     <servlet-mapping>
         <servlet-name>SlideManagement</servlet-name>
         <url-pattern>/slidemanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GVHSManagement</servlet-name>
+        <url-pattern>/GVHSManage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BGManagement</servlet-name>
+        <url-pattern>/bgmanage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TuLieuManagement</servlet-name>
+        <url-pattern>/tlmamage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DCCTManagement</servlet-name>
+        <url-pattern>/dcctmamage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Contact</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowListCatelories</servlet-name>
+        <url-pattern>/show</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
