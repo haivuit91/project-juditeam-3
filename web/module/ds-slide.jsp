@@ -45,22 +45,23 @@
             </div>
             <table class="col-md-12"style="font-weight: bold;color:wheat;background:#4986bd;text-transform: uppercase">
                 <tr >
+                    <td class="col-md-1">STT</td>
                     <td class="col-md-2">Tên slide</td>
                     <td class="col-md-2">Tên giảng viên</td>
-                    <td class="col-md-1">Năm</td>
                     <td class="col-md-2">Tư liệu</td>
                     <td class="col-md-4">Tóm tắt nội dung</td>
                     <td class="col-md-1"></td>
                 </tr>
             </table>
             <table class="col-md-12 table-hover">
+                <% int i = 1;%>
                 <c:forEach items="${slList}" var="sl">
                     <tr style="border-bottom: #acb6c0 solid thin">
+                        <td class="col-md-1"><%=i++%></td>
                         <td class="col-md-2">${sl.getTenSilde()}</td>
                         <td class="col-md-2">${sl.getGiangVienHocSinh().getTenGVHS()}</td>
-                        <td class="col-md-1">${sl.getNam()}</td>
-                        <td class="col-md-2">${sl.getTenSilde()}</td>
-                        <td class="col-md-4">${sl.getTuLieu().getTenTL()}</td>
+                        <td class="col-md-2">${sl.getTuLieu().getTenTL()}</td>
+                        <td class="col-md-4">${sl.getNoidung().length()> 80? sl.getNoidung().substring(0, 70) : sl.getNoidung()}...</td>
                         <td class="col-md-1"><a href="/HeThongTTQL/show?details=slide&id=${sl.getMaSlide()}" class="label label-info">Chi tiết</a></td>
                     </tr>
                 </c:forEach>

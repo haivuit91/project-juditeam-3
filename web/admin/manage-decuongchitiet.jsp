@@ -59,9 +59,10 @@
                     <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Giảng Viên</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
+                <% int i = 1; %>
                 <c:forEach items="${dcctList}" var="dcctList">
                     <tr>
-                        <td style="text-transform: inherit;padding:5px">${dcctList.getMaDC()}</td>
+                        <td style="text-transform: inherit;padding:5px"><%= i++ %></td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${dcctList.getTenDC()}</td>
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getDvhoctrinh()}</td>
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${dcctList.getThoigian()}</td>

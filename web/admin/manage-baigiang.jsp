@@ -53,9 +53,10 @@
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên GV</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
+                <% int i = 1; %>
                 <c:forEach items="${bgList}" var="bgList">
                     <tr>
-                        <td style="text-transform: inherit;padding:5px">${bgList.getMaBG()}</td>
+                        <td style="text-transform: inherit;padding:5px"><%= i++%></td>
                         <td class="col-md-3" style="text-transform: inherit;padding:5px">${bgList.getTenBG()}</td>
                         <td class="col-md-4" style="text-transform: inherit;padding:5px">${bgList.getNoidung()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${bgList.getNam()}</td>
