@@ -199,7 +199,7 @@ public class SlideDAO implements SlideDAOService {
     @Override
     public boolean chinhsuaSlide(Slide slide) {
         boolean isCheck = false;
-        String sql = "update tbl_slide set tenSlide=?,noidung=?,nam=?,maGVHS=?,maTL=?, tlThamkhao=?,trangthai=? where maSlide = ?";
+        String sql = "update tbl_slide set tenSlide=?,noidung=?,nam=?,maGVHS=?,maTL=?, tlThamkhao=? where maSlide = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -209,8 +209,7 @@ public class SlideDAO implements SlideDAOService {
             pstmt.setInt(4, slide.getGiangVienHocSinh().getMaGVHS());
             pstmt.setInt(5, slide.getTuLieu().getMaTL());
             pstmt.setString(6, slide.getTlThamkhao());
-            pstmt.setInt(7, slide.getTrangthai());
-            pstmt.setInt(8, slide.getMaSlide());
+            pstmt.setInt(7, slide.getMaSlide());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());

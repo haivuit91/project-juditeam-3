@@ -152,7 +152,7 @@ public class TuLieuDAO implements TuLieuDAOService {
     @Override
     public boolean chinhsuaTuLieu(TuLieu tulieu) {
         boolean isCheck = false;
-        String sql = "update tbl_tulieu set tenTl=?,noidung=?,loaiTL=?,nguonTL=?,nam=?, tlThamkhao=?,trangthai=? where maTL = ?";
+        String sql = "update tbl_tulieu set tenTl=?,noidung=?,loaiTL=?,nguonTL=?,nam=?, tlThamkhao=? where maTL = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -162,8 +162,7 @@ public class TuLieuDAO implements TuLieuDAOService {
             pstmt.setString(4, tulieu.getNguonTL());
             pstmt.setInt(5, tulieu.getNam());
             pstmt.setString(6, tulieu.getTlThamkhao());
-            pstmt.setInt(7, tulieu.getTrangthai());
-            pstmt.setInt(8, tulieu.getMaTL());
+            pstmt.setInt(7, tulieu.getMaTL());
             return pstmt.executeUpdate() == 1;
         } catch (Exception ex) {
             System.out.println(ex.toString());
