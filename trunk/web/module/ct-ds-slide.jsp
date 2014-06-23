@@ -60,10 +60,10 @@
                     </div>
                 </div>
                 <div class="form-group">  
-                    <div class="col-md-3 alert-info">
+                    <div class="col-md-2 alert-info">
                         Tệp đính kèm: 
                     </div>
-                    <div class="col-md-9 alert-info">
+                    <div class="col-md-10 alert-info">
                         <a href="/HeThongTTQL/files/${sl.getTlThamkhao()}">${sl.getTlThamkhao()}</a>
                     </div>
                 </div>
