@@ -48,22 +48,24 @@
             <table>
                 <tr>
                     <td style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Mã</td>
-                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên TL</td>
-                    <td class="col-md-3" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
-                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Loại TL</td>
-                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nguồn TL</td>
-                    <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tên Tư Liệu</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nội Dung</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Loại Tư Liệu</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Nguồn Tư Liệu</td>
+                    <td class="col-md-1" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Năm XB</td>
+                    <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Đính Kèm</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
                 <% int i = 1; %>
                 <c:forEach items="${requestScope.tulieuList}" var="tlList">
                     <tr>
                         <td style="text-transform: inherit;padding:5px"><%=i++%></td>
-                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${tlList.getTenTL()}</td>
-                        <td class="col-md-3" style="text-transform: inherit;padding:5px">${tlList.getNoidung()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getTenTL()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getNoidung()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getLoaiTL()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getNguonTL()}</td>
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${tlList.getNam()}</td>
+                        <td class="col-md-2" style="text-transform: inherit;padding:5px">${tlList.getTlThamkhao()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">
                             <div class="col-md-6">
                                 <a href="/HeThongTTQL/tlmamage?do=edit&id=${tlList.getMaTL()}" class="btn btn-primary btn-sm" >
