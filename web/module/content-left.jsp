@@ -40,7 +40,7 @@
                     </li>
                     <li class="list-group-item">
                         <span class="glyphicon glyphicon-bookmark"></span>
-                        <a href="/HeThongTTQL/show?p=dshs"> Thông tin học sinh</a>
+                        <a href="/HeThongTTQL/show?p=dshs"> Thông tin sinh viên</a>
                     </li>
                 </ul>
             </div>
