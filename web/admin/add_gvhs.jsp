@@ -32,7 +32,7 @@
                                 <div class="form-group">
 
                                     <div class="col-sm-12" >
-                                        <input type="text" name="tenGVHS" value="${gvhs.getTenGVHS()}" class="form-control" id="inputEmail3" placeholder="Tên giangr viên hoặc sinh viên">
+                                        <input type="text" name="tenGVHS" value="${gvhs.getTenGVHS()}" class="form-control" id="inputEmail3" placeholder="Tên giảng viên hoặc sinh viên">
                                     </div>
                                 </div>
                                 <!-- /.Password -->
