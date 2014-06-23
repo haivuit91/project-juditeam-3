@@ -34,6 +34,35 @@ public class GiangVienHocSinhDAO implements GiangVienHocSinhDAOService {
         List<GiangVienHocSinh> listGVHS = new ArrayList<GiangVienHocSinh>();
         try {
             Connection conn = ConnectionFactory.getConnection();
+            String sql = "select * from tbl_giangvien_hocsinh";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                GiangVienHocSinh giangvienhocsinh = new GiangVienHocSinh();
+                giangvienhocsinh.setMaGVHS(rs.getInt("maGVHS"));
+                giangvienhocsinh.setTenGVHS(rs.getString("tenGVHS"));
+                giangvienhocsinh.setDiachi(rs.getString("diachi"));
+                giangvienhocsinh.setDienthoai(rs.getString("dienthoai"));
+                giangvienhocsinh.setNgaysinh(rs.getDate("ngaysinh"));
+                giangvienhocsinh.setDonvi(rs.getString("donvi"));
+                giangvienhocsinh.setTrinhdo(rs.getInt("trinhdo"));
+                giangvienhocsinh.setTrangthai(rs.getInt("trangthai"));
+                giangvienhocsinh.setBaigiangList(BaiGiangDAO.getInstance().timkiemBaiGiangByMaGVHS(rs.getInt("maGVHS")));
+                giangvienhocsinh.setDecuongList(DeCuongDAO.getInstance().getDCListByMaGV(rs.getInt("maGVHS")));
+                giangvienhocsinh.setSlideList(SlideDAO.getInstance().getSlideListByMaGVHS(rs.getInt("maGVHS")));
+                listGVHS.add(giangvienhocsinh);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listGVHS;
+    }
+    
+    @Override
+    public List<GiangVienHocSinh> getAllGVHS() {
+        List<GiangVienHocSinh> listGVHS = new ArrayList<GiangVienHocSinh>();
+        try {
+            Connection conn = ConnectionFactory.getConnection();
             String sql = "select * from tbl_giangvien_hocsinh ORDER BY maGVHS DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
