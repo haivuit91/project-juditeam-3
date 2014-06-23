@@ -51,8 +51,4 @@ public class DataFile {
             }
         }
     }
-    public static void main(String[] args) {
-        loadFile("D:\\PROJECT\\Training\\HeThongTTQL\\");
-        System.out.println(emailReceive);
-    }
 }
