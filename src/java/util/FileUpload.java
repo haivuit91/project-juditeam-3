@@ -17,13 +17,13 @@ import org.apache.tomcat.util.http.fileupload.FileItemStream;
  */
 public class FileUpload {
 
-    public static boolean processFile(String filePath, FileItemStream itemStream, String fileName, String fileExtension) {
+    public static boolean processFile(String filePath, FileItemStream itemStream, String fileName) {
         try {
             File f = new File(filePath);
             if (f.exists()) {
                 f.mkdir();
             }
-            File saveFile = new File(f.getAbsolutePath() + File.separator + fileName + "." + fileExtension);
+            File saveFile = new File(f.getAbsolutePath() + File.separator + fileName);
             try (FileOutputStream fos = new FileOutputStream(saveFile)) {
                 InputStream is = itemStream.openStream();
                 int x = 0;
