@@ -159,7 +159,7 @@ public class SlideManagement extends HttpServlet {
                 if (action != null) {
                     switch (action) {
                         case "Sửa":
-                            if (file.equals("")) {
+                            if (fileName.equals("")) {
                                 editSlide(request, response, maSlide, tenSlide, noiDung, nam, gvhs, tl, file);
                             } else {
                                 editSlide(request, response, maSlide, tenSlide, noiDung, nam, gvhs, tl, fileName);

@@ -146,7 +146,7 @@ public class BGManagement extends HttpServlet {
                 if (action != null) {
                     switch (action) {
                         case "Sửa":
-                            if (file.equals("")) {
+                            if (fileName.equals("")) {
                                 updateBG(request, response, maBG, tenBG, noiDung, nam, gvhs, file);
                             } else {
                                 updateBG(request, response, maBG, tenBG, noiDung, nam, gvhs, fileName);
