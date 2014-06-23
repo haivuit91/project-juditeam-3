@@ -46,7 +46,7 @@
             <table class="col-md-12"style="font-weight: bold;color:wheat;background:#4986bd;text-transform: uppercase">
                 <tr>
                     <td class="col-md-1">STT</td>
-                    <td class="col-md-2">Tên học sinh</td>
+                    <td class="col-md-2">Tên sinh viên</td>
                     <td class="col-md-4">Địa chỉ</td>
                     <td class="col-md-2">Ngày sinh</td>
                     <td class="col-md-1">SĐT</td>
