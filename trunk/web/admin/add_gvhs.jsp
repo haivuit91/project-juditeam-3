@@ -77,7 +77,7 @@
                                     <div class="col-sm-8 col-md-offset-4" >
                                         <input type="submit" ${gvhs.getMaGVHS() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
                                         &nbsp;
-                                        <button type="reset" class="btn btn-warning">Clear</button>
+                                        <button type="reset" class="btn btn-warning">Nhập lại</button>
                                     </div>
                                 </div>
 
