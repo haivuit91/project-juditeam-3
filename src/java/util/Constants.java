@@ -56,7 +56,7 @@ public class Constants {
     
     public static final String RESULT_UPLOAD = "result_upload";
     
-    public static final String URL_IMAGE = "url_image";
+    public static final String URL_FILE = "url_file";
     
     public static final String STORAGE_PATH = "project3/config/";
     
