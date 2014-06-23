@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import org.apache.tomcat.util.http.fileupload.FileItemStream;
+import org.apache.commons.fileupload.FileItemStream;
 
 /**
  *
@@ -17,13 +17,13 @@ import org.apache.tomcat.util.http.fileupload.FileItemStream;
  */
 public class FileUpload {
 
-    public static boolean processFile(String filePath, FileItemStream itemStream, String imageName, String fileExtension) {
+    public static boolean processFile(String filePath, FileItemStream itemStream, String fileName, String fileExtension) {
         try {
             File f = new File(filePath);
             if (f.exists()) {
                 f.mkdir();
             }
-            File saveFile = new File(f.getAbsolutePath() + File.separator + imageName + "." + fileExtension);
+            File saveFile = new File(f.getAbsolutePath() + File.separator + fileName + "." + fileExtension);
             try (FileOutputStream fos = new FileOutputStream(saveFile)) {
                 InputStream is = itemStream.openStream();
                 int x = 0;
