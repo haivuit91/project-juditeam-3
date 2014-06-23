@@ -6,8 +6,12 @@
 package controller.servlet.admin;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 import model.dao.TuLieuDAO;
 import model.dao.service.TuLieuDAOService;
 import model.entities.TuLieu;
+import org.apache.tomcat.util.http.fileupload.FileItemIterator;
+import org.apache.tomcat.util.http.fileupload.FileItemStream;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import util.FileUpload;
+import util.Support;
 
 /**
  *
@@ -93,19 +103,88 @@ public class TuLieuManagement extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String submit = request.getParameter("submit");
-        switch (submit) {
-            case "Sửa":
-                editTL(request, response);
-                break;
-            case "Thêm mới":
-                addTL(request, response);
-                break;
-            case "Tìm kiếm":
-                search(request, response);
-                break;
+        String action = null;
+        String maTL = null;
+        String tenTL = null;
+        String noidung = null;
+        String loaiTL = null;
+        String nguonTL = null;
+        String nam = null;
+        String fileName = "";
+        String file = "";
+        boolean isUploadSuccess = false;
+        ServletFileUpload fileUpload = new ServletFileUpload();
+        try {
+            FileItemIterator itr = fileUpload.getItemIterator(request);
+            while (itr.hasNext()) {
+                FileItemStream fileItemStream = itr.next();
+                if (fileItemStream.isFormField()) {
+                    String fieldName = fileItemStream.getFieldName();
+                    InputStream is = fileItemStream.openStream();
+
+                    byte[] b = new byte[is.available()];
+                    is.read(b);
+                    String value = new String(b, "UTF-8");
+
+                    if (fieldName.equals("submit")) {
+                        action = value;
+                    }
+                    if (fieldName.equals("maTL")) {
+                        maTL = value;
+                    }
+                    if (fieldName.equals("tenTL")) {
+                        tenTL = value;
+                    }
+                    if (fieldName.equals("noidung")) {
+                        noidung = value;
+                    }
+                    if (fieldName.equals("loaiTL")) {
+                        loaiTL = value;
+                    }
+                    if (fieldName.equals("nguonTL")) {
+                        nguonTL = value;
+                    }
+                    if (fieldName.equals("nam")) {
+                        nam = value;
+                    }
+                    if (fieldName.equals("fileName")) {
+                        file = value;
+                    }
+                } else {
+                    String realPath = getServletContext().getRealPath("/");
+                    String filePath = realPath.replace("\\build\\web", "\\web\\files");//Duong dan luu file
+                    fileName = fileItemStream.getName();
+                    StringTokenizer token = new StringTokenizer(fileName, ".");
+                    String fileNameExtension = "";
+                    while (token.hasMoreElements()) {
+                        fileNameExtension = token.nextElement().toString();
+                    }
+                    if (!fileName.equals("")) {
+                        fileName = Support.toUrlFriendly(fileName);
+                        isUploadSuccess = FileUpload.processFile(filePath, fileItemStream, fileName);
+                    }
+                }
+                if (action != null) {
+                    switch (action) {
+                        case "Sửa":
+                            if (fileName.equals("")) {
+                                editTL(request, response, maTL, tenTL, noidung, loaiTL, nguonTL, nam, file);
+                            } else {
+                                editTL(request, response, maTL, tenTL, noidung, loaiTL, nguonTL, nam, fileName);
+                            }
+                            break;
+                        case "Thêm mới":
+                            addTL(request, response, tenTL, noidung, loaiTL, nguonTL, nam, fileName);
+                            break;
+                        case "Tìm kiếm":
+                            search(request, response);
+                            break;
+                    }
+                }
+            }
+        } catch (FileUploadException ex) {
+            Logger.getLogger(BGManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -115,17 +194,11 @@ public class TuLieuManagement extends HttpServlet {
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
-    private void addTL(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String tenTL = request.getParameter("tenTL");
-        String noidung = request.getParameter("noidung");
-        String loaiTL = request.getParameter("loaiTL");
-        String nguonTL = request.getParameter("nguonTL");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        String tlThamkhao = request.getParameter("tlThamkhao");
-        int trangThai = 1;
+    private void addTL(HttpServletRequest request, HttpServletResponse response, String tenTL, String noidung, String loaiTL,
+            String nguonTL, String nam, String fileName) throws ServletException, IOException {
+        int namxb = Integer.parseInt(nam);
 
-        TuLieu tl = new TuLieu(1, tenTL, noidung, loaiTL, nguonTL, nam, tlThamkhao, trangThai);
+        TuLieu tl = new TuLieu(1, tenTL, noidung, loaiTL, nguonTL, namxb, fileName, 1);
         if (TL_SERVICE.themTuLieu(tl)) {
             List<TuLieu> tulieu = TL_SERVICE.getAllTuLieu();
             request.setAttribute("tulieuList", tulieu);
@@ -148,18 +221,12 @@ public class TuLieuManagement extends HttpServlet {
         request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
-    private void editTL(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int maTL = Integer.parseInt(request.getParameter("id"));
-        String tenTL = request.getParameter("tenTL");
-        String noidung = request.getParameter("noidung");
-        String loaiTL = request.getParameter("loaiTL");
-        String nguonTL = request.getParameter("nguonTL");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        String tlThamkhao = request.getParameter("tlThamkhao");
-        int trangThai = 1;
+    private void editTL(HttpServletRequest request, HttpServletResponse response, String maTL, String tenTL, String noidung,
+            String loaiTL, String nguonTL, String nam, String fileName) throws ServletException, IOException {
+        int ma = Integer.parseInt(maTL);
+        int namxb = Integer.parseInt(nam);
 
-        TuLieu tl = new TuLieu(maTL, tenTL, noidung, loaiTL, nguonTL, nam, tlThamkhao, trangThai);
+        TuLieu tl = new TuLieu(ma, tenTL, noidung, loaiTL, nguonTL, namxb, fileName, 1);
         if (TL_SERVICE.chinhsuaTuLieu(tl)) {
             List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
             request.setAttribute("tulieuList", tulieuList);
