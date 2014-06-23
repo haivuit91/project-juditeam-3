@@ -70,6 +70,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
+                                    </div>
+                                    <div class="col-sm-9" >
+                                        <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <div class="col-sm-8 col-md-offset-4" >
                                         <input type="submit" ${sl.getMaSlide() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
                                         &nbsp;
