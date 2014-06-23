@@ -58,9 +58,10 @@
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Trình Độ</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
+                <% int i = 1; %>
                 <c:forEach items="${gvhsList}" var="gvhs">
                     <tr>
-                        <td style="text-transform: inherit;padding:5px">${gvhs.getMaGVHS()}</td>
+                        <td style="text-transform: inherit;padding:5px"><%=i++%></td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${gvhs.getTenGVHS()}</td>
                         <td class="col-md-3" style="text-transform: inherit;padding:5px">${gvhs.getDiachi()}</td>
                         <td class="col-md-1" style="text-transform: inherit;padding:5px">${gvhs.getDienthoai()}</td>

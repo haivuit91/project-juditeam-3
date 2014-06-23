@@ -45,17 +45,20 @@
             </div>
             <table class="col-md-12"style="font-weight: bold;color:wheat;background:#4986bd;text-transform: uppercase">
                 <tr>
+                    <td class="col-md-1">STT</td>
                     <td class="col-md-2">Tên học sinh</td>
                     <td class="col-md-4">Địa chỉ</td>
                     <td class="col-md-2">Ngày sinh</td>
-                    <td class="col-md-2">Điện thoại</td>
+                    <td class="col-md-1">SĐT</td>
                     <td class="col-md-2">Đơn vị</td>
                 </tr>
             </table>
             <table class="col-md-12 table-hover">
+                <% int i = 1;%>
                 <c:forEach items="${hsList}" var="gvhs">
                     <c:if test="${gvhs.getTrinhdo() == 0 && gvhs.getTrangthai() == 1}">
                         <tr style="border-bottom: #acb6c0 solid thin">
+                            <td class="col-md-1"><%= i++%></td>
                             <td class="col-md-2">${gvhs.getTenGVHS()}</td>
                             <td class="col-md-4">${gvhs.getDiachi()}</td>
                             <td class="col-md-2">${gvhs.getNgaysinh()}</td>

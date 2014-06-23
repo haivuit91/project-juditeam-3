@@ -46,22 +46,25 @@
             </div>
             <table class="col-md-12"style="font-weight: bold;color:wheat;background:#4986bd;text-transform: uppercase">
                 <tr >
+                    <td class="col-md-1">STT</td>
                     <td class="col-md-2">Tên bài giảng</td>
                     <td class="col-md-2">Tên giảng viên</td>
                     <td class="col-md-1">Năm</td>
-                    <td class="col-md-6">Nội dung</td>
+                    <td class="col-md-5">Nội dung</td>
                     <td class="col-md-1"></td>
                 </tr>
             </table>
             <table class="col-md-12 table-hover">
+                <% int i = 1; %>
                 <c:forEach items="${bgList}" var="bg">
-                    <tr style="border-bottom: #acb6c0 solid thin">
-                        <td class="col-md-2">${bg.getTenBG()}</td>
-                        <td class="col-md-2">${bg.getGiangVienHocSinh().getTenGVHS()}</td>
-                        <td class="col-md-1">${bg.getNam()}</td>
-                        <td class="col-md-6">${bg.getNoidung()}</td>
-                        <td class="col-md-1"><a href="/HeThongTTQL/show?details=bg&id=${bg.getMaBG()}" class="label label-default">Chi tiết</a></td>
-                    </tr>
+                <tr style="border-bottom: #acb6c0 solid thin">
+                    <td class="col-md-1"><%= i++%></td>
+                    <td class="col-md-2">${bg.getTenBG()}</td>
+                    <td class="col-md-2">${bg.getGiangVienHocSinh().getTenGVHS()}</td>
+                    <td class="col-md-1">${bg.getNam()}</td>
+                    <td class="col-md-5">${bg.getNoidung().length()> 50? bg.getNoidung().substring(0, 40) : bg.getNoidung()}...</td>
+                    <td class="col-md-1"><a href="/HeThongTTQL/show?details=bg&id=${bg.getMaBG()}" class="label label-default">Chi tiết</a></td>
+                </tr>
                 </c:forEach>
             </table>
         </div>

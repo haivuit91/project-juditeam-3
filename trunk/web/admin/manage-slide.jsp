@@ -54,9 +54,10 @@
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Tư Liệu</td>
                     <td class="col-md-2" style="background: #428bca;padding:5px;font-weight:bold;font-size: 12px;text-transform: uppercase;color:#ffffff">Lựa Chọn</td>
                 </tr>
+                <% int i = 1; %>
                 <c:forEach items="${requestScope.slideList}" var="slList">
                     <tr>
-                        <td style="text-transform: inherit;padding:5px">${slList.getMaSlide()}</td>
+                        <td style="text-transform: inherit;padding:5px"><%= i++%></td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getTenSilde()}</td>
                         <td class="col-md-3" style="text-transform: inherit;padding:5px">${slList.getNoidung()}</td>
                         <td class="col-md-2" style="text-transform: inherit;padding:5px">${slList.getNam()}</td>
