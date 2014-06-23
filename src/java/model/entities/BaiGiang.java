@@ -19,6 +19,7 @@ public class BaiGiang {
     private String noidung;
     private int nam;
     private GiangVienHocSinh giangVienHocSinh;
+    private String tlThamkhao;
     private int trangthai;
     
     private List<GiangVienHocSinh> gvhsList = null;
@@ -26,12 +27,14 @@ public class BaiGiang {
     public BaiGiang(){
         
     }    
-    public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh giangVienHocSinh, int trangthai) {
+
+    public BaiGiang(int maBG, String tenBG, String noidung, int nam, GiangVienHocSinh giangVienHocSinh, String tlThamkhao, int trangthai) {
         this.maBG = maBG;
         this.tenBG = tenBG;
         this.noidung = noidung;
         this.nam = nam;
         this.giangVienHocSinh = giangVienHocSinh;
+        this.tlThamkhao = tlThamkhao;
         this.trangthai = trangthai;
     }
 
@@ -74,7 +77,16 @@ public class BaiGiang {
     public void setGiangVienHocSinh(GiangVienHocSinh giangVienHocSinh) {
         this.giangVienHocSinh = giangVienHocSinh;
     }
-    public int isTrangthai() {
+
+    public String getTlThamkhao() {
+        return tlThamkhao;
+    }
+
+    public void setTlThamkhao(String tlThamkhao) {
+        this.tlThamkhao = tlThamkhao;
+    }
+
+    public int getTrangthai() {
         return trangthai;
     }
 
@@ -89,7 +101,5 @@ public class BaiGiang {
     public void setGvhsList(List<GiangVienHocSinh> gvhsList) {
         this.gvhsList = gvhsList;
     }
-
-   
     
 }

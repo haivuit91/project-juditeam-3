@@ -104,9 +104,10 @@ public class BGManagement extends HttpServlet {
         String[] arr = strGVHS.split("-");
         int maGV = Integer.parseInt(arr[0]);
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGV);
+        String tlThamkhao = request.getParameter("tlThamkhao");
         int trangThai = 1;
 
-        BaiGiang bg = new BaiGiang(1, tenBG, noiDung, nam, gvhs, trangThai);
+        BaiGiang bg = new BaiGiang(1, tenBG, noiDung, nam, gvhs, tlThamkhao, trangThai);
         if (BG_SERVICE.themBaiGiang(bg)) {
             List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
             request.setAttribute(util.Constants.BG_LIST, bgList);
@@ -136,9 +137,10 @@ public class BGManagement extends HttpServlet {
         int nam = Integer.parseInt(request.getParameter("nam"));
         int maGVHS = Integer.parseInt(request.getParameter("gvhs"));
         GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGVHS);
+        String tlThamkhao = request.getParameter("tlThamkhao");
         int trangThai = 1;
 
-        BaiGiang bg = new BaiGiang(maBG, tenBG, noiDung, nam, gvhs, trangThai);
+        BaiGiang bg = new BaiGiang(maBG, tenBG, noiDung, nam, gvhs, tlThamkhao, trangThai);
         if (BG_SERVICE.chinhsuaBaiGiang(bg)) {
             List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
             request.setAttribute("bgList", bgList);

@@ -122,9 +122,10 @@ public class TuLieuManagement extends HttpServlet {
         String loaiTL = request.getParameter("loaiTL");
         String nguonTL = request.getParameter("nguonTL");
         int nam = Integer.parseInt(request.getParameter("nam"));
+        String tlThamkhao = request.getParameter("tlThamkhao");
         int trangThai = 1;
 
-        TuLieu tl = new TuLieu(1, tenTL, noidung, loaiTL, nguonTL, nam, trangThai);
+        TuLieu tl = new TuLieu(1, tenTL, noidung, loaiTL, nguonTL, nam, tlThamkhao, trangThai);
         if (TL_SERVICE.themTuLieu(tl)) {
             List<TuLieu> tulieu = TL_SERVICE.getAllTuLieu();
             request.setAttribute("tulieuList", tulieu);
@@ -155,9 +156,10 @@ public class TuLieuManagement extends HttpServlet {
         String loaiTL = request.getParameter("loaiTL");
         String nguonTL = request.getParameter("nguonTL");
         int nam = Integer.parseInt(request.getParameter("nam"));
+        String tlThamkhao = request.getParameter("tlThamkhao");
         int trangThai = 1;
 
-        TuLieu tl = new TuLieu(maTL, tenTL, noidung, loaiTL, nguonTL, nam, trangThai);
+        TuLieu tl = new TuLieu(maTL, tenTL, noidung, loaiTL, nguonTL, nam, tlThamkhao, trangThai);
         if (TL_SERVICE.chinhsuaTuLieu(tl)) {
             List<TuLieu> tulieuList = TL_SERVICE.getAllTuLieu();
             request.setAttribute("tulieuList", tulieuList);

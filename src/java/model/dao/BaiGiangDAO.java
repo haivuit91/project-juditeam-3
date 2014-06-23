@@ -9,8 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.dao.service.BaiGiangDAOService;
 import model.entities.BaiGiang;
 import model.entities.GiangVienHocSinh;
@@ -46,6 +49,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 baigiang.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(gvienhsinh);
+                baigiang.setTlThamkhao(rs.getString("tlThamkhao"));
                 baigiang.setTrangthai(rs.getInt("trangthai"));
 
                 listBaiGiang.add(baigiang);
@@ -72,6 +76,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 baigiang.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(gvienhsinh);
+                baigiang.setTlThamkhao(rs.getString("tlThamkhao"));
                 baigiang.setTrangthai(rs.getInt("trangthai"));
             }
         } catch (Exception ex) {
@@ -96,6 +101,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 baigiang.setNam(rs.getInt("nam"));
                 GiangVienHocSinh gvienhsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(gvienhsinh);
+                baigiang.setTlThamkhao(rs.getString("tlThamkhao"));
                 baigiang.setTrangthai(rs.getInt("trangthai"));
             }
         } catch (Exception ex) {
@@ -123,6 +129,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 baigiang.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(giangvienhocsinh);
+                baigiang.setTlThamkhao(rs.getString("tlThamkhao"));
                 baigiang.setTrangthai(rs.getInt("trangthai"));
                 listBaiGiang.add(baigiang);
             }
@@ -135,7 +142,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     @Override
     public boolean themBaiGiang(BaiGiang bg) {
         boolean isCheck = false;
-        String sql = "insert into tbl_baigiang (tenBG, noidung, nam, maGVHS, trangthai) values(?,?,?,?,?)";
+        String sql = "insert into tbl_baigiang (tenBG, noidung, nam, maGVHS, trangthai) values(?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -143,7 +150,8 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             pstmt.setString(2, bg.getNoidung());
             pstmt.setInt(3, bg.getNam());
             pstmt.setInt(4, bg.getGiangVienHocSinh().getMaGVHS());
-            pstmt.setInt(5, bg.isTrangthai());
+            pstmt.setString(5, bg.getTlThamkhao());
+            pstmt.setInt(6, bg.getTrangthai());
 //            return pstmt.executeUpdate() == 1;
             pstmt.executeUpdate();
             isCheck = true;
@@ -156,7 +164,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     @Override
     public boolean chinhsuaBaiGiang(BaiGiang baigiang) {
         boolean isCheck = false;
-        String sql = "update tbl_baigiang set tenBG=?,noidung=?,nam=?,maGVHS=?,trangthai=? where maBG = ?";
+        String sql = "update tbl_baigiang set tenBG=?,noidung=?,nam=?,maGVHS=?, tlThamkhao=?, trangthai=? where maBG = ?";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -164,8 +172,9 @@ public class BaiGiangDAO implements BaiGiangDAOService {
             pstmt.setString(2, baigiang.getNoidung());
             pstmt.setInt(3, baigiang.getNam());
             pstmt.setInt(4, baigiang.getGiangVienHocSinh().getMaGVHS());
-            pstmt.setInt(5, baigiang.isTrangthai());
-            pstmt.setInt(6, baigiang.getMaBG());
+            pstmt.setInt(5, baigiang.getTrangthai());
+            pstmt.setString(6, baigiang.getTlThamkhao());
+            pstmt.setInt(7, baigiang.getMaBG());
             pstmt.executeUpdate();
             return true;
         } catch (Exception ex) {
@@ -195,7 +204,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
         List<BaiGiang> listBaiGiang = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-           String sql = "select * from tbl_baigiang where maGVHS = ? ";
+            String sql = "select * from tbl_baigiang where maGVHS = ? ";
             PreparedStatement sm = conn.prepareStatement(sql);
             sm.setInt(1, maGVHS);
             ResultSet rs = sm.executeQuery();
@@ -205,6 +214,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 baigiang.setTenBG(rs.getString("tenBG"));
                 baigiang.setNoidung(rs.getString("noidung"));
                 baigiang.setNam(rs.getInt("nam"));
+                baigiang.setTlThamkhao(rs.getString("tlThamkhao"));
                 baigiang.setTrangthai(rs.getInt("trangthai"));
                 listBaiGiang.add(baigiang);
             }
@@ -231,6 +241,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
                 baigiang.setNam(rs.getInt("nam"));
                 GiangVienHocSinh giangvienhocsinh = GiangVienHocSinhDAO.getInstance().getGiangVienHocSinhByMa(rs.getInt("maGVHS"));
                 baigiang.setGiangVienHocSinh(giangvienhocsinh);
+                baigiang.setTlThamkhao(rs.getString("tlThamkhao"));
                 baigiang.setTrangthai(rs.getInt("trangthai"));
                 listBaiGiang.add(baigiang);
             }

@@ -20,6 +20,7 @@ public class Slide {
     private int nam;
     private GiangVienHocSinh giangVienHocSinh;
     private TuLieu tuLieu;
+    private String tlThamkhao;
     private int trangthai;
     
     private  List<GiangVienHocSinh> gvhsList = null;
@@ -29,13 +30,14 @@ public class Slide {
         
     }
 
-    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh giangVienHocSinh, TuLieu tuLieu, int trangthai) {
+    public Slide(int maSlide, String tenSilde, String noidung, int nam, GiangVienHocSinh giangVienHocSinh, TuLieu tuLieu, String tlThamkhao, int trangthai) {
         this.maSlide = maSlide;
         this.tenSilde = tenSilde;
         this.noidung = noidung;
         this.nam = nam;
         this.giangVienHocSinh = giangVienHocSinh;
         this.tuLieu = tuLieu;
+        this.tlThamkhao = tlThamkhao;
         this.trangthai = trangthai;
     }
 
@@ -85,6 +87,14 @@ public class Slide {
 
     public void setTuLieu(TuLieu tuLieu) {
         this.tuLieu = tuLieu;
+    }
+
+    public String getTlThamkhao() {
+        return tlThamkhao;
+    }
+
+    public void setTlThamkhao(String tlThamkhao) {
+        this.tlThamkhao = tlThamkhao;
     }
 
     public int getTrangthai() {
