@@ -45,7 +45,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-12" >
+                                    <div class="col-sm-3" style="margin-top: 8px;">
+                                        <label class="label label-info" style="margin-top:5px; padding: 5px;font-size:13px">Tác Giả</label>
+                                    </div>
+                                    <div class="col-sm-9" >
                                         <select class="form-control" name="gvhs">
                                             <option value="${sl.getGiangVienHocSinh().getMaGVHS()}">${sl.getGiangVienHocSinh().getMaGVHS()} - ${sl.getGiangVienHocSinh().getTenGVHS()}</option>
                                             <c:forEach items="${requestScope.GV}" var="GV">
@@ -59,7 +62,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-12" >
+                                    <div class="col-sm-3" style="margin-top: 8px;">
+                                        <label class="label label-info" style="margin-top:5px; padding: 5px;font-size:13px">Thuộc TL</label>
+                                    </div>
+                                    <div class="col-sm-9" >
                                         <select class="form-control" name="tulieu">
                                             <option value="${sl.getTuLieu().getMaTL()}">${sl.getTuLieu().getTenTL()}</option>
                                             <c:forEach items="${requestScope.tl}" var="tl">
