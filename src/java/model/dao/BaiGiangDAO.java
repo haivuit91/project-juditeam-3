@@ -38,7 +38,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
         List<BaiGiang> listBaiGiang = new ArrayList<BaiGiang>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_baigiang";
+            String sql = "select * from tbl_baigiang ORDER BY maBG DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -142,7 +142,7 @@ public class BaiGiangDAO implements BaiGiangDAOService {
     @Override
     public boolean themBaiGiang(BaiGiang bg) {
         boolean isCheck = false;
-        String sql = "insert into tbl_baigiang (tenBG, noidung, nam, maGVHS, trangthai) values(?,?,?,?,?,?)";
+        String sql = "insert into tbl_baigiang (tenBG, noidung, nam, maGVHS, tlThamkhao, trangthai) values(?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);

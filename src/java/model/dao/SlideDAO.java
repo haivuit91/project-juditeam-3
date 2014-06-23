@@ -36,7 +36,7 @@ public class SlideDAO implements SlideDAOService {
         List<Slide> slideList = new ArrayList<>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_slide";
+            String sql = "select * from tbl_slide ORDER BY maSlide DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {

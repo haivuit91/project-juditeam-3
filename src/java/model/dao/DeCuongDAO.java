@@ -35,7 +35,7 @@ public class DeCuongDAO implements DeCuongDAOService {
         List<DeCuong> listDC = new ArrayList<DeCuong>();
         try {
             Connection conn = ConnectionFactory.getConnection();
-            String sql = "select * from tbl_dcct";
+            String sql = "select * from tbl_dcct ORDER BY maDC DESC";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {

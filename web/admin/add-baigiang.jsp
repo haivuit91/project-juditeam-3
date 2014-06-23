@@ -30,7 +30,7 @@
                             <h3><span class="glyphicon glyphicon-user"></span>${bg.getMaBG() > 0 ? 'Thay đổi thông tin bài giảng' : 'Thêm mới bài giảng'}</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="/HeThongTTQL/bgmanage?maBG=${bg.getMaBG()}" method="post">
+                            <form class="form-horizontal" role="form" action="/HeThongTTQL/bgmanage?maBG=${bg.getMaBG()}" method="post"  enctype="multipart/form-data" accept-charset="UTF-8">
                                 <!-- /.Mã BG -->
                                 <div class="form-group">                                    
                                     <div class="col-sm-12" >

@@ -6,7 +6,11 @@
 package controller.servlet.admin;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +21,12 @@ import model.dao.service.BaiGiangDAOService;
 import model.dao.service.GiangVienHocSinhDAOService;
 import model.entities.BaiGiang;
 import model.entities.GiangVienHocSinh;
+import org.apache.tomcat.util.http.fileupload.FileItemIterator;
+import org.apache.tomcat.util.http.fileupload.FileItemStream;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import util.FileUpload;
+import util.Support;
 
 /**
  *
@@ -76,38 +86,83 @@ public class BGManagement extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String submit = request.getParameter("submit");
-        switch (submit) {
-            case "Sửa":
-                updateBG(request, response);
-                break;
-            case "Thêm mới":
-                addNew(request, response);
-                break;
-            case "Xóa":
-                delete(request, response);
-                break;
-            case "Tìm kiếm":
-                search(request, response);
-                break;
+        String action = null;
+        String tenBG = null;
+        String noiDung = null;
+        String nam = null;
+        String gvhs = null;
+        String fileName = "";
+        boolean isUploadSuccess = false;
+        ServletFileUpload fileUpload = new ServletFileUpload();
+        try {
+            FileItemIterator itr = fileUpload.getItemIterator(request);
+            while (itr.hasNext()) {
+                FileItemStream fileItemStream = itr.next();
+                if (fileItemStream.isFormField()) {
+                    String fieldName = fileItemStream.getFieldName();
+                    InputStream is = fileItemStream.openStream();
+
+                    byte[] b = new byte[is.available()];
+                    is.read(b);
+                    String value = new String(b, "UTF-8");
+                    if (fieldName.equals("submit")) {
+                        action = value;
+                    }
+                    if (fieldName.equals("tenBG")) {
+                        tenBG = value;
+                    }
+                    if (fieldName.equals("noiDung")) {
+                        noiDung = value;
+                    }
+                    if (fieldName.equals("nam")) {
+                        nam = value;
+                    }
+                    if (fieldName.equals("gvhs")) {
+                        gvhs = value;
+                    }
+                } else {
+                    String realPath = getServletContext().getRealPath("/");
+                    String filePath = realPath.replace("\\build\\web", "\\web\\files");//Duong dan luu file
+                    fileName = fileItemStream.getName();
+                    StringTokenizer token = new StringTokenizer(fileName, ".");
+                    String fileNameExtension = "";
+                    while (token.hasMoreElements()) {
+                        fileNameExtension = token.nextElement().toString();
+                    }
+                    if (!fileName.equals("")) {
+                        fileName = Support.toUrlFriendly(fileName);
+                        isUploadSuccess = FileUpload.processFile(filePath, fileItemStream, fileName);
+                    }
+                }
+                if (action != null) {
+                    switch (action) {
+                        case "Sửa":
+                            updateBG(request, response);
+                            break;
+                        case "Thêm mới":
+                            addNew(request, response, tenBG, noiDung, nam, gvhs, fileName);
+                            break;
+                        case "Xóa":
+                            delete(request, response);
+                            break;
+                        case "Tìm kiếm":
+                            search(request, response);
+                            break;
+                    }
+                }
+            }
+        } catch (FileUploadException ex) {
+            Logger.getLogger(BGManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void addNew(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String tenBG = request.getParameter("tenBG");
-        String noiDung = request.getParameter("noiDung");
-        int nam = Integer.parseInt(request.getParameter("nam"));
-        String strGVHS = request.getParameter("gvhs");
+    private void addNew(HttpServletRequest request, HttpServletResponse response, String tenBG, String noiDung, String nam, String gvhs, String fileName) throws ServletException, IOException {
+        int namxb = Integer.parseInt(nam);
+        String strGVHS = gvhs;
         String[] arr = strGVHS.split("-");
         int maGV = Integer.parseInt(arr[0]);
-        GiangVienHocSinh gvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGV);
-        String tlThamkhao = request.getParameter("tlThamkhao");
-        int trangThai = 1;
-
-        BaiGiang bg = new BaiGiang(1, tenBG, noiDung, nam, gvhs, tlThamkhao, trangThai);
+        GiangVienHocSinh magvhs = GVHS_SERVICE.getGiangVienHocSinhByMa(maGV);
+        BaiGiang bg = new BaiGiang(1, tenBG, noiDung, namxb, magvhs, fileName, 1);
         if (BG_SERVICE.themBaiGiang(bg)) {
             List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
             request.setAttribute(util.Constants.BG_LIST, bgList);
@@ -121,12 +176,6 @@ public class BGManagement extends HttpServlet {
             request.setAttribute(util.Constants.PAGE, "addbg");
             request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
         }
-//        List<BaiGiang> bgList = BG_SERVICE.getAllBaiGiang();
-//        List<GiangVienHocSinh> gvhsListBG = GVHS_SERVICE.getAllGiangVienHocSinh();
-//        request.setAttribute(util.Constants.GVHS_LIST, gvhsListBG);
-//        request.setAttribute("bgList", bgList);
-//        request.setAttribute(util.Constants.PAGE, "manage-bg");
-//        request.getRequestDispatcher(util.Constants.URL_ADMIN).forward(request, response);
     }
 
     private void updateBG(HttpServletRequest request, HttpServletResponse response)
