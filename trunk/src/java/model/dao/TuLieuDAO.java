@@ -131,7 +131,7 @@ public class TuLieuDAO implements TuLieuDAOService {
     @Override
     public boolean themTuLieu(TuLieu tulieu) {
         boolean isCheck = false;
-        String sql = "insert into tbl_tulieu (tenTL, noidung, loaiTL, nguonTL, nam, trangthai) values(?,?,?,?,?,?,?)";
+        String sql = "insert into tbl_tulieu (tenTL, noidung, loaiTL, nguonTL, nam, tlThamkhao,  trangthai) values(?,?,?,?,?,?,?)";
         try {
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
