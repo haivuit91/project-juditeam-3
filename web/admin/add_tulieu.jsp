@@ -61,6 +61,14 @@
                                         <input type="text" name="nam" value="${tl.getNam()}" class="form-control" id="inputEmail3" placeholder="Năm phát hành">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
+                                    </div>
+                                    <div class="col-sm-9" >
+                                        <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
+                                    </div>
+                                </div>
                                 <!-- /.Button -->
                                 <div class="form-group">
                                     <div class="col-sm-12" >

@@ -56,7 +56,7 @@
                                 <!-- /.Giang vien hoc sinh -->
                                 <div class="form-group">
                                     <div class="col-sm-3" >
-                                        <label class="label label-info" style="padding: 5px;font-size:13px">Tác Giả</label>
+                                        <label class="label label-info" style="margin-top:5px; padding: 5px;font-size:13px">Tác Giả</label>
                                     </div>
                                     <div class="col-sm-9" >
                                         <select class="form-control" name="gvhs">
@@ -73,12 +73,20 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label class="label label-info" style="padding: 5px;font-size:13px">Đính kèm</label>
+                                    </div>
+                                    <div class="col-sm-9" >
+                                        <input type="file" name="file" class="btn btn-default" style="width: 273px"/>
+                                    </div>
+                                </div>
                                 <!-- /.Button -->
                                 <div class="form-group">
                                     <div class="col-sm-12" >
                                         <input type="submit" ${bg.getMaBG() > 0 ? 'value="Sửa"' : 'value="Thêm mới"'} name="submit" class="btn btn-success"/>
                                         &nbsp;
-                                        <button type="reset" class="btn btn-warning">Clear</button>
+                                        <button type="reset" class="btn btn-warning">Nhập lại</button>
                                     </div>
                                 </div>
                             </form>
