@@ -51,9 +51,13 @@ public class Contact extends HttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         if (util.Support.sendFeedBackMail(email, fullName, title, content)) {
-            response.getWriter().print("Bạn đã gửi phản hồi thành công! Cảm ơn!");
-        }else {
-            response.getWriter().print("Bạn đã gửi phản hồi thất bại! Vui lòng thử lại!");
+            request.setAttribute(util.Constants.PAGE, "phanhoi");
+            request.setAttribute("phanhoi", "Bạn đã gửi phản hồi thành công! Cảm ơn!");
+            request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
+        } else {
+            request.setAttribute(util.Constants.PAGE, "phanhoi");
+            request.setAttribute("phanhoi", "Bạn đã gửi phản hồi thất bại! Vui lòng thử lại!");
+            request.getRequestDispatcher(util.Constants.URL_HOME).forward(request, response);
         }
     }
 

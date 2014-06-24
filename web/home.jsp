@@ -83,6 +83,9 @@
                 <c:if test="${page == 'dshs'}">
                     <%@include file="module/ds-hs.jsp" %>
                 </c:if>
+                <c:if test="${page == 'phanhoi'}">
+                    <%@include file="module/phanhoi.jsp" %>
+                </c:if>
 
                 <!--------------------------------CONTENT RIGHT-------------------------------->
                 <c:if test="${page == null}">
